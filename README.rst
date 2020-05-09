@@ -1,9 +1,9 @@
 ==============
-stock_analisys
+Stock Analisys 
 ==============
 
 
-Add a short description here!
+Project to gather and analise data related to US stocks. 
 
 
 Description
