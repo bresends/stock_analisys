@@ -13,6 +13,11 @@ __pycache__/*
 .*.swp
 */.ipynb_checkpoints/*
 .DS_Store
+*.ini
+*.bak
+*.pyc
+*.vscode
+*.mypy_cache
 
 # Project files
 .ropeproject
