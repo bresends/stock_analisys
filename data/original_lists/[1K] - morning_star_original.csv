@@ -1,0 +1,225 @@
+Ticker,Company,MS,MBI,MB,CNN,BS
+ACA,Arcosa Inc,True,True,True,True,False
+ACEL,Accel Entertainment Inc,True,True,True,True,False
+AEG,Aegon NV,True,True,True,True,False
+AGM.A,Federal Agricultural Mortgage Corp,True,False,True,True,False
+AIZP,,True,True,False,True,False
+AKO.B,Embotelladora Andina SA,True,False,True,True,False
+ALTG,Alta Equipment Group Inc,True,True,True,True,False
+ALUS,Alussa Energy Acquisition Corp,True,True,False,True,False
+AMHPF,Verde AgriTech PLC,True,False,False,True,False
+AMK,AssetMark Financial Holdings Inc,True,True,True,True,False
+AMPY,Amplify Energy Corp,True,True,True,True,False
+AMRX,Amneal Pharmaceuticals Inc,True,True,True,True,False
+APY,Apergy Corp,True,True,True,True,False
+ARD,Ardagh Group SA,True,True,True,True,False
+ARLO,Arlo Technologies Inc,True,True,True,True,False
+ATCO,Atlas Corp,True,True,True,True,False
+ATH,Athene Holding Ltd,True,True,True,True,False
+AVNS,Avanos Medical Inc,True,True,True,True,False
+AVYA,Avaya Holdings Corp,True,True,True,True,False
+BBAR,BBVA Argentina SA,True,False,True,True,False
+BBDC,Barings BDC Inc,True,True,True,True,False
+BBU,Brookfield Business Partners LP,True,True,True,True,False
+BCSF,Bain Capital Specialty Finance Inc,True,True,True,True,False
+BDXA,,True,True,False,True,False
+BE,Bloom Energy Corp,True,True,True,True,False
+BH.A,Biglari Holdings Inc,True,False,True,True,False
+BHR,Braemar Hotels & Resorts Inc,True,True,True,True,False
+BILL,Bill.com Holdings Inc,True,True,True,True,False
+BIO.B,Bio-Rad Laboratories Inc,True,False,True,True,False
+BIPC,Brookfield Infrastructure Corp,True,True,True,True,False
+BKR,Baker Hughes Co,True,True,True,True,False
+BLX,Banco Latinoamericano de Comercio Exterior SA,True,True,True,True,False
+BORR,Borr Drilling Ltd,True,True,True,True,False
+BPMP,BP Midstream Partners LP,True,True,True,True,False
+BPT,BP Prudhoe Bay Royalty Trust,True,True,True,True,False
+BRBR,BellRing Brands Inc,True,True,True,True,False
+BRMK,Broadmark Realty Capital Inc,True,True,True,True,False
+BSBR,Banco Santander (Brasil) SA,True,True,True,True,False
+BXG,Bluegreen Vacations Corp,True,True,True,True,False
+CCH,Collier Creek Holdings,True,True,True,False,False
+CCH.U,,True,False,False,False,False
+CCR,CONSOL Coal Resources LP,True,True,True,True,False
+CCX,Churchill Capital Corp II,True,True,True,True,False
+CCX.U,,True,False,False,False,False
+CCXX,Churchill Capital Corp III,True,True,False,True,False
+CDAY,Ceridian HCM Holding Inc,True,True,True,True,False
+CFXA,,True,True,True,True,False
+CHAP,Chaparral Energy Inc,True,True,True,True,False
+CHRA,Charah Solutions Inc,True,True,True,True,False
+CIG.C,Energy Company of Minas Gerais,True,False,True,True,False
+CNR,Cornerstone Building Brands Inc,True,True,True,True,False
+CNXM,CNX Midstream Partners LP,True,True,True,True,False
+CPA,Copa Holdings SA,True,True,True,True,False
+CSPR,Casper Sleep Inc,True,True,True,True,False
+CSTM,Constellium SE,True,False,True,True,False
+CTK,CooTek (Cayman) Inc,True,True,True,True,False
+CTRA,Contura Energy Inc,True,True,True,True,False
+CVIA,Covia Holdings Corp,True,True,True,True,False
+CWEN.A,Clearway Energy Inc,True,False,True,True,False
+DAO,Youdao Inc,True,True,True,True,False
+DCP,DCP Midstream LP,True,True,True,True,False
+DCUE,,True,True,False,True,False
+DDT,,True,False,False,True,False
+DFNS,LGL Systems Acquisition Corp,True,True,False,True,False
+DNK,Phoenix Tree Holdings Ltd,True,True,True,True,False
+DSSI,Diamond S Shipping Inc,True,True,True,True,False
+DTP,,True,True,False,True,False
+EBR.B,Centrais Eletricas Brasileiras SA,True,False,True,True,False
+ECCB,,True,True,False,True,False
+ECT,ECA Marcellus Trust I,True,True,True,True,False
+ELAT,,True,True,False,True,False
+EPAC,Enerpac Tool Group Corp,True,False,True,True,False
+EPRT,Essential Properties Realty Trust Inc,True,True,True,True,False
+EQH,Equitable Holdings Inc,True,True,True,True,False
+EROS,Eros International PLC,True,True,True,True,False
+ESI,Element Solutions Inc,True,True,True,True,False
+ETRN,Equitrans Midstream Corp,True,True,True,True,False
+FG,FGL Holdings,True,True,True,True,False
+FHI,Federated Hermes Inc,True,True,True,True,False
+FLNG,Flex LNG Ltd,True,True,True,True,False
+FPAC,Far Point Acquisition Corp,True,True,False,True,False
+FSK,FS KKR Capital Corp,True,True,True,True,False
+GEF.B,Greif Inc,True,False,True,True,False
+GFL,GFL Environmental Inc,True,False,True,True,False
+GFLU,,True,True,False,True,False
+GIX,Gigcapital2 Inc,True,True,True,True,False
+GLEO,Galileo Acquisition Corp,True,True,False,True,False
+GRAF,Graf Industrial Corp,True,True,False,True,False
+GRP.U,Granite Real Estate Investment Trust,True,False,True,False,False
+GSL,Global Ship Lease Inc,True,True,True,True,False
+GSX,GSX Techedu Inc,True,True,True,True,False
+GTN.A,Gray Television Inc,True,False,True,True,False
+HCFT,Hunt Companies Finance Trust Inc,True,True,True,True,False
+HCR,Hi-Crush Inc,True,True,True,True,False
+HESM,Hess Midstream Operations LP,True,False,True,True,False
+HEXO,HEXO Corp,True,True,True,True,False
+HKIB,AMTD International Inc,True,True,True,True,False
+HNGR,Hanger Inc,True,True,True,True,False
+HPR,HighPoint Resources Corp,True,True,True,True,False
+HTGC,Hercules Capital Inc,True,True,True,True,False
+HUD,Hudson Ltd,True,True,True,True,False
+HVT.A,Haverty Furniture Companies Inc,True,False,True,True,False
+HWM,Howmet Aerospace Inc,True,True,True,True,False
+IFFT,,True,True,False,True,False
+IFS,Intercorp Financial Services Inc,True,True,True,True,False
+IPV,InterPrivate Acquisition Corp,True,True,False,True,False
+ISG,,True,True,True,False,False
+J,Jacobs Engineering Group Inc,True,True,True,True,False
+JEF,Jefferies Financial Group Inc,True,True,True,True,False
+JIH,Juniper Industrial Holdings Inc,True,True,False,True,False
+JIH.U,,True,False,False,False,False
+KRP,Kimbell Royalty Partners LP,True,True,True,True,False
+KTH,,True,True,False,True,False
+LEAF,Leaf Group Ltd,True,True,True,True,False
+LGC,Legacy Acquisition Corp,True,True,True,True,False
+LHC,Leo Holdings Corp,True,True,True,True,False
+LHC.U,,True,False,False,False,False
+LINX,Linx SA,True,True,True,True,False
+MAXR,Maxar Technologies Inc,True,True,True,True,False
+MCC,Medley Capital Corp,True,True,True,True,False
+MEC,Mayville Engineering Co Inc,True,True,True,True,False
+MFAC,Megalith Financial Acquisition Corp,True,True,False,True,False
+MGY,Magnolia Oil & Gas Corp,True,True,True,True,False
+MHPC,Manufactured Housing Properties Inc,True,False,False,True,False
+MKC.V,McCormick & Co Inc,True,False,True,True,False
+MNRL,Brigham Minerals Inc,True,True,True,True,False
+MOGU,MOGU Inc,True,True,True,True,False
+MR,Montage Resources Corp,True,True,True,True,False
+MSC,Studio City International Holdings Ltd,True,True,True,True,False
+MTLPR,Mechel PAO,True,False,False,False,False
+MUFG,Mitsubishi UFJ Financial Group Inc,True,True,True,True,False
+MVC,MVC Capital Inc,True,True,True,True,False
+MVO,MV Oil Trust,True,True,True,True,False
+NEX,NexTier Oilfield Solutions Inc,True,True,True,True,False
+NFH,New Frontier Health Corp,True,True,True,True,False
+NMFC,New Mountain Finance Corp,True,True,True,True,False
+NREF,NexPoint Real Estate Finance Inc,True,True,True,True,False
+NRT,North European Oil Royalty Trust,True,True,True,True,False
+NSCO,Nesco Holdings Inc,True,True,True,True,False
+NTCO,Natura &Co Holding SA,True,True,True,True,False
+OAC,Oaktree Acquisition Corp,True,True,False,True,False
+OAC.U,,True,False,False,False,False
+OCFT,OneConnect Financial Technology Co Ltd,True,True,True,True,False
+OIBR.C,Oi SA,True,False,True,True,False
+ONTO,Onto Innovation Inc,True,True,True,True,False
+ORCC,Owl Rock Capital Corp,True,True,True,True,False
+OVV,Ovintiv Inc,True,True,True,True,False
+PACD,Pacific Drilling SA,True,True,,True,False
+PACK,Ranpak Holdings Corp,True,True,,True,False
+PBR.A,Petroleo Brasileiro SA Petrobras,True,False,True,True,False
+PER,SandRidge Permian Trust,True,True,True,True,False
+PFSI,PennyMac Financial Services Inc,True,True,True,True,False
+PHR,Phreesia Inc,True,True,True,True,False
+PIC,Pivotal Investment Corp II,True,True,True,True,False
+PIC.U,,True,False,False,False,False
+PINE,Alpine Income Property Trust Inc,True,True,True,True,False
+PIPR,Piper Sandler Cos,True,True,True,True,False
+PLYM,Plymouth Industrial REIT Inc,True,True,True,True,False
+PROS,ProSight Global Inc,True,True,True,True,False
+PRSP,Perspecta Inc,True,True,True,True,False
+PRT,PermRock Royalty Trust,True,False,True,True,False
+PSN,Parsons Corp,True,True,True,True,False
+PSTL,Postal Realty Trust Inc,True,True,True,True,False
+PSV,Hermitage Offshore Services Ltd,True,True,True,True,False
+PVL,Permianville Royalty Trust,True,False,True,True,False
+PYS,,True,True,False,True,False
+RCUS,Arcus Biosciences Inc,True,True,True,True,False
+RDS.A,Royal Dutch Shell PLC,True,False,True,True,False
+RFL,Rafael Holdings Inc,True,True,True,True,False
+RMED,Ra Medical Systems Inc,True,True,True,True,False
+RMG,RMG Acquisition Corp,True,True,True,True,False
+RMG.U,,True,False,False,False,False
+ROYT,Pacific Coast Oil Trust,True,True,True,True,False
+RPLA,Replay Acquisition Corp,True,True,False,True,False
+RTW,RTW Retailwinds Inc,True,True,True,True,False
+RVI,Retail Value Inc,True,True,True,True,False
+RYCE,Amira Nature Foods Ltd,True,True,False,True,False
+SAIL,SailPoint Technologies Holdings Inc,True,True,True,True,False
+SAR,Saratoga Investment Corp,True,True,True,True,False
+SBE,Switchback Energy Acquisition Corp,True,True,False,True,False
+SBE.U,,True,False,False,False,False
+SBR,Sabine Royalty Trust,True,True,True,True,False
+SBSW,Sibanye Stillwater Ltd,True,True,True,True,False
+SCPE,SC Health Corp,True,True,False,True,False
+SCU,Sculptor Capital Management Inc,True,True,True,True,False
+SCVX,SCVX Corp,True,True,False,True,False
+SFTW,Osprey Technology Acquisition Corp,True,True,False,True,False
+SHLL,Tortoise Acquisition Corp,True,True,True,True,False
+SI,Silvergate Capital Corp,True,False,True,True,False
+SJIU,,True,True,False,True,False
+SJR,Shaw Communications Inc,True,True,True,True,False
+SJT,San Juan Basin Royalty Trust,True,True,True,True,False
+SMHI,Seacor Marine Holdings Inc,True,True,True,True,False
+SOLN,,True,True,False,True,False
+SPAQ,Spartan Energy Acquisition Corp,True,True,False,True,False
+SRL,Scully Royalty Ltd,True,True,True,True,False
+STZ.B,Constellation Brands Inc,True,False,True,True,False
+SUZ,Suzano SA,True,True,True,True,False
+SWCH,Switch Inc,True,True,True,True,False
+SWP,,True,True,False,True,False
+SWT,,True,True,False,True,False
+TALO,Talos Energy Inc,True,True,True,True,False
+TAP.A,Molson Coors Beverage Co,True,False,True,True,False
+TFII,TFI International Inc,True,True,,True,False
+TME,Tencent Music Entertainment Group,True,True,True,True,False
+TNK,Teekay Tankers Ltd,True,False,True,True,False
+TRNE,Trine Acquisition Corp,True,True,False,True,False
+TRWH,Twin River Worldwide Holdings Inc,True,True,True,True,False
+TUFN,Tufin Software Technologies Ltd,True,True,True,True,False
+TV,Grupo Televisa SAB,True,True,True,True,False
+USX,U.S. Xpress Enterprises Inc,True,True,True,True,False
+VAL,Valaris PLC,True,False,True,True,False
+VAPO,Vapotherm Inc,True,True,True,True,False
+VEL,Velocity Financial Inc,True,True,True,True,False
+VIST,Vista Oil & Gas SAB de CV,True,True,True,True,False
+VOC,VOC Energy Trust,True,True,True,True,False
+VRT,Vertiv Holdings LLC,True,True,True,True,False
+VVNT,Vivint Smart Home Inc,True,True,True,True,False
+WHD,Cactus Inc,True,True,True,True,False
+WSO.B,Watsco Inc,True,False,,True,False
+WTRG,Essential Utilities Inc,True,True,True,True,False
+WTRU,,True,False,False,True,False
+XAN,Exantas Capital Corp,True,True,True,True,False
+YETI,YETI Holdings Inc,True,True,True,True,False

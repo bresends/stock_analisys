@@ -1,0 +1,1415 @@
+Ticker,Company,MS,MBI,MB,CNN,BS
+AABA,Altaba Inc,False,True,True,True,False
+AACG,ATA Creativity Global,False,True,False,True,False
+AAPJ,AAP Inc,False,True,False,True,False
+ABCD,Cambium Learning Group Inc,False,True,True,False,False
+ABDC,Alcentra Capital Corp,False,True,True,False,False
+ABIO,ARCA biopharma Inc,False,True,True,True,False
+ABMC,American Bio Medica Corp,False,True,True,True,False
+ACAM,Acamar Partners Acquisition Corp,False,True,False,True,False
+ACAMU,,False,True,True,True,False
+ACFN,Acorn Energy Inc,False,True,True,True,False
+ACGLO,,False,True,False,True,False
+ACGLP,,False,True,False,True,False
+ACMR,ACM Research Inc,False,True,True,True,False
+ACSF,American Capital Senior Floating Ltd,False,True,True,False,False
+ACTT,Act II Global Acquisition Corp,False,True,True,True,False
+ACTTU,,False,True,True,True,False
+ADIL,Adial Pharmaceuticals Inc,False,True,True,True,False
+ADLS,Advanced Life Sciences Holdings Inc,False,True,False,False,False
+ADOM,ADOMANI Inc,False,True,True,True,False
+ADPT,Adaptive Biotechnologies Corp,False,True,True,True,False
+ADPXY,Audio Pixels Holdings Ltd,False,True,False,True,False
+ADYX,Adynxx Inc,False,True,False,True,False
+AEH,,False,True,False,False,False
+AERI,Aerie Pharmaceuticals Inc,False,True,True,True,False
+AESE,Allied Esports Entertainment Inc,False,True,True,True,False
+AET,Aetna Inc,False,True,True,False,False
+AEYE,AudioEye Inc,False,True,True,True,False
+AFCB,Athens Bancshares Corp,False,True,True,True,False
+AFFY,Affymax Inc,False,True,True,True,False
+AFIN,American Finance Trust Inc,False,True,True,True,False
+AFINP,,False,True,False,True,False
+AGBA,AGBA Acquisition Ltd,False,True,False,True,False
+AGBAU,,False,True,True,True,False
+AGE,AgeX Therapeutics Inc,False,True,True,True,False
+AGMH,AGM Group Holdings Inc,False,True,True,True,False
+AGNCB,,False,True,False,False,False
+AGNCM,,False,True,False,True,False
+AGNCN,,False,True,False,True,False
+AGNCO,,False,True,False,True,False
+AGRX,Agile Therapeutics Inc,False,True,True,True,False
+AHCO,AdaptHealth Corp,False,True,True,True,False
+AIH,Aesthetic Medical International Holdings Group Ltd,False,True,True,True,False
+AIKI,AIkido Pharma Inc,False,True,False,True,False
+AIM,AIM ImmunoTech Inc,False,True,,True,False
+AIMT,Aimmune Therapeutics Inc,False,True,True,True,False
+AINV,Apollo Investment Corp,False,True,True,True,False
+AIRM,Air Methods Corp,False,True,True,False,False
+AKCA,Akcea Therapeutics Inc,False,True,True,True,False
+AKRO,Akero Therapeutics Inc,False,True,True,True,False
+AKTS,Akoustis Technologies Inc,False,True,True,True,False
+ALAC,Alberton Acquisition Corp,False,True,False,True,False
+ALACU,,False,True,True,True,False
+ALCO,Alico Inc,False,True,True,True,False
+ALDX,Aldeyra Therapeutics Inc,False,True,True,True,False
+ALEC,Alector Inc,False,True,True,True,False
+ALGR,Allegro Merger Corp,False,True,False,False,False
+ALGRU,,False,True,True,False,False
+ALIF,Artificial Life Inc,False,True,False,True,False
+ALLK,Allakos Inc,False,True,True,True,False
+ALLO,Allogene Therapeutics Inc,False,True,True,True,False
+ALNA,Allena Pharmaceuticals Inc,False,True,True,True,False
+ALPN,Alpine Immune Sciences Inc,False,True,True,True,False
+ALR,Alere Inc,False,True,True,False,False
+ALRN,Aileron Therapeutics Inc,False,True,True,True,False
+ALRS,Alerus Financial Corp,False,True,True,True,False
+ALTM,Altus Midstream Co,False,True,True,True,False
+ALYA,Alithya Group Inc,False,True,True,True,False
+AMAL,Amalgamated Bank,False,True,True,True,False
+AMCI,AMCI Acquisition Corp,False,True,True,True,False
+AMCIU,,False,True,True,True,False
+AMEH,Apollo Medical Holdings Inc,False,True,True,True,False
+AMFW,Amec Foster Wheeler PLC,False,True,True,False,False
+AMHC,Amplitude Healthcare Acquisition Corp,False,True,False,True,False
+AMHCU,,False,True,True,True,False
+AMTB,Amerant Bancorp Inc,False,True,True,True,False
+AMTBB,Amerant Bancorp Inc,False,True,False,True,False
+ANAB,AnaptysBio Inc,False,True,True,True,False
+ANCN,Anchiano Therapeutics Ltd,False,True,True,True,False
+ANCX,Access National Corp,False,True,True,False,False
+ANDA,Andina Acquisition Corp III,False,True,True,True,False
+ANDAU,,False,True,True,True,False
+ANDX,Andeavor Logistics LP,False,True,True,False,False
+ANIX,Anixa Biosciences Inc,False,True,True,True,False
+ANPC,AnPac Bio-Medical Science Co Ltd,False,True,True,True,False
+ANVS,ANV Security Group Inc,False,True,True,True,False
+ANVS,Annovis Bio Inc,False,True,True,True,False
+AOBC,American Outdoor Brands Corp,False,True,True,True,False
+APLS,Apellis Pharmaceuticals Inc,False,True,True,True,False
+APLT,Applied Therapeutics Inc,False,True,True,True,False
+APM,Aptorum Group Ltd,False,True,True,True,False
+APPN,Appian Corp,False,True,True,True,False
+APRE,Aprea Therapeutics Inc,False,True,True,True,False
+APTI,Apptio Inc,False,True,True,False,False
+APTX,Aptinyx Inc,False,True,True,True,False
+APXT,Apex Technology Acquisition Corp,False,True,False,True,False
+APXTU,,False,True,True,True,False
+APYX,Apyx Medical Corp,False,True,True,True,False
+AQB,AquaBounty Technologies Inc,False,True,True,True,False
+AQSP,Acquired Sales Corp,False,True,True,True,False
+AQST,Aquestive Therapeutics Inc,False,True,True,True,False
+ARAV,Aravive Inc,False,True,True,True,False
+ARCT,Arcturus Therapeutics Holdings Inc,False,True,True,True,False
+ARDS,Aridis Pharmaceuticals Inc,False,True,True,True,False
+AREC,American Resources Corp,False,True,True,True,False
+ARET,Arete Industries Inc,False,True,False,True,False
+ARHN,Archon Corp,False,True,False,True,False
+ARMO,ARMO BioSciences Inc,False,True,True,False,False
+ARMP,Armata Pharmaceuticals Inc,False,True,True,True,False
+ARPO,Aerpio Pharmaceuticals Inc,False,True,True,True,False
+ARQT,Arcutis Biotherapeutics Inc,False,True,True,True,False
+ARTL,Artelo Biosciences Inc,False,True,True,True,False
+ARVN,Arvinas Inc,False,True,True,True,False
+ARYA,ARYA Sciences Acquisition Corp,False,True,False,True,False
+ARYAU,,False,True,True,True,False
+ASA,,False,True,True,True,False
+ASMIY,ASM International NV,False,True,True,True,False
+ASPU,Aspen Group Inc,False,True,True,True,False
+ASRT,Assertio Therapeutics Inc,False,True,True,True,False
+ASV,ASV Holdings Inc,False,True,True,True,False
+ATAC,Atlantic Acquisition Corp,False,True,False,False,False
+ATCLY,Atlantic Carbon Group PLC,False,True,False,False,False
+ATCX,Atlas Technical Consultants Inc,False,True,True,True,False
+ATEA,Astea International Inc,False,True,True,True,False
+ATHE,Alterity Therapeutics Ltd,False,True,False,True,False
+ATIF,ATIF Holdings Ltd,False,True,True,True,False
+ATIS,Attis Industries Inc,False,True,False,False,False
+ATNM,Actinium Pharmaceuticals Inc,False,True,True,True,False
+ATNX,Athenex Inc,False,True,True,True,False
+ATRA,Atara Biotherapeutics Inc,False,True,True,True,False
+ATRM,ATRM Holdings Inc,False,True,True,False,False
+ATTU,Attunity Ltd,False,True,True,False,False
+ATXDY,Austex Oil Ltd,False,True,False,False,False
+ATXI,Avenue Therapeutics Inc,False,True,True,True,False
+AUB,Atlantic Union Bankshares Corp,False,True,True,True,False
+AUTO,AutoWeb Inc,False,True,True,True,False
+AVCO,Avalon Globocare Corp,False,True,True,True,False
+AVCT,American Virtual Cloud Technologies Inc,False,True,True,True,False
+AVDR,Avedro Inc,False,True,True,False,False
+AVGOP,,False,True,False,True,False
+AVRO,Avrobio Inc,False,True,True,True,False
+AWSM,Cool Holdings Inc,False,True,True,True,False
+AXAR,Axar Acquisition Corp,False,True,False,False,False
+AXGT,Axovant Gene Therapies Ltd,False,True,True,True,False
+AXLA,Axcella Health Inc,False,True,True,True,False
+AXNX,Axonics Modulation Technologies Inc,False,True,True,True,False
+AXSM,Axsome Therapeutics Inc,False,True,True,True,False
+AYTU,Aytu BioScience Inc,False,True,True,True,False
+AZIHY,Azimut Holding SPA,False,True,False,True,False
+AZRX,AzurRx BioPharma Inc,False,True,True,True,False
+BAND,Bandwidth Inc,False,True,True,True,False
+BANX,,False,True,True,True,False
+BATL,Battalion Oil Corp,False,True,False,True,False
+BATRA,Liberty Braves Group,False,True,True,True,False
+BATRK,Liberty Braves Group,False,True,True,True,False
+BBCP,Concrete Pumping Holdings Inc,False,True,True,True,False
+BBI,Brickell Biotech Inc,False,True,True,True,False
+BBIO,BridgeBio Pharma Inc,False,True,True,True,False
+BBQ,BBQ Holdings Inc,False,True,True,True,False
+BCDA,BioCardia Inc,False,True,True,True,False
+BCEL,Atreca Inc,False,True,True,True,False
+BCKIY,Babcock International Group PLC,False,True,True,True,False
+BCLI,Brainstorm Cell Therapeutics Inc,False,True,True,True,False
+BCML,BayCom Corp,False,True,True,True,False
+BCOW,1895 Bancorp of Wisconsin Inc,False,True,True,True,False
+BCYC,Bicycle Therapeutics PLC,False,True,True,True,False
+BDCO,Blue Dolphin Energy Co,False,True,True,True,False
+BDMS,Birner Dental Management Services Inc,False,True,True,True,False
+BDTX,Black Diamond Therapeutics Inc,False,True,True,True,False
+BEAM,Beam Therapeutics Inc,False,True,True,True,False
+BEBE,bebe stores Inc,False,True,True,True,False
+BERK,Berkshire Bancorp Inc,False,True,True,True,False
+BFC,Bank First Corp,False,True,True,True,False
+BFST,Business First Bancshares Inc,False,True,True,True,False
+BFYT,Benefytt Technologies Inc,False,True,True,True,False
+BGMD,BG Medicine Inc,False,True,True,True,False
+BHAC,Barington/Hilco Acquisition Corp,False,True,True,False,False
+BHAT,Blue Hat Interactive Entertainment Technology,False,True,True,True,False
+BHFAP,,False,True,False,True,False
+BHTG,BioHiTech Global Inc,False,True,True,True,False
+BIOX,Bioceres Crop Solutions Corp,False,True,True,True,False
+BIVV,Bioverativ Inc,False,True,True,False,False
+BKAYY,Bank Of Ayudhya PCL,False,True,False,True,False
+BKCC,BlackRock Capital Investment Corp,False,True,True,True,False
+BKOR,Oak Ridge Financial Services Inc,False,True,True,True,False
+BKTI,BK Technologies Corp,False,True,True,True,False
+BKYI,BIO-key International Inc,False,True,True,True,False
+BLNK,Blink Charging Co,False,True,True,True,False
+BLU,BELLUS Health Inc,False,True,True,True,False
+BLWYY,Bellway PLC,False,True,True,True,False
+BMRK,Benchmark Energy Corp,False,True,False,True,False
+BMS,Bemis Co Inc,False,True,True,False,False
+BNGO,Bionano Genomics Inc,False,True,True,True,False
+BNTGY,Brenntag AG,False,True,True,True,False
+BNTX,BioNTech SE,False,True,True,True,False
+BOLD,Audentes Therapeutics Inc,False,True,True,True,False
+BOLT,BioLight Life Sciences Ltd,False,True,True,False,False
+BOXC,Brookfield Canada Office Properties,False,True,True,False,False
+BOXL,Boxlight Corp,False,True,True,True,False
+BPRN,The Bank of Princeton,False,True,True,True,False
+BPYPN,,False,True,False,True,False
+BPYPO,,False,True,False,True,False
+BPYPP,,False,True,False,True,False
+BPYUP,,False,True,False,True,False
+BRBS,Blue Ridge Bankshares Inc,False,True,True,True,False
+BROGU,,False,True,False,False,False
+BRP,BRP Group Inc,False,True,True,True,False
+BRPA,Big Rock Partners Acquisition Corp,False,True,False,True,False
+BRPAU,,False,True,True,True,False
+BRQS,Borqs Technologies Inc,False,True,True,True,False
+BRRZY,Total Brain Ltd,False,True,True,True,False
+BRY,Berry Corp (bry),False,True,True,True,False
+BSBK,Bogota Financial Corp,False,True,True,True,False
+BSGM,BioSig Technologies Inc,False,True,True,True,False
+BSHPY,Bahamas Petroleum Co PLC,False,True,False,False,False
+BSPDY,PT Bumi Serpong Damai Tbk,False,True,False,True,False
+BSVN,Bank7 Corp,False,True,True,True,False
+BTAFF,British American Tobacco PLC,False,True,False,True,False
+BTAI,BioXcel Therapeutics Inc,False,True,True,True,False
+BVXV,BiondVax Pharmaceuticals Ltd,False,True,True,True,False
+BWAY,Brainsway Ltd,False,True,True,True,False
+BWB,Bridgewater Bancshares Inc,False,True,True,True,False
+BWMX,Betterware de Mexico SAPI de CV,False,True,False,True,False
+BXRX,Baudax Bio Inc,False,True,True,True,False
+BYSI,BeyondSpring Inc,False,True,True,True,False
+CABA,Cabaletta Bio Inc,False,True,True,True,False
+CACB,Cascade Bancorp,False,True,True,True,False
+CACQ,Caesars Acquisition Co,False,True,True,False,False
+CALB,California Bancorp,False,True,True,True,False
+CAN,Canaan Inc,False,True,True,True,False
+CARE,Carter Bank & Trust,False,True,True,True,False
+CASA,Casa Systems Inc,False,True,True,True,False
+CATC,Cambridge Bancorp,False,True,True,True,False
+CATS,Catasys Inc,False,True,True,True,False
+CBAT,CBAK Energy Technology Inc,False,True,True,True,False
+CBF,Capital Bank Financial Corp,False,True,True,False,False
+CBLK,Carbon Black Inc,False,True,True,False,False
+CBMB,CBM Bancorp Inc,False,True,True,True,False
+CBPX,Continental Building Products Inc,False,True,True,False,False
+CBS,,False,True,True,False,False
+CBSHP,,False,True,False,True,False
+CBTX,CBTX Inc,False,True,True,True,False
+CCAP,Crescent Capital BDC Inc,False,True,True,True,False
+CCB,Coastal Financial Corp,False,True,,True,False
+CCCL,China Ceramics Co Ltd,False,True,True,True,False
+CCNTF,Concentric AB,False,True,,True,False
+CCRC,China Customer Relations Centers Inc,False,True,True,True,False
+CCT,Corporate Capital Trust Inc,False,True,,False,False
+CDLX,Cardlytics Inc,False,True,True,True,False
+CDMO,Avid Bioservices Inc,False,True,True,True,False
+CDMOP,,False,True,False,True,False
+CDTX,Cidara Therapeutics Inc,False,True,True,True,False
+CELC,Celcuity Inc,False,True,True,True,False
+CELH,Celsius Holdings Inc,False,True,True,True,False
+CETXP,,False,True,False,True,False
+CFB,CrossFirst Bankshares Inc,False,True,True,True,False
+CFBI,Community First Bancshares Inc,False,True,True,True,False
+CFCB,Centrue Financial Corp,False,True,True,False,False
+CFFA,CF Finance Acquisition Corp,False,True,False,True,False
+CFFAU,,False,True,True,True,False
+CGAAY,A2B Australia Ltd,False,True,False,True,False
+CGBD,TCG BDC Inc,False,True,True,True,False
+CHAM,Champion Investments Inc,False,True,False,True,False
+CHKR,Chesapeake Granite Wash Trust,False,True,True,True,False
+CHNG,Change Healthcare Inc,False,True,True,True,False
+CHNGU,,False,True,False,True,False
+CHPM,CHP Merger Corp,False,True,False,True,False
+CHPMU,,False,True,True,True,False
+CHPXY,China Pacific Insurance (Group) Co Ltd,False,True,False,True,False
+CHRYY,Chorus Ltd,False,True,True,True,False
+CHUBA,CommerceHub Inc,False,True,True,False,False
+CHUBK,CommerceHub Inc,False,True,True,False,False
+CIH,China Index Holdings Ltd,False,True,False,True,False
+CIIC,CIIG Merger Corp,False,True,False,True,False
+CIICU,,False,True,True,True,False
+CIOIY,Carillion PLC,False,True,False,False,False
+CIOXY,Cielo SA,False,True,True,True,False
+CKPT,Checkpoint Therapeutics Inc,False,True,True,True,False
+CLAR,Clarus Corp,False,True,True,True,False
+CLBK,Columbia Financial Inc,False,True,True,True,False
+CLC,Clarcor Inc,False,True,True,False,False
+CLCD,CoLucid Pharmaceuticals Inc,False,True,True,False,False
+CLDB,Cortland Bancorp,False,True,True,True,False
+CLMS,Calamos Asset Management Inc,False,True,True,True,False
+CLRB,Cellectar Biosciences Inc,False,True,True,True,False
+CLSK,Cleanspark Inc,False,True,True,True,False
+CLWT,Euro Tech Holdings Co Ltd,False,True,True,True,False
+CLXT,Calyxt Inc,False,True,True,True,False
+CMBM,Cambium Networks Corp,False,True,True,True,False
+CMCL,Caledonia Mining Corp PLC,False,True,True,True,False
+CMTA,Clementia Pharmaceuticals Inc,False,True,True,False,False
+CNAF,Commercial National Financial Corp (PA),False,True,True,True,False
+CNNB,Cincinnati Bancorp Inc,False,True,True,True,False
+CNSP,CNS Pharmaceuticals Inc,False,True,True,True,False
+CNST,Constellation Pharmaceuticals Inc,False,True,True,True,False
+CNTG,Centogene NV,False,True,True,True,False
+CNXAY,Carbon Energy Ltd,False,True,False,False,False
+COCP,Cocrystal Pharma Inc,False,True,True,True,False
+CODA,Coda Octopus Group Inc,False,True,True,True,False
+CODX,Co-Diagnostics Inc,False,True,True,True,False
+COFS,ChoiceOne Financial Services Inc,False,True,True,True,False
+COOP,Mr. Cooper Group Inc,False,True,True,True,False
+COVS,Covisint Corp,False,True,True,False,False
+CPAAU,,False,True,True,True,False
+CPRX,Catalyst Pharmaceuticals Inc,False,True,True,True,False
+CPTA,Capitala Finance Corp,False,True,True,True,False
+CREAF,Creative Technology Ltd,False,True,False,True,False
+CREX,Creative Realities Inc,False,True,True,True,False
+CRNC,Cerence Inc,False,True,True,True,False
+CRNX,Crinetics Pharmaceuticals Inc,False,True,True,True,False
+CROL,Carroll Bancorp Inc,False,True,True,True,False
+CRSA,Crescent Acquisition Corp,False,True,False,True,False
+CRSAU,,False,True,True,True,False
+CRTX,Cortexyme Inc,False,True,True,True,False
+CRVS,Corvus Pharmaceuticals Inc,False,True,True,True,False
+CRYO,American Cryostem Corp,False,True,False,True,False
+CSSE,Chicken Soup for the Soul Entertainment Inc,False,True,True,True,False
+CSSEP,,False,True,True,True,False
+CSTL,Castle Biosciences Inc,False,True,True,True,False
+CTAC,ChaSerg Technology Acquisition Corp,False,True,False,True,False
+CTACU,,False,True,True,False,False
+CTRC,Centric Brands Inc,False,True,True,True,False
+CTRM,Castor Maritime Inc,False,True,False,True,False
+CTRP,,False,True,True,False,False
+CTST,,False,True,True,False,False
+CTXR,Citius Pharmaceuticals Inc,False,True,True,True,False
+CUE,Cue Biopharma Inc,False,True,True,True,False
+CUNB,CU Bancorp,False,True,True,False,False
+CVET,Covetrus Inc,False,True,True,True,False
+CVON,ConvergeOne Holdings Inc,False,True,True,False,False
+CWBR,CohBar Inc,False,True,True,True,False
+CYNO,Cynosure Inc,False,True,True,False,False
+CYRN,CYREN Ltd,False,True,True,True,False
+DASTY,Dassault Systemes SE,False,True,True,True,False
+DATA,Tableau Software Inc,False,True,True,False,False
+DCAR,DropCar Inc,False,True,True,True,False
+DCOMP,,False,True,False,True,False
+DCPH,Deciphera Pharmaceuticals Inc,False,True,True,True,False
+DCUC,Dominion Energy Inc,False,True,False,False,False
+DDC,Dominion Diamond Corp,False,True,True,False,False
+DDMX,DD3 Acquisition Corp,False,True,True,False,False
+DDMXU,,False,True,True,False,False
+DEAC,Diamond Eagle Acquisition Corp,False,True,True,False,False
+DEACU,,False,True,True,False,False
+DEER,Deer Consumer Products Inc,False,True,True,True,False
+DEG,Delhaize Group SA,False,True,,True,False
+DELTY,Delta Galil Industries Ltd,False,True,True,True,False
+DFBHU,,False,True,True,False,False
+DFPHU,,False,True,True,True,False
+DGEAF,Diageo PLC,False,True,True,True,False
+DHC,Diversified Healthcare Trust,False,True,True,True,False
+DIDAY,Distribuidora Internacional De Alimentacion SA,False,True,True,True,False
+DLPN,Dolphin Entertainment Inc,False,True,True,True,False
+DM,Dominion Energy Midstream Partners LP,False,True,True,False,False
+DMAC,DiaMedica Therapeutics Inc,False,True,True,True,False
+DMTK,DermTech Inc,False,True,True,True,False
+DNLI,Denali Therapeutics Inc,False,True,True,True,False
+DOGZ,Dogness (International) Corp,False,True,True,True,False
+DOMO,Domo Inc,False,True,True,True,False
+DOOO,BRP Inc,False,True,True,True,False
+DOTA,Draper Oakwood Technology Acquisition Inc,False,True,True,False,False
+DOVA,Dova Pharmaceuticals Inc,False,True,True,False,False
+DOYU,DouYu International Holdings Ltd,False,True,True,True,False
+DPHC,DiamondPeak Holdings Corp,False,True,False,True,False
+DPHCU,,False,True,True,True,False
+DPUKY,Domino's Pizza Group PLC,False,True,True,True,False
+DRADP,,False,True,False,True,False
+DRTT,Dirtt Environmental Solutions Ltd,False,True,True,True,False
+DRXGY,Drax Group PLC,False,True,True,True,False
+DSNKY,Daiichi Sankyo Co Ltd,False,True,True,True,False
+DTIL,Precision BioSciences Inc,False,True,True,True,False
+DTSS,Datasea Inc,False,True,True,True,False
+DUNIY,Duni AB,False,True,False,True,False
+DUO,Fangdd Network Group Ltd,False,True,True,True,False
+DUOT,Duos Technologies Group Inc,False,True,True,True,False
+DYAI,Dyadic International Inc,False,True,True,True,False
+DYII,Dynacq Healthcare Inc,False,True,True,False,False
+EAST,Eastside Distilling Inc,False,True,True,True,False
+EAST,Eastern Security & Protection Services Inc,False,True,True,True,False
+EBOSY,Ebos Group Ltd,False,True,False,True,False
+ECC,,False,True,True,True,False
+ECCA,,False,True,False,False,False
+ECOR,electroCore Inc,False,True,True,True,False
+EDNT,Edison Nation Inc,False,True,True,True,False
+EDR,Education Realty Trust Inc,False,True,True,False,False
+EDSA,Edesa Biotech Inc,False,True,True,True,False
+EDTX,EdtechX Holdings Acquisition Corp,False,True,False,False,False
+EDTXU,,False,True,True,False,False
+EEQ,Enbridge Energy Management LLC,False,True,True,False,False
+EFBI,Eagle Financial Bancorp Inc,False,True,False,True,False
+EGC,Energy XXI Gulf Coast Inc,False,True,True,False,False
+EH,EHang Holdings Ltd,False,True,True,True,False
+EHIC,eHi Car Services Ltd,False,True,True,False,False
+EIDX,Eidos Therapeutics Inc,False,True,True,True,False
+EIGR,Eiger BioPharmaceuticals Inc,False,True,True,True,False
+ELA,Envela Corp,False,True,True,True,False
+ELEC,Electrum Special Acquisition Corp,False,True,False,False,False
+ELECU,Electrum Special Acquisition Corp,False,True,True,False,False
+ELEZY,Endesa SA,False,True,True,True,False
+ELLI,Ellie Mae Inc,False,True,True,False,False
+ELMD,Electromed Inc,False,True,True,True,False
+ELOS,Syneron Medical Ltd,False,True,True,False,False
+ELOX,Eloxx Pharmaceuticals Inc,False,True,True,True,False
+EMMA,Emmaus Life Sciences Inc,False,True,True,True,False
+EMPM,Empire Post Media Inc,False,True,False,True,False
+ENJLY,Volt Power Group Ltd,False,True,False,False,False
+ENLV,Enlivex Therapeutics Ltd,False,True,True,True,False
+ENOB,Enochian BioSciences Inc,False,True,True,True,False
+ENZY,Enzymotec Ltd,False,True,True,True,False
+EOLS,Evolus Inc,False,True,True,True,False
+EPSN,Epsilon Energy Ltd,False,True,True,True,False
+EQ,Equillium Inc,False,True,True,True,False
+EQX,Equinox Gold Corp,False,True,True,True,False
+ERGTF,PanTerra Gold Ltd,False,True,False,True,False
+ERI,Eldorado Resorts Inc,False,True,True,True,False
+ESBK,Elmira Savings Bank Elmira NY,False,True,True,True,False
+ESCC,Evans & Sutherland Computer Corp,False,True,True,True,False
+ESGRO,,False,True,False,True,False
+ESGRP,,False,True,False,True,False
+ESL,Esterline Technologies Corp,False,True,True,False,False
+ESPR,Esperion Therapeutics Inc,False,True,True,True,False
+ESQ,Esquire Financial Holdings Inc,False,True,True,True,False
+ESSC,East Stone Acquisition Corp,False,True,False,True,False
+ESSCU,,False,True,True,True,False
+ESTA,Establishment Labs Holdings Inc,False,True,True,True,False
+ESTR,,False,True,False,False,False
+ETNB,89bio Inc,False,True,True,True,False
+ETON,Eton Pharmaceuticals Inc,False,True,True,True,False
+ETTX,Entasis Therapeutics Holdings Inc,False,True,True,True,False
+EVBG,Everbridge Inc,False,True,True,True,False
+EVFM,Evofem Biosciences Inc,False,True,True,True,False
+EVLO,Evelo Biosciences Inc,False,True,True,True,False
+EVOK,Evoke Pharma Inc,False,True,True,True,False
+EVOP,EVO Payments Inc,False,True,True,True,False
+EVRC,Evercel Inc,False,True,False,True,False
+EVSI,Envision Solar International Inc,False,True,True,True,False
+EXA,Exa Corp,False,True,True,False,False
+EXCU,Exelon Corp,False,True,False,False,False
+EXPC,Experience Investment Corp,False,True,False,True,False
+EXPCU,,False,True,False,True,False
+EXPI,eXp World Holdings Inc,False,True,True,True,False
+EYE,National Vision Holdings Inc,False,True,True,True,False
+EYEN,Eyenovia Inc,False,True,True,True,False
+EYPT,EyePoint Pharmaceuticals Inc,False,True,True,True,False
+FABK,First Advantage Bancorp,False,True,True,False,False
+FAT,FAT Brands Inc,False,True,True,True,False
+FBCI,First Banking Center Inc,False,True,False,True,False
+FBIOP,,False,True,False,True,False
+FBOP,Media Central Corp Inc,False,True,False,True,False
+FBR,Fibria Celulose SA,False,True,True,False,False
+FBSI,First Bancshares Inc /MO/,False,True,True,True,False
+FCBP,First Choice Bancorp,False,True,True,True,False
+FCPB,First Capital Bancshares Inc,False,True,False,True,False
+FCRE,Gadsden Properties Inc,False,True,True,False,False
+FDBC,Fidelity D & D Bancorp Inc,False,True,True,True,False
+FDC,First Data Corp,False,True,True,False,False
+FDUS,Fidus Investment Corp,False,True,True,True,False
+FENC,Fennec Pharmaceuticals Inc,False,True,True,True,False
+FENX,Fenix Parts Inc,False,True,True,False,False
+FFDF,FFD Financial Corp,False,True,True,True,False
+FFNM,First Federal of Northern Michigan Bancorp Inc,False,True,True,False,False
+FISK,Empire State Realty OP LP,False,True,False,True,False
+FITBI,,False,True,False,True,False
+FITBO,,False,True,False,True,False
+FITBP,,False,True,False,True,False
+FIXX,Homology Medicines Inc,False,True,True,True,False
+FLLC,,False,True,False,False,False
+FLLCU,,False,True,True,False,False
+FLNT,Fluent Inc,False,True,True,True,False
+FMAO,Farmers & Merchants Bancorp Inc,False,True,True,True,False
+FMCI,Forum Merger II Corp,False,True,True,True,False
+FMCIU,,False,True,True,True,False
+FNBG,FNB Bancorp,False,True,True,False,False
+FNCB,FNCB Bancorp Inc,False,True,True,True,False
+FOCS,Focus Financial Partners Inc,False,True,True,True,False
+FOXA,Fox Corp,False,True,True,True,False
+FRAF,Franklin Financial Services Corp,False,True,True,True,False
+FRBA,First Bank,False,True,True,True,False
+FREQ,Frequency Therapeutics Inc,False,True,True,True,False
+FRG,Franchise Group Inc,False,True,True,True,False
+FRHC,Freedom Holding Corp,False,True,True,True,False
+FRNV,Frontera Investment Inc,False,True,False,True,False
+FRTA,Forterra Inc,False,True,True,True,False
+FRZT,Freeze Tag Inc,False,True,False,True,False
+FSAC,Federal Street Acquisition Corp,False,True,False,False,False
+FSCR,Federal Screw Works,False,True,False,True,False
+FSCT,ForeScout Technologies Inc,False,True,True,True,False
+FSEA,First Seacoast Bancorp,False,True,True,True,False
+FSNUY,Fresenius SE & Co KGaA,False,True,True,True,False
+FSRV,FinServ Acquisition Corp,False,True,,True,False
+FSRVU,,False,True,True,True,False
+FTAC,FinTech Acquisition Corp III,False,True,False,True,False
+FTACU,,False,True,True,True,False
+FTDR,Frontdoor Inc,False,True,True,True,False
+FTEO,Fronteo Inc,False,True,True,False,False
+FTNW,FTE Networks Inc,False,True,True,True,False
+FTSV,Forty Seven Inc,False,True,True,True,False
+FULC,Fulcrum Therapeutics Inc,False,True,True,True,False
+FUPBY,Fuchs Petrolub SE,False,True,True,True,False
+FUTU,Futu Holdings Ltd,False,True,True,True,False
+FUV,Arcimoto Inc,False,True,True,True,False
+FVCB,FVCBankcorp Inc,False,True,True,True,False
+FXNC,First National Corp,False,True,True,True,False
+GAIN,Gladstone Investment Corp,False,True,True,True,False
+GAINL,,False,True,False,True,False
+GAINM,,False,True,False,True,False
+GALT,Galectin Therapeutics Inc,False,True,True,True,False
+GARS,Garrison Capital Inc,False,True,True,True,False
+GBDC,Golub Capital BDC Inc,False,True,True,True,False
+GCFB,Granite City Food & Brewery Ltd,False,True,True,True,False
+GDI,,False,True,True,False,False
+GDP,Goodrich Petroleum Corp,False,True,True,True,False
+GDYN,Grid Dynamics Holdings Inc,False,True,True,True,False
+GECC,Great Elm Capital Corp,False,True,True,True,False
+GEOS,Geospace Technologies Corp,False,True,True,True,False
+GFNCP,,False,True,False,True,False
+GG,Goldcorp Inc,False,True,True,False,False
+GHIV,Gores Holdings IV Inc,False,True,False,True,False
+GHIVU,,False,True,True,True,False
+GHSI,Guardion Health Sciences Inc,False,True,True,True,False
+GJH,,False,True,False,True,False
+GJNSY,Gjensidige Forsikring ASA,False,True,True,True,False
+GJO,,False,True,False,True,False
+GJP,,False,True,False,True,False
+GJS,,False,True,False,True,False
+GJT,,False,True,False,True,False
+GK,G & K Services Inc,False,True,True,False,False
+GLACU,,False,True,True,False,False
+GLAD,Gladstone Capital Corp,False,True,True,True,False
+GLHD,Golden Holdings Group,False,True,False,True,False
+GLIBA,GCI Liberty Inc,False,True,True,True,False
+GLIBP,,False,True,False,True,False
+GLOH,Glow Holdings Inc,False,True,False,True,False
+GMBL,Esports Entertainment Group Inc,False,True,True,True,False
+GMDA,Gamida Cell Ltd,False,True,True,True,False
+GMHI,Gores Metropoulos Inc,False,True,False,True,False
+GMHIU,,False,True,True,True,False
+GMLPP,,False,True,True,True,False
+GMO,General Moly Inc,False,True,True,True,False
+GNFT,Genfit SA,False,True,True,True,False
+GNLN,Greenlane Holdings Inc,False,True,True,True,False
+GNPX,Genprex Inc,False,True,True,True,False
+GNRSU,,False,True,True,True,False
+GNTY,Guaranty Bancshares Inc,False,True,True,True,False
+GOODN,,False,True,False,True,False
+GOSS,Gossamer Bio Inc,False,True,True,True,False
+GPAQ,Gordon Pointe Acquisition Corp,False,True,True,True,False
+GPAQU,,False,True,True,True,False
+GRIL,Muscle Maker Inc,False,True,True,True,False
+GRIN,Grindrod Shipping Holdings Ltd,False,True,True,True,False
+GRNQ,Greenpro Capital Corp,False,True,True,True,False
+GRNV,GreenVision Acquisition Corp,False,True,True,True,False
+GRNVU,,False,True,True,True,False
+GRPAF,Grupo Aeroméxico SAB de CV,False,True,True,True,False
+GRTS,Gritstone Oncology Inc,False,True,True,True,False
+GRTX,Galera Therapeutics Inc,False,True,True,True,False
+GRWG,GrowGeneration Corp,False,True,True,True,False
+GSHD,Goosehead Insurance Inc,False,True,True,True,False
+GSMG,Glory Star New Media Group Holdings Ltd,False,True,False,True,False
+GTAT,GT Advanced Technologies Inc,False,True,,True,False
+GTEC,Greenland Technologies Holding Corp,False,True,False,True,False
+GTYH,GTY Technology Holdings Inc,False,True,True,True,False
+GULTU,Gulf Coast Ultra Deep Royalty Trust,False,True,True,True,False
+GWTR,Global Water Technologies Inc,False,True,False,True,False
+GXGX,GX Acquisition Corp,False,True,False,True,False
+GXGXU,,False,True,True,True,False
+GXP,Great Plains Energy Inc,False,True,True,False,False
+HADSY,Hadasit Bio Holdings Ltd,False,True,False,False,False
+HAIR,,False,True,True,False,False
+HAPP,Happiness Biotech Group Ltd,False,True,True,True,False
+HARL,Harleysville Financial Corp,False,True,True,True,False
+HARP,Harpoon Therapeutics Inc,False,True,True,True,False
+HAUP,Hauppauge Digital Inc,False,True,True,True,False
+HAWPY,Haw Par Corp Ltd,False,True,False,True,False
+HBANN,,False,True,False,True,False
+HBANO,,False,True,False,True,False
+HBT,HBT Financial Inc,False,True,True,True,False
+HCAC,Hennessy Capital Acquisition Corp IV,False,True,False,True,False
+HCACU,,False,True,True,True,False
+HCAP,Harvest Capital Credit Corp,False,True,True,True,False
+HCAT,Health Catalyst Inc,False,True,True,True,False
+HCCH,HL Acquisitions Corp,False,True,True,True,False
+HCCHU,,False,True,True,True,False
+HCCO,Healthcare Merger Corp,False,True,False,True,False
+HCCOU,,False,True,True,True,False
+HCP,,False,True,True,False,False
+HEBT,Hebron Technology Co Ltd,False,True,True,True,False
+HEPA,Hepion Pharmaceuticals Inc,False,True,True,True,False
+HF,HFF Inc,False,True,True,False,False
+HFBC,HopFed Bancorp Inc,False,True,True,False,False
+HFFG,HF Foods Group Inc,False,True,True,True,False
+HHHH,Wealthbridge Acquisition Ltd,False,True,False,False,False
+HHHHU,,False,True,True,True,False
+HHR,HeadHunter Group PLC,False,True,True,True,False
+HHT,Huitao Technology Co Ltd,False,True,False,True,False
+HICTY,Hitachi High-Tech Corp,False,True,False,True,False
+HIFS,Hingham Institution for Savings,False,True,True,True,False
+HJLI,Hancock Jaffe Laboratories Inc,False,True,True,True,False
+HKUOY,Hakuhodo DY Holdings Inc,False,True,False,True,False
+HLNE,Hamilton Lane Inc,False,True,True,True,False
+HNTIY,Hunting PLC,False,True,False,True,False
+HOOK,HOOKIPA Pharma Inc,False,True,True,True,False
+HOPE,Hope Bancorp Inc,False,True,True,True,False
+HOTH,Hoth Therapeutics Inc,False,True,True,True,False
+HQCL,Hanwha Q CELLS Co Ltd,False,True,True,False,False
+HQI,HireQuest Inc,False,True,True,True,False
+HRGLY,Hargreaves Lansdown PLC,False,True,True,True,False
+HROW,Harrow Health Inc,False,True,True,True,False
+HRZN,Horizon Technology Finance Corp,False,True,True,True,False
+HSDT,Helius Medical Technologies Inc,False,True,True,True,False
+HTIA,,False,True,False,True,False
+HUGE,FSD Pharma Inc,False,True,True,True,False
+HUGE,Massive Interactive Inc,False,True,True,True,False
+HUIZ,Huize Holding Ltd,False,True,True,True,False
+HVBC,HV Bancorp Inc,False,True,True,True,False
+HWC,Hancock Whitney Corp,False,True,True,True,False
+HWEN,Home Financial Bancorp,False,True,True,True,False
+HYAC,Haymaker Acquisition Corp II,False,True,True,True,False
+HYACU,,False,True,True,True,False
+HYRE,HyreCar Inc,False,True,True,True,False
+IBKCN,,False,True,False,True,False
+ICCH,ICC Holdings Inc,False,True,True,True,False
+ICMB,Investcorp Credit Management BDC Inc,False,True,True,True,False
+ICTG,ICTC Group Inc,False,True,True,False,False
+IDEX,Ideanomics Inc,False,True,True,True,False
+IDYA,IDEAYA Biosciences Inc,False,True,True,True,False
+IEA,Infrastructure and Energy Alternatives Inc,False,True,True,True,False
+IFMK,iFresh Inc,False,True,True,True,False
+IGIC,International General Insurance Holdings Ltd,False,True,False,True,False
+IGMS,IGM Biosciences Inc,False,True,True,True,False
+IHRT,iHeartMedia Inc,False,True,True,True,False
+IIIV,i3 Verticals Inc,False,True,True,True,False
+ILPT,Industrial Logistics Properties Trust,False,True,True,True,False
+IMAB,I-MAB,False,True,True,True,False
+IMAC,IMAC Holdings Inc,False,True,True,True,False
+IMDZ,Immune Design Corp,False,True,True,False,False
+IMRA,Imara Inc,False,True,True,True,False
+IMRN,Immuron Ltd,False,True,True,True,False
+IMUX,Immunic Inc,False,True,True,True,False
+IMV,IMV Inc,False,True,True,True,False
+IMVT,Immunovant Inc,False,True,True,True,False
+IMVTU,,False,True,False,True,False
+IMXI,International Money Express Inc,False,True,True,True,False
+INDO,Indonesia Energy Corp Ltd,False,True,True,True,False
+INDU,Industrea Acquisition Corp,False,True,True,True,False
+INMB,INmune Bio Inc,False,True,True,True,False
+INNL,Innocoll Holdings PLC,False,True,True,False,False
+INNT,Innovate Biopharmaceuticals Inc,False,True,True,True,False
+INSE,Inspired Entertainment Inc,False,True,True,True,False
+INSU,Insurance Acquisition Corp,False,True,False,True,False
+INSUU,,False,True,True,True,False
+INTX,Intersections Inc,False,True,True,False,False
+IOVA,Iovance Biotherapeutics Inc,False,True,True,True,False
+IPHA,Innate Pharma SA,False,True,True,True,False
+IPLDP,,False,True,False,True,False
+IPLY,Interplay Entertainment Corp,False,True,False,True,False
+ISCA,International Speedway Corp,False,True,True,False,False
+ISEE,IVERIC bio Inc,False,True,True,True,False
+ITMR,Itamar Medical Ltd,False,True,True,True,False
+JAN,JanOne Inc,False,True,True,True,False
+JBK,,False,True,False,True,False
+JBR,,False,True,True,True,False
+JFBC,Jeffersonville Bancorp,False,True,True,True,False
+JFIN,Jiayin Group Inc,False,True,True,True,False
+JFK,8i Enterprises Acquisition Corp,False,True,False,True,False
+JFKKU,,False,True,True,True,False
+JFU,9F Inc,False,True,True,True,False
+JOY,Joy Global Inc,False,True,True,True,False
+JRSH,Jerash Holdings (US) Inc,False,True,True,True,False
+JSDA,Jones Soda Co,False,True,True,True,False
+JST,Jinpan International Ltd,False,True,True,True,False
+KALA,Kala Pharmaceuticals Inc,False,True,True,True,False
+KALV,KalVista Pharmaceuticals Inc,False,True,True,True,False
+KANG,iKang Healthcare Group Inc,False,True,True,True,False
+KATE,Kate Spade & Co,False,True,True,False,False
+KBLM,KBL Merger Corp IV,False,True,True,True,False
+KBLMU,,False,True,True,True,False
+KGBLY,Kingboard Laminates Holdings Ltd,False,True,,True,False
+KGTFY,Krung Thai Bank PCL,False,True,,True,False
+KIDS,OrthoPediatrics Corp,False,True,,True,False
+KIN,Kindred Biosciences Inc,False,True,True,True,False
+KING,King Digital Entertainment PLC,False,True,,False,False
+KIPS,Kips Bay Medical Inc,False,True,True,False,False
+KLDO,Kaleido Biosciences Inc,False,True,,True,False
+KLR,Kaleyra Inc,False,True,True,True,False
+KLXE,KLX Energy Services Holdings Inc,False,True,,True,False
+KMPH,KemPharm Inc,False,True,True,True,False
+KOD,Kodiak Sciences Inc,False,True,True,True,False
+KOZAY,Koza Altin Izletmeleri AS,False,True,False,True,False
+KPCPY,Kasikornbank Public Co Ltd,False,True,False,True,False
+KRKR,36KR Holdings Inc,False,True,True,True,False
+KRMD,Repro-Med Systems Inc,False,True,True,True,False
+KROS,Keros Therapeutics Inc,False,True,True,True,False
+KRTX,Karuna Therapeutics Inc,False,True,True,True,False
+KRUS,Kura Sushi USA Inc,False,True,True,True,False
+KRYS,Krystal Biotech Inc,False,True,True,True,False
+KS,KapStone Paper And Packaging Corp,False,True,True,False,False
+KTN,,False,True,True,True,False
+KTOV,Kitov Pharma Ltd,False,True,True,True,False
+KTP,,False,True,False,True,False
+KTWO,K2M Group Holdings Inc,False,True,True,False,False
+KURA,Kura Oncology Inc,False,True,True,True,False
+KXIN,Kaixin Auto Holdings,False,True,True,True,False
+KYOCF,Kyocera Corp,False,True,False,True,False
+KZ,KongZhong Corp,False,True,True,False,False
+KZR,Kezar Life Sciences Inc,False,True,True,True,False
+LACQ,Leisure Acquisition Corp,False,True,False,True,False
+LACQU,,False,True,True,True,False
+LANDP,,False,True,False,True,False
+LASR,nLight Inc,False,True,True,True,False
+LATN,Union Acquisition Corp II,False,True,False,True,False
+LATNU,,False,True,True,True,False
+LAZY,Lazydays Holdings Inc,False,True,True,True,False
+LBC,Luther Burbank Corp,False,True,True,True,False
+LBCC,Long Blockchain Corp,False,True,True,True,False
+LBRG,Ladybug Resource Group Inc,False,True,False,True,False
+LCA,Landcadia Holdings II Inc,False,True,False,True,False
+LCAHU,,False,True,True,True,False
+LCTX,Lineage Cell Therapeutics Inc,False,True,True,True,False
+LEGH,Legacy Housing Corp,False,True,True,True,False
+LEVL,Level One Bancorp Inc,False,True,True,True,False
+LEXEA,Liberty Expedia Holdings Inc,False,True,True,False,False
+LEXEB,Liberty Expedia Holdings Inc,False,True,False,False,False
+LFAC,LF Capital Acquisition Corp,False,True,False,True,False
+LFACU,,False,True,True,True,False
+LFIN,Longfin Corp,False,True,True,True,False
+LIFE,aTyr Pharma Inc,False,True,True,True,False
+LILA,Liberty Latin America Ltd,False,True,True,True,False
+LIVK,LIV Capital Acquisition Corp,False,True,False,True,False
+LIVKU,,False,True,True,True,False
+LIVX,LiveXLive Media Inc,False,True,True,True,False
+LIZI,Lizhi Inc,False,True,True,True,False
+LKCO,Luokung Technology Corp,False,True,False,True,False
+LLEN,L & L Energy Inc,False,True,True,False,False
+LLL,L3 Technologies Inc,False,True,True,False,False
+LLTC,Linear Technology Corp,False,True,True,False,False
+LMNL,Liminal Biosciences Inc,False,True,False,True,False
+LMPX,LMP Automotive Holdings Inc,False,True,True,True,False
+LMRKN,,False,True,False,True,False
+LMRKO,,False,True,False,True,False
+LMRKP,,False,True,False,True,False
+LMST,Limestone Bancorp Inc,False,True,True,True,False
+LOAC,Longevity Acquisition Corp,False,True,False,True,False
+LOGC,LogicBio Therapeutics Inc,False,True,True,True,False
+LOOP,Loop Industries Inc,False,True,True,True,False
+LORL,Loral Space & Communications Inc,False,True,True,True,False
+LOVE,The Lovesac Co,False,True,True,True,False
+LOXO,Loxo Oncology Inc,False,True,,False,False
+LPTX,Leap Therapeutics Inc,False,True,True,True,False
+LQDA,Liquidia Technologies Inc,False,True,True,True,False
+LSACU,,False,True,True,True,False
+LSXMA,Liberty SiriusXM Group,False,True,True,True,False
+LSXMB,Liberty SiriusXM Group,False,True,True,True,False
+LSXMK,Liberty SiriusXM Group,False,True,True,True,False
+LTRE,Learning Tree International Inc,False,True,True,True,False
+LUMO,Lumos Pharma Inc,False,True,True,True,False
+LVNSF,LeoNovus Inc,False,True,False,True,False
+LWCL,Lewis & Clark Bank,False,True,False,True,False
+LXFT,Luxoft Holding Inc,False,True,True,False,False
+MACK,Merrimack Pharmaceuticals Inc,False,True,True,True,False
+MB,MINDBODY Inc,False,True,True,False,False
+MBFI,MB Financial Inc,False,True,True,False,False
+MBIN,Merchants Bancorp,False,True,True,True,False
+MBINP,,False,True,False,True,False
+MBIO,Mustang Bio Inc,False,True,True,True,False
+MBNKP,,False,True,False,True,False
+MBOT,Microbot Medical Inc,False,True,True,True,False
+MBRX,Moleculin Biotech Inc,False,True,True,True,False
+MCBS,MetroCity Bankshares Inc,False,True,True,True,False
+MCMJ,,False,True,False,True,False
+MCMJU,,False,True,False,False,False
+MDAUY,Medical Australia Ltd,False,True,False,False,False
+MDIA,MediaCo Holding Inc,False,True,False,True,False
+MDJH,MDJM Ltd,False,True,True,True,False
+MDR,,False,True,True,False,False
+MDRR,Medalist Diversified REIT Inc,False,True,True,True,False
+MDRRP,,False,True,False,True,False
+MEDS,Trxade Group Inc,False,True,True,True,False
+MEIL,Methes Energies International Ltd,False,True,True,True,False
+MESA,Mesa Air Group Inc,False,True,True,True,False
+METC,Ramaco Resources Inc,False,True,True,True,False
+METX,Meten EdtechX Education Group Ltd,False,True,False,True,False
+MFCSF,Medical Facilities Corp,False,True,True,True,False
+MFH,JMU Ltd,False,True,False,True,False
+MFIN,Medallion Financial Corp,False,True,True,True,False
+MGR,,False,True,True,True,False
+MGTA,Magenta Therapeutics Inc,False,True,True,True,False
+MGTX,MeiraGTx Holdings PLC,False,True,True,True,False
+MIRM,Mirum Pharmaceuticals Inc,False,True,True,True,False
+MIST,Milestone Pharmaceuticals Inc,False,True,True,True,False
+MITFY,MITIE Group PLC,False,True,True,True,False
+MITL,Mitel Networks Corp,False,True,True,True,False
+MITO,Stealth BioTherapeutics Corp,False,True,True,True,False
+MKD,Molecular Data Inc,False,True,True,True,False
+MKGI,Monaker Group Inc,False,True,True,True,False
+MKTAY,Makita Corp,False,True,True,True,False
+MMRTY,Massmart Holdings Ltd,False,True,False,True,False
+MMT,,False,True,True,True,False
+MMX,Maverix Metals Inc,False,True,True,True,False
+MNCL,Monocle Acquisition Corp,False,True,False,True,False
+MNCLU,,False,True,True,True,False
+MNLO,Menlo Therapeutics Inc,False,True,True,True,False
+MNPR,Monopar Therapeutics Inc,False,True,True,True,False
+MNSB,MainStreet Bancshares Inc,False,True,True,True,False
+MOCO,MOCON Inc,False,True,True,True,False
+MOGO,Mogo Inc,False,True,True,True,False
+MOHO,ECMOHO Ltd,False,True,True,True,False
+MORF,Morphic Holding Inc,False,True,True,True,False
+MOSC,Mosaic Acquisition Corp,False,True,True,False,False
+MOTS,Motus GI Holdings Inc,False,True,True,True,False
+MRBK,Meridian Corp,False,True,True,True,False
+MRCC,Monroe Capital Corp,False,True,True,True,False
+MREO,Mereo BioPharma Group PLC,False,True,True,True,False
+MRKR,Marker Therapeutics Inc,False,True,True,True,False
+MRNS,Marinus Pharmaceuticals Inc,False,True,True,True,False
+MRSN,Mersana Therapeutics Inc,False,True,True,True,False
+MRVSY,Minerva SA,False,True,True,True,False
+MSLI,Merus Labs International Inc,False,True,True,False,False
+MSVB,Mid-Southern Bancorp Inc,False,True,True,True,False
+MTBCP,,False,True,False,True,False
+MTC,MMTEC Inc,False,True,True,True,False
+MTLK,Metalink Ltd,False,True,False,True,False
+MTMW,Matmown Inc,False,True,False,True,False
+MTNB,Matinas BioPharma Holdings Inc,False,True,True,True,False
+MUDS,Mudrick Capital Acquisition Corp,False,True,False,True,False
+MUDSU,,False,True,True,True,False
+MULE,MuleSoft Inc,False,True,True,False,False
+MVBF,MVB Financial Corp,False,True,True,True,False
+MWK,Mohawk Group Holdings Inc,False,True,True,True,False
+MWTCY,Manila Water Co Inc,False,True,False,True,False
+MXPT,MaxPoint Interactive Inc,False,True,True,False,False
+MYFW,First Western Financial Inc,False,True,True,True,False
+MYRX,Myrexis Inc,False,True,True,True,False
+MZOR,Mazor Robotics Ltd,False,True,True,False,False
+NANX,Nanophase Technologies Corp,False,True,True,True,False
+NAOV,NanoVibronix Inc,False,True,True,True,False
+NAP,Navios Maritime Midstream Partners LP,False,True,True,False,False
+NASB,NASB Financial Inc,False,True,True,True,False
+NBACU,,False,True,True,True,False
+NBSE,NeuBase Therapeutics Inc,False,True,True,True,False
+NCSM,NCS Multistage Holdings Inc,False,True,True,True,False
+NDRA,ENDRA Life Sciences Inc,False,True,True,True,False
+NEBU,Nebula Acquisition Corp,False,True,False,True,False
+NEBUU,,False,True,True,True,False
+NERV,Minerva Neurosciences Inc,False,True,True,True,False
+NESR,National Energy Services Reunited Corp,False,True,True,True,False
+NETS,Netshoes (Cayman) Ltd,False,True,True,False,False
+NEWA,Newater Technology Inc,False,True,True,True,False
+NEXT,NextDecade Corp,False,True,True,True,False
+NFE,New Fortress Energy LLC,False,True,True,True,False
+NFIN,Netfin Acquisition Corp,False,True,False,True,False
+NFINU,,False,True,True,True,False
+NGHCN,,False,True,False,True,False
+NGHCO,,False,True,False,True,False
+NGHCP,,False,True,False,True,False
+NGM,NGM Biopharmaceuticals Inc,False,True,True,True,False
+NILE,Blue Nile Inc,False,True,True,True,False
+NKRKY,Nokian Tyres PLC,False,True,True,True,False
+NLOK,NortonLifeLock Inc,False,True,True,True,False
+NLTX,Neoleukin Therapeutics Inc,False,True,True,True,False
+NMCI,Navios Maritime Containers LP,False,True,True,True,False
+NNCHY,Nissan Chemical Corp,False,True,True,True,False
+NNHE,Neenah Enterprises Inc,False,True,False,True,False
+NOBH,Nobility Homes Inc,False,True,True,True,False
+NODK,NI Holdings Inc,False,True,True,True,False
+NOG,Northern Oil & Gas Inc,False,True,True,True,False
+NORD,Nord Anglia Education Inc,False,True,True,False,False
+NPA,New Providence Acquisition Corp,False,True,False,True,False
+NPAUU,,False,True,True,True,False
+NRBO,NeuroBo Pharmaceuticals Inc,False,True,True,True,False
+NRCIB,National Research Corp,False,True,True,False,False
+NRE,NorthStar Realty Europe Corp,False,True,True,False,False
+NRSCF,Nomura Holdings Inc,False,True,False,True,False
+NSANY,Nissan Motor Co Ltd,False,True,True,True,False
+NSR,NeuStar Inc,False,True,True,True,False
+NSU,Nevsun Resources Ltd,False,True,True,True,False
+NTCPF,NorthIsle Copper and Gold Inc,False,True,False,True,False
+NTFY,Notify Technology Corp,False,True,False,True,False
+NTGN,Neon Therapeutics Inc,False,True,True,True,False
+NTL,Nortel Inversora SA,False,True,True,False,False
+NTRP,Neurotrope Inc,False,True,True,True,False
+NTRSO,,False,True,False,True,False
+NTRSP,,False,True,False,False,False
+NTUS,Natus Medical Inc,False,True,True,True,False
+NUTR,Nutraceutical International Corp,False,True,True,False,False
+NVET,Nexvet Biopharma PLC,False,True,True,False,False
+NVUS,Novus Therapeutics Inc,False,True,True,True,False
+NWGI,Newgioco Group Inc,False,True,True,True,False
+NWPP,New Peoples Bankshares Inc,False,True,True,True,False
+NXE,NexGen Energy Ltd,False,True,True,True,False
+NXGN,NextGen Healthcare Inc,False,True,True,True,False
+NXTC,NextCure Inc,False,True,True,True,False
+NYMTM,,False,True,False,True,False
+NYMTN,,False,True,False,True,False
+NYMTO,,False,True,False,True,False
+NYMTP,,False,True,False,True,False
+NZERF,New Zealand Energy Corp,False,True,False,True,False
+OB,OneBeacon Insurance Group Ltd,False,True,True,False,False
+OBLG,Oblong Inc,False,True,False,True,False
+OBNK,Origin Bancorp Inc,False,True,True,True,False
+OCCI,,False,True,True,True,False
+OCCIP,,False,True,False,True,False
+OCGN,Ocugen Inc,False,True,True,True,False
+OCRX,Ocera Therapeutics Inc,False,True,True,False,False
+OCSI,Oaktree Strategic Income Corp,False,True,True,True,False
+OCSL,Oaktree Specialty Lending Corp,False,True,True,True,False
+OCX,OncoCyte Corp,False,True,True,True,False
+ODMO,Odimo Inc,False,True,False,True,False
+ODT,Odonate Therapeutics Inc,False,True,True,True,False
+OFS,OFS Capital Corp,False,True,True,True,False
+OGCP,Empire State Realty OP LP,False,True,False,True,False
+OGZSY,Organizacion Soriana SAB de CV,False,True,False,True,False
+OHAI,OHA Investment Corp,False,True,True,False,False
+OMMH,Omnimmune Holdings Inc,False,True,False,True,False
+OMNT,Ominto Inc,False,True,True,False,False
+OMP,Oasis Midstream Partners LP,False,True,True,True,False
+OMTL,Omtool Ltd,False,True,False,False,False
+ONCS,OncoSec Medical Inc,False,True,True,True,False
+ONCT,Oncternal Therapeutics Inc,False,True,False,True,False
+ONEM,1Life Healthcare Inc,False,True,True,True,False
+ONEW,OneWater Marine Inc,False,True,True,True,False
+OPB,Opus Bank,False,True,True,True,False
+OPBK,OP Bancorp,False,True,True,True,False
+OPCH,Option Care Health Inc,False,True,True,True,False
+OPES,Opes Acquisition Corp,False,True,True,True,False
+OPNT,Opiant Pharmaceuticals Inc,False,True,True,True,False
+OPRT,Oportun Financial Corp,False,True,True,True,False
+OPRX,OptimizeRx Corp,False,True,True,True,False
+OPTN,OptiNose Inc,False,True,True,True,False
+ORBK,Orbotech Ltd,False,True,True,False,False
+ORBT,Orbit International Corp,False,True,True,True,False
+ORGN,Origen Financial Inc,False,True,True,False,False
+ORGO,Organogenesis Holdings Inc,False,True,True,True,False
+ORGS,Orgenesis Inc,False,True,True,True,False
+ORIG,Ocean Rig UDW Inc,False,True,True,False,False
+ORSN,Orisun Acquisition Corp,False,True,False,True,False
+ORSNU,,False,True,True,True,False
+ORTX,Orchard Therapeutics PLC,False,True,True,True,False
+OSBCP,,False,True,False,False,False
+OSIR,Osiris Therapeutics Inc,False,True,True,False,False
+OSMT,Osmotica Pharmaceuticals PLC,False,True,True,True,False
+OSPN,OneSpan Inc,False,True,True,True,False
+OSPR,Osprey Energy Acquisition Corp,False,True,,False,False
+OSS,One Stop Systems Inc,False,True,,True,False
+OSW,OneSpaWorld Holdings Ltd,False,True,,True,False
+OTLK,Outlook Therapeutics Inc,False,True,,True,False
+OVID,Ovid Therapeutics Inc,False,True,,True,False
+OXLCM,,False,True,,True,False
+OXLCO,,False,True,,True,False
+OXLCP,,False,True,,True,False
+OXSQ,Oxford Square Capital Corp,False,True,,True,False
+OYST,Oyster Point Pharma Inc,False,True,True,True,False
+P,Pandora Media Inc,False,True,True,False,False
+PAAC,Proficient Alpha Acquisition Corp,False,True,,True,False
+PACQ,Pure Acquisition Corp,False,True,,True,False
+PACQU,,False,True,,True,False
+PAE,PAE Inc,False,True,False,True,False
+PASG,Passage Bio Inc,False,True,True,True,False
+PAVM,PAVmed Inc,False,True,,True,False
+PBCTP,,False,True,False,True,False
+PBFS,Pioneer Bancorp Inc,False,True,,True,False
+PBIO,Pressure BioSciences Inc,False,True,,True,False
+PBIP,Prudential Bancorp Inc,False,True,True,True,False
+PBTS,Powerbridge Technologies Co Ltd,False,True,True,True,False
+PCB,PCB Bancorp,False,True,True,True,False
+PCRBY,Pricer AB,False,True,False,True,False
+PCSB,PCSB Financial Corp,False,True,True,True,False
+PDLB,PDL Community Bancorp,False,True,True,True,False
+PDSB,PDS Biotechnology Corp,False,True,True,True,False
+PECK,The Peck Co Holdings Inc,False,True,False,True,False
+PEDH,Peoples Educational Holdings Inc,False,True,False,True,False
+PETQ,PetIQ Inc,False,True,True,True,False
+PETX,Aratana Therapeutics Inc,False,True,True,False,False
+PETZ,TDH Holdings Inc,False,True,True,True,False
+PF,Pinnacle Foods Inc,False,True,,True,False
+PFH,,False,True,False,True,False
+PFHD,Professional Holding Corp,False,True,True,True,False
+PFLT,PennantPark Floating Rate Capital Ltd,False,True,True,True,False
+PGEN,Precigen Inc,False,True,True,True,False
+PGENY,Pigeon Corp,False,True,True,True,False
+PGH,Pengrowth Energy Corp,False,True,True,False,False
+PGLC,Pershing Gold Corp,False,True,True,False,False
+PGNY,Progyny Inc,False,True,True,True,False
+PGPKY,Polska Grupa Energetyczna SA,False,True,False,True,False
+PHAS,PhaseBio Pharmaceuticals Inc,False,True,True,True,False
+PHAT,Phathom Pharmaceuticals Inc,False,True,True,True,False
+PHCF,Puhui Wealth Investment Management Co Ltd,False,True,True,True,False
+PHGE,BiomX Inc,False,True,True,True,False
+PHUN,Phunware Inc,False,True,True,True,False
+PIHPP,,False,True,False,True,False
+PIY,,False,True,False,True,False
+PLAG,Planet Green Holdings Corp,False,True,True,True,False
+PLIN,China Xiangtai Food Co Ltd,False,True,True,True,False
+PLKI,Popeyes Louisiana Kitchen Inc,False,True,True,False,False
+PLMR,Palomar Holdings Inc,False,True,True,True,False
+PLSE,Pulse Biosciences Inc,False,True,True,True,False
+PLYA,Playa Hotels & Resorts NV,False,True,True,True,False
+PNBC,Princeton National Bancorp Inc,False,True,True,True,False
+PNLT,Paneltech International Holdings Inc,False,True,False,True,False
+PNNT,Pennant Park Investment Corp,False,True,True,True,False
+PNRA,Panera Bread Co,False,True,True,False,False
+PNRL,,False,True,True,False,False
+PNTG,Pennant Group Inc,False,True,True,True,False
+POFCY,Petrofac Ltd,False,True,True,True,False
+PPD,PPD Inc,False,True,True,True,False
+PPDF,,False,True,True,False,False
+PPHI,Positive Physicians Holdings Inc,False,True,False,True,False
+PPLFY,PT PP London Sumatra Indonesia Tbk,False,True,False,True,False
+PRDO,Perdoceo Education Corp,False,True,True,True,False
+PRDSY,Prada SpA,False,True,True,True,False
+PRNB,Principia Biopharma Inc,False,True,True,True,False
+PROF,Profound Medical Corp,False,True,True,True,False
+PRPL,Purple Innovation Inc,False,True,True,True,False
+PRS,,False,True,True,True,False
+PRTH,Priority Technology Holdings Inc,False,True,True,True,False
+PRVL,Prevail Therapeutics Inc,False,True,True,True,False
+PS,Pluralsight Inc,False,True,True,True,False
+PSDO,Presidio Inc,False,True,True,False,False
+PSEC,Prospect Capital Corp,False,True,True,True,False
+PSHG,Performance Shipping Inc,False,True,False,True,False
+PSNL,Personalis Inc,False,True,True,True,False
+PT,Pintec Technology Holdings Ltd,False,True,True,True,False
+PTAC,PropTech Acquisition Corp,False,True,False,True,False
+PTACU,,False,True,True,True,False
+PTE,PolarityTE Inc,False,True,True,True,False
+PTFRY,PT Tower Bersama Infrastructure Tbk,False,True,False,True,False
+PTHIY,PT Solusi Bangun Indonesia Tbk,False,True,False,True,False
+PTMN,Portman Ridge Finance Corp,False,True,True,True,False
+PTTWF,Orange Polska SA,False,True,False,True,False
+PUKPF,Prudential PLC,False,True,False,True,False
+PURE,PURE Bioscience Inc,False,True,True,True,False
+PUYI,Puyi Inc,False,True,True,True,False
+PVT,Pivotal Acquisition Corp,False,True,True,False,False
+PVTL,Pivotal Software Inc,False,True,True,False,False
+PWFL,PowerFleet Inc,False,True,True,True,False
+PXFG,Phoenix Footwear Group Inc,False,True,True,True,False
+PYT,,False,True,True,True,False
+PZCUY,PZ Cussons PLC,False,True,False,True,False
+QBIEY,QBE Insurance Group Ltd,False,True,True,True,False
+QFIN,360 Finance Inc,False,True,True,True,False
+QK,Q&K International Group Ltd,False,True,True,True,False
+QKLS,QKL Stores Inc,False,True,True,True,False
+QMCO,Quantum Corp,False,True,True,True,False
+QRTEB,Qurate Retail Inc,False,True,True,True,False
+QTRX,Quanterix Corp,False,True,True,True,False
+QUNR,Qunar Cayman Islands Ltd,False,True,True,False,False
+RAI,Reynolds American Inc,False,True,True,True,False
+RAND,Rand Capital Corp,False,True,True,True,False
+RAPT,RAPT Therapeutics Inc,False,True,True,True,False
+RASP,Rasna Therapeutics Inc,False,True,False,True,False
+RBB,RBB Bancorp,False,True,True,True,False
+RBBN,Ribbon Communications Inc,False,True,True,True,False
+RBKB,Rhinebeck Bancorp Inc,False,True,True,True,False
+RBNC,Reliant Bancorp Inc,False,True,True,True,False
+RBPAA,Royal Bancshares of Pennsylvania Inc,False,True,True,False,False
+RBZ,Reebonz Holding Ltd,False,True,True,True,False
+RCEL,Avita Medical Ltd,False,True,True,True,False
+RCKT,Rocket Pharmaceuticals Inc,False,True,True,True,False
+RCM,R1 RCM Inc,False,True,True,True,False
+RDVT,Red Violet Inc,False,True,True,True,False
+REKR,Rekor Systems Inc,False,True,True,True,False
+REN,Resolute Energy Corp,False,True,True,False,False
+REPL,Replimune Group Inc,False,True,True,True,False
+RETO,ReTo Eco-Solutions Inc,False,True,True,True,False
+REXN,Rexahn Pharmaceuticals Inc,False,True,True,True,False
+REYN,Reynolds Consumer Products Inc,False,True,True,True,False
+RFLFY,Raffles Education Corp Ltd,False,True,False,True,False
+RGC,Regal Entertainment Group,False,True,True,False,False
+RGP,Resources Connection Inc,False,True,True,True,False
+RHCO,Readen Holding Corp,False,True,False,True,False
+RHE,Regional Health Properties Inc,False,True,True,True,False
+RIC,Richmont Mines Inc,False,True,True,True,False
+RICE,Rice Energy Inc,False,True,True,False,False
+RILYP,,False,True,False,True,False
+RITT,RIT Technologies Ltd,False,True,True,True,False
+RIVE,Riverview Financial Corp,False,True,True,True,False
+RJCTF,The Reject Shop Ltd,False,True,False,False,False
+RLAB,Real American Capital Corp,False,True,False,True,False
+RLMD,Relmada Therapeutics Inc,False,True,True,True,False
+RMBI,Richmond Mutual Bancorp Inc,False,True,True,True,False
+RMBL,RumbleON Inc,False,True,True,True,False
+RMNI,Rimini Street Inc,False,True,True,True,False
+ROAD,Construction Partners Inc,False,True,True,True,False
+ROAN,Roan Resources Inc,False,True,True,False,False
+ROFO,Rockford Corp,False,True,False,True,False
+ROKA,Sorrento Tech Inc,False,True,True,False,False
+RPAY,Repay Holdings Corp,False,True,True,True,False
+RRBI,Red River Bancshares Inc,False,True,True,True,False
+RRCH,Richland Resources Corp,False,True,False,False,False
+RSASF,Resaas Services Inc,False,True,True,True,False
+RSSS,Research Solutions Inc,False,True,True,True,False
+RT,Ruby Tuesday Inc,False,True,True,False,False
+RTLR,Rattler Midstream LP,False,True,True,True,False
+RTMVY,Rightmove PLC,False,True,True,True,False
+RTN,Raytheon Co,False,True,True,False,False
+RTOXY,Rotork PLC,False,True,True,True,False
+RTTR,Ritter Pharmaceuticals Inc,False,True,True,True,False
+RUBY,Rubius Therapeutics Inc,False,True,True,True,False
+RUHN,Ruhnn Holding Ltd,False,True,True,True,False
+RVMD,Revolution Medicines Inc,False,True,True,True,False
+RWGE,Regalwood Global Energy Ltd,False,True,False,False,False
+RYHTY,Ryman Healthcare Ltd,False,True,True,True,False
+RYTM,Rhythm Pharmaceuticals Inc,False,True,True,True,False
+SAAFY,Saras SpA,False,True,False,True,False
+SACH,Sachem Capital Corp,False,True,True,True,False
+SAGE,Sage Therapeutics Inc,False,True,True,True,False
+SAJA,Sajan Inc,False,True,True,False,False
+SAMA,Schultze Special Purpose Acquisition Corp,False,True,False,True,False
+SAMAU,,False,True,True,True,False
+SAQN,Software Acquisition Group Inc,False,True,False,True,False
+SAQNU,,False,True,True,True,False
+SAUC,Diversified Restaurant Holdings Inc,False,True,True,False,False
+SAVA,Cassava Sciences Inc,False,True,True,True,False
+SBFGP,,False,True,False,False,False
+SBT,Sterling Bancorp Inc,False,True,True,True,False
+SBY,Silver Bay Realty Trust Corp,False,True,True,False,False
+SCAC,Saban Capital Acquisition Corp,False,True,False,False,False
+SCAI,Surgical Care Affiliates Inc,False,True,True,False,False
+SCIL,Scientific Learning Corp,False,True,True,True,False
+SCLN,SciClone Pharmaceuticals Inc,False,True,True,False,False
+SCMR,Sycamore Networks Inc,False,True,True,False,False
+SCNB,Suffolk Bancorp,False,True,True,False,False
+SCPH,scPharmaceuticals Inc,False,True,True,True,False
+SCPL,SciPlay Corp,False,True,True,True,False
+SCTBF,Securitas AB,False,True,True,True,False
+SCVPY,Siam Cement PCL,False,True,False,True,False
+SDGR,Schrodinger Inc,False,True,True,True,False
+SDI,Standard Diversified Inc,False,True,True,True,False
+SDR,,False,True,True,False,False
+SDT,,False,True,True,True,False
+SEEL,Seelos Therapeutics Inc,False,True,True,True,False
+SEND,SendGrid Inc,False,True,True,False,False
+SEPJY,Spectris PLC,False,True,True,True,False
+SESN,Sesen Bio Inc,False,True,True,True,False
+SFR,Starwood Waypoint Homes,False,True,True,False,False
+SG,Sirius International Insurance Group Ltd,False,True,True,True,False
+SGBK,Stonegate Bank,False,True,True,False,False
+SGH,SMART Global Holdings Inc,False,True,True,True,False
+SGM,Stonegate Mortgage Corp,False,True,True,False,False
+SGXXY,Sound Global Ltd,False,True,False,False,False
+SHNL,Shentang International Inc,False,True,False,True,False
+SHPG,Shire PLC,False,True,True,False,False
+SIBN,SI-BONE Inc,False,True,True,True,False
+SIC,Select Interior Concepts Inc,False,True,True,True,False
+SIFI,SI Financial Group Inc,False,True,True,False,False
+SIGA,SIGA Technologies Inc,False,True,True,True,False
+SILK,Silk Road Medical Inc,False,True,True,True,False
+SILV,SilverCrest Metals Inc,False,True,True,True,False
+SITM,SiTime Corp,False,True,True,True,False
+SIVBP,,False,True,False,True,False
+SIXD,6D Global Technologies Inc,False,True,True,True,False
+SKIS,Peak Resorts Inc,False,True,True,False,False
+SLCJY,SLC Agricola SA,False,True,True,True,False
+SLDB,Solid Biosciences Inc,False,True,True,True,False
+SLGG,Super League Gaming Inc,False,True,True,True,False
+SLMBP,,False,True,False,True,False
+SLNG,Stabilis Energy Inc,False,True,True,True,False
+SLRC,Solar Capital Ltd,False,True,True,True,False
+SLRX,Salarius Pharmaceuticals Inc,False,True,True,True,False
+SMMC,South Mountain Merger Corp,False,True,False,True,False
+SMMCU,,False,True,True,True,False
+SMT,SMART Technologies Inc,False,True,True,False,False
+SMTA,Spirit MTA REIT,False,True,True,False,False
+SNC,State National Companies Inc,False,True,,False,False
+SNCA,Seneca Biopharma Inc,False,True,True,True,False
+SNDL,Sundial Growers Inc,False,True,True,True,False
+SNEJF,Sony Corp,False,True,False,True,False
+SNMX,Senomyx Inc,False,True,True,False,False
+SNNA,,False,True,True,False,False
+SNOA,Sonoma Pharmaceuticals Inc,False,True,True,True,False
+SNOW,Intrawest Resorts Holdings Inc,False,True,True,True,False
+SNYNF,Sanofi SA,False,True,True,True,False
+SODA,SodaStream International Ltd,False,True,True,False,False
+SOFT,SofTech Inc,False,True,True,True,False
+SOHOB,,False,True,False,True,False
+SOHON,,False,True,False,True,False
+SOHOO,,False,True,False,True,False
+SOLY,Soliton Inc,False,True,True,True,False
+SONG,Akazoo SA,False,True,True,True,False
+SONM,Sonim Technologies Inc,False,True,True,True,False
+SONN,Sonnet BioTherapeutics Holdings Inc,False,True,False,True,False
+SONO,Sonos Inc,False,True,True,True,False
+SPA,Sparton Corp,False,True,True,False,False
+SPAN,Span-America Medical Systems Inc,False,True,True,False,False
+SPFI,South Plains Financial Inc,False,True,True,True,False
+SPIL,Siliconware Precision Industries Co Ltd,False,True,True,False,False
+SPKEP,,False,True,False,True,False
+SPLS,Staples Inc,False,True,True,False,False
+SPT,Sprout Social Inc,False,True,True,True,False
+SRAC,Stable Road Acquisition Corp,False,True,False,True,False
+SRACU,,False,True,True,True,False
+SRRK,Scholar Rock Holding Corp,False,True,True,True,False
+SSBI,Summit State Bank,False,True,True,True,False
+SSMXY,Sysmex Corp,False,True,True,True,False
+SSNT,SilverSun Technologies Inc,False,True,True,True,False
+SSPK,Silver Spike Acquisition Corp,False,True,False,True,False
+SSPKU,,False,True,True,True,False
+SSSS,Sutter Rock Capital Corp,False,True,True,True,False
+SSUR,StatSure Diagnostic Systems Inc,False,True,False,True,False
+SSYS,Stratasys Ltd,False,True,True,True,False
+STB,Student Transportation Inc,False,True,True,False,False
+STCN,Steel Connect Inc,False,True,True,True,False
+STIM,Neuronetics Inc,False,True,True,True,False
+STLR,Stellar Acquisition III Inc,False,True,True,False,False
+STND,Standard AVB Financial Corp,False,True,True,True,False
+STNL,Sentinel Energy Services Inc,False,True,False,False,False
+STNLU,,False,True,True,False,False
+STNT,Stevia Nutra Corp,False,True,False,True,False
+STOK,Stoke Therapeutics Inc,False,True,True,True,False
+STRO,Sutro Biopharma Inc,False,True,True,True,False
+STSA,Satsuma Pharmaceuticals Inc,False,True,True,True,False
+STXB,Spirit of Texas Bancshares Inc,False,True,True,True,False
+SUNS,Solar Senior Capital Ltd,False,True,True,True,False
+SURF,Surface Oncology Inc,False,True,True,True,False
+SVU,SUPERVALU Inc,False,True,True,False,False
+SVVC,Firsthand Technology Value Fund Inc,False,True,True,True,False
+SWC,Stillwater Mining Co,False,True,True,False,False
+SWDHY,Skyworth Group Ltd,False,True,False,True,False
+SWFT,Swift Transportation Co,False,True,True,False,False
+SWKH,SWK Holdings Corp,False,True,True,True,False
+SWRL,U-Swirl Inc,False,True,True,True,False
+SWSH,Swisher Hygiene Inc,False,True,True,False,False
+SWTX,SpringWorks Therapeutics Inc,False,True,True,True,False
+SXTC,China SXT Pharmaceuticals Inc,False,True,True,True,False
+SY,So-Young International Inc,False,True,True,True,False
+TAHO,Tahoe Resources Inc,False,True,True,False,False
+TANH,Tantech Holdings Ltd,False,True,True,True,False
+TAOP,Taoping Inc,False,True,True,True,False
+TAPM,Tapinator Inc,False,True,True,True,False
+TARA,ArTara Therapeutics Inc,False,True,True,True,False
+TBIO,Translate Bio Inc,False,True,True,True,False
+TBK,Triumph Bancorp Inc,False,True,True,True,False
+TBLTU,,False,True,True,False,False
+TBLZ,Trailblazer Resources Inc,False,True,True,True,False
+TC,TuanChe Ltd,False,True,,True,False
+TCBIP,,False,True,False,True,False
+TCDA,Tricida Inc,False,True,True,True,False
+TCFCP,,False,True,False,True,False
+TCPC,BlackRock TCP Capital Corp,False,True,True,True,False
+TCRD,THL Credit Inc,False,True,True,True,False
+TCRR,TCR2 Therapeutics Inc,False,True,True,True,False
+TDAC,Trident Acquisitions Corp,False,True,,True,False
+TDACU,,False,True,True,True,False
+TECTP,,False,True,False,True,False
+TEFOF,Telefonica SA,False,True,,True,False
+TELA,TELA Bio Inc,False,True,True,True,False
+TELNY,Telenor ASA,False,True,True,True,False
+TENB,Tenable Holdings Inc,False,True,True,True,False
+TESO,Tesco Corp,False,True,,False,False
+TEUM,Pareteum Corp,False,True,True,True,False
+TFCF,Twenty-First Century Fox Inc,False,True,False,False,False
+TFCFA,Twenty-First Century Fox Inc,False,True,False,False,False
+TFFP,TFF Pharmaceuticals Inc,False,True,True,True,False
+TH,Target Hospitality Corp,False,True,True,True,False
+THBR,Thunder Bridge Acquisition II Ltd,False,True,False,True,False
+THBRU,,False,True,True,True,False
+THCA,Tuscan Holdings Corp II,False,True,False,True,False
+THCAU,,False,True,True,True,False
+THCB,Tuscan Holdings Corp,False,True,False,True,False
+THCBU,,False,True,True,True,False
+THMO,ThermoGenesis Holdings Inc,False,True,True,True,False
+THTI,THT Heat Transfer Technology Inc,False,True,True,True,False
+THTX,Theratechnologies Inc,False,True,True,True,False
+TIBR,Tiberius Acquisition Corp,False,True,False,False,False
+TIBRU,,False,True,True,False,False
+TIGO,Millicom International Cellular SA,False,True,True,True,False
+TIGR,UP Fintech Holding Ltd,False,True,True,True,False
+TISA,Top Image Systems Ltd,False,True,True,False,False
+TKYMY,Tokuyama Corp,False,True,True,True,False
+TLC,Taiwan Liposome Co Ltd,False,True,True,True,False
+TLOG,TetraLogic Pharmaceuticals Corp,False,True,True,True,False
+TLSA,Tiziana Life Sciences PLC,False,True,True,True,False
+TMBBY,TMB Bank Public Co Ltd,False,True,False,True,False
+TMCX,Trinity Merger Corp,False,True,True,False,False
+TMCXU,,False,True,True,False,False
+TMDX,TransMedics Group Inc,False,True,True,True,False
+TORC,resTORbio Inc,False,True,True,True,False
+TOTA,Tottenham Acquisition I Ltd,False,True,False,True,False
+TPGH,,False,True,True,False,False
+TPTX,Turning Point Therapeutics Inc,False,True,True,True,False
+TRHC,Tabula Rasa HealthCare Inc,False,True,True,True,False
+TRKNY,Turk Telekomunikasyon AS,False,True,True,True,False
+TRMT,Tremont Mortgage Trust,False,True,True,True,False
+TRPRY,Trustpower Ltd,False,True,False,True,False
+TRPX,Therapix Biosciences Ltd,False,True,True,True,False
+TRR,TRC Companies Inc,False,True,True,False,False
+TRVI,Trevi Therapeutics Inc,False,True,True,True,False
+TSC,TriState Capital Holdings Inc,False,True,True,True,False
+TSCAP,,False,True,False,True,False
+TSCBP,,False,True,False,True,False
+TSCC,Technology Solutions Co,False,True,False,True,False
+TSRYY,Treasury Wine Estates Ltd,False,True,True,True,False
+TSS,Total System Services Inc,False,True,True,True,False
+TURN,180 Degree Capital Corp,False,True,True,True,False
+TVTY,Tivity Health Inc,False,True,True,True,False
+TWNK,Hostess Brands Inc,False,True,True,True,False
+TWST,Twist Bioscience Corp,False,True,True,True,False
+TXG,10x Genomics Inc,False,True,True,True,False
+TYME,Tyme Technologies Inc,False,True,True,True,False
+TZAC,Tenzing Acquisition Corp,False,True,False,True,False
+TZACU,,False,True,True,True,False
+UAVS,AgEagle Aerial Systems Inc,False,True,True,True,False
+UBNK,United Financial Bancorp Inc,False,True,True,False,False
+UBX,Unity Biotechnology Inc,False,True,True,True,False
+UCP,UCP Inc,False,True,True,True,False
+UECN,Shiner International Inc,False,True,True,True,False
+ULTI,The Ultimate Software Group Inc,False,True,True,False,False
+UMRX,Unum Therapeutics Inc,False,True,True,True,False
+UNIT,Uniti Group Inc,False,True,True,True,False
+URANF,International Prospect Ventures Ltd,False,True,False,True,False
+USAB,USAmeribancorp Inc,False,True,False,False,False
+USIO,Usio Inc,False,True,True,True,False
+USWS,U.S. Well Services Inc,False,True,True,True,False
+UTX,,False,True,True,False,False
+UVRBY,Universal Robina Corporation,False,True,False,True,False
+UWRL,US Wireless Online Inc,False,True,False,True,False
+VASC,Vascular Solutions Inc,False,True,True,False,False
+VCNX,Vaccinex Inc,False,True,True,True,False
+VCTR,Victory Capital Holdings Inc,False,True,True,True,False
+VDPH,VDO-PH International Inc,False,True,False,True,False
+VEAC,Vantage Energy Acquisition Corp,False,True,True,False,False
+VERB,Verb Technology Co Inc,False,True,True,True,False
+VERI,Veritone Inc,False,True,True,True,False
+VERO,Venus Concept Inc,False,True,True,True,False
+VERY,Vericity Inc,False,True,True,True,False
+VGZ,Vista Gold Corp,False,True,True,True,False
+VIA,,False,True,True,False,False
+VIAB,,False,True,True,False,False
+VIDE,Video Display Corp,False,True,True,True,False
+VIE,Viela Bio Inc,False,True,True,True,False
+VIR,Vir Biotechnology Inc,False,True,True,True,False
+VISL,Vislink Technologies Inc,False,True,True,True,False
+VISN,VisionChina Media Inc,False,True,True,False,False
+VKTX,Viking Therapeutics Inc,False,True,True,True,False
+VLP,Valero Energy Partners LP,False,True,True,False,False
+VLRX,,False,True,False,False,False
+VLTC,Voltari Corp,False,True,True,False,False
+VMD,Viemed Healthcare Inc,False,True,True,True,False
+VNRFY,Vienna Insurance Group AG,False,True,True,True,False
+VOLT,Volt Information Sciences Inc,False,True,True,True,False
+VOSSY,Vossloh AG,False,True,False,True,False
+VR,Validus Holdings Ltd,False,True,True,False,False
+VRCA,Verrica Pharmaceuticals Inc,False,True,True,True,False
+VRRM,Verra Mobility Corp,False,True,True,True,False
+VRTSP,,False,True,False,False,False
+VSBN,VSB Bancorp Inc,False,True,True,True,False
+VSTM,Verastem Inc,False,True,True,True,False
+VTIQ,VectoIQ Acquisition Corp,False,True,True,True,False
+VTIQU,,False,True,False,True,False
+VTSI,VirTra Inc,False,True,True,True,False
+VTTI,VTTI Energy Partners LP,False,True,True,False,False
+VVC,Vectren Corp,False,True,True,False,False
+VXRT,Vaxart Inc,False,True,True,True,False
+WAAS,AquaVenture Holdings Ltd,False,True,True,False,False
+WACLY,Wacoal Holdings Corp,False,True,True,True,False
+WAFU,Wah Fu Education Group Ltd,False,True,True,True,False
+WCFB,WCF Bancorp Inc,False,True,True,True,False
+WHF,WhiteHorse Finance Inc,False,True,True,True,False
+WHLRD,,False,True,False,True,False
+WIMI,WiMi Hologram Cloud Inc,False,True,True,True,False
+WINR,Simplicity Esports and Gaming Co,False,True,True,True,False
+WKEY,WISeKey International Holding Ltd,False,True,True,True,False
+WNR,Western Refining Inc,False,True,,True,False
+WORX,SCWorx Corp,False,True,,True,False
+WRD,WildHorse Resource Development Corp,False,True,True,True,False
+WRLS,,False,True,True,False,False
+WRLSU,,False,True,True,False,False
+WRTC,Wrap Technologies Inc,False,True,,True,False
+WSC,WillScot Corp,False,True,True,True,False
+WTER,Alkaline Water Co Inc,False,True,,True,False
+WTFCM,,False,True,False,True,False
+WTRE,Watford Holdings Ltd,False,True,,True,False
+WTREP,,False,True,,True,False
+WTRH,Waitr Holdings Inc,False,True,True,True,False
+WTRSY,Purifloh Ltd,False,True,,False,False
+WUHN,Wuhan General Group (China) Inc,False,True,False,True,False
+WWAV,The WhiteWave Foods Co,False,True,,False,False
+XAIR,Beyond Air Inc,False,True,True,True,False
+XBIT,XBiotech Inc,False,True,True,True,False
+XBKS,Xenith Bankshares Inc,False,True,True,False,False
+XCUR,Exicure Inc,False,True,True,True,False
+XERS,Xeris Pharmaceuticals Inc,False,True,True,True,False
+XFOR,X4 Pharmaceuticals Inc,False,True,True,True,False
+XGN,Exagen Inc,False,True,True,True,False
+XOXO,XO Group Inc,False,True,True,False,False
+XPEL,XPEL Inc,False,True,True,True,False
+XPER,Xperi Corp,False,True,True,True,False
+XRDC,Crossroads Capital Inc,False,True,True,False,False
+XRM,Xerium Technologies Inc,False,True,True,False,False
+XSPA,XpresSpa Group Inc,False,True,True,True,False
+XTLY,Xactly Corp,False,True,True,False,False
+YAYO,YayYo Inc,False,True,True,True,False
+YCBD,cbdMD Inc,False,True,True,True,False
+YDKN,Yadkin Financial Corp,False,True,True,False,False
+YGYI,Youngevity International Inc,False,True,True,True,False
+YGYIP,,False,True,False,True,False
+YI,111 Inc,False,True,True,True,False
+YMAB,Y-mAbs Therapeutics Inc,False,True,True,True,False
+YOGA,YogaWorks Inc,False,True,True,True,False
+YRIV,Yangtze River Port and Logistics Ltd,False,True,True,True,False
+ZCMD,ZHONGCHAO Inc,False,True,False,True,False
+ZEAL,Zealand Pharma A/S,False,True,True,True,False
+ZFGN,Zafgen Inc,False,True,True,True,False
+ZGYHU,,False,True,False,True,False
+ZIONN,,False,True,False,True,False
+ZIONO,,False,True,False,True,False
+ZIONP,,False,True,False,True,False
+ZKIN,ZK International Group Co Ltd,False,True,True,True,False
+ZN,Zion Oil & Gas Inc,False,True,True,True,False
+ZNTL,Zentalis Pharmaceuticals LLC,False,True,True,True,False
+ZOES,Zoe′s Kitchen Inc,False,True,True,False,False
+ZOM,Zomedica Pharmaceuticals Corp,False,True,True,True,False
+ZPIN,Zhaopin Ltd,False,True,True,False,False
+ZSTN,ZST Digital Networks Inc,False,True,False,True,False
+ZVO,Zovio Inc,False,True,True,True,False
