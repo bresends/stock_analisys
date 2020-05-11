@@ -12,27 +12,36 @@ Plot Graphs
 # Arquivo com as funções relacionadas à classe Bastter
 # =============================================================================
 
-from selenium import webdriver
-from bs4 import BeautifulSoup
-import pandas as pd
-import matplotlib.pyplot as plt
 import pickle
-import numpy as np
-import time
 import random
-import sys
+import time
 import webbrowser
+from pathlib import Path
 
+import pandas as pd
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from tabulate import tabulate
+from stock_analisys.packages.plots import income_graph
 
 # =============================================================================
-# Criação da classe
+# Directories Setup
 # =============================================================================
+
+cwd_path = Path.cwd()
+data_path = cwd_path / 'data'
+bin_path = cwd_path / 'bin'
+
+# =============================================================================
+# Class Creation
+# =============================================================================
+
 
 class BastterStocks:
 
     def __init__(self, ticker):
 
-        self.ticker = ticker
+        self.ticker = ticker.upper()
         self.url = f'https://bastter.com/mercado/stock/{ticker}'
 
     def open_page(self):
@@ -43,13 +52,13 @@ class BastterStocks:
 # =============================================================================
     def autenticate(self):
 
-        self.driver = webdriver.Chrome('bin/chromedriver.exe')
+        self.driver = webdriver.Chrome(bin_path / 'chromedriver.exe')
 
         # Puxa os Cookies
         self.driver.get('https://varvy.com/pagespeed/wicked-fast.html')
         self.driver.implicitly_wait(1)
 
-        for cookie in pickle.load(open("stock_prices/packages/_cookies.pkl", "rb")):
+        for cookie in pickle.load(open(bin_path / 'cookies.pkl', "rb")):
             if 'expiry' in cookie:
                 del cookie['expiry']
             self.driver.add_cookie(cookie)
@@ -61,12 +70,13 @@ class BastterStocks:
 # Método de Extração do Company Info
 # =============================================================================
 
-
     def company_data_extract(self):
+        
         """
         Grabs de Company Name, Ticker, Sector and Group from a given company
-        Also tells if a given ticker is a REIT or Not 
+        Also tells if a given ticker is a REIT or not
         """
+
         self.driver.get(self.url)
         self.driver.implicitly_wait(1)
 
@@ -75,7 +85,7 @@ class BastterStocks:
             '//*[@id="dados-empresa"]')
 
         # Se está carregado, passa pra frente, senão para.
-        if teste_company_info.is_displayed() == True:
+        if teste_company_info.is_displayed():
 
             self.driver.find_element_by_xpath(
                 '//*[@id="dados-empresa"]/span[2]').click()
@@ -98,7 +108,7 @@ class BastterStocks:
             'span', class_='ativo-inc-country').get_text()
 
         if self.company_country == ' United States of America':
-            self.company_contry = 'USA'
+            self.company_country = 'USA'
 
         # Condicional de avaliação de REIT
 
@@ -108,7 +118,7 @@ class BastterStocks:
         test_bs4 = soup.body.findAll(text='REIT')
 
         # Se for um REIT:
-        if teste_reit.is_displayed() == True and len(test_bs4) > 0:
+        if teste_reit.is_displayed() and len(test_bs4) > 0:
             self.sou_um_reit = True
             self.reit_handling()
 
@@ -202,7 +212,7 @@ class BastterStocks:
         print('')
         self.print_lines()
         print(
-            f'------------------------ {self.ticker} é um ticker de REIT ------------------------------------- ')
+            f'-------------- {self.ticker} é um ticker de REIT -------------')
         self.print_lines()
         print('')
 
@@ -219,8 +229,7 @@ class BastterStocks:
 
         # Cria um dataframe com as ações já analisadas
 
-        reits_analised = pd.read_csv(
-            'data/bastter_analysis/bastter_reits.csv')
+        reits_analised = pd.read_csv(data_path / 'bastter_reits.csv')
 
         df_merge = pd.merge(reit_df, reits_analised, how='outer')
 
@@ -229,60 +238,21 @@ class BastterStocks:
         print(df_merge.tail(1))
 
         # Salva o DF
-        df_merge.to_csv(
-            'data/bastter_analysis/bastter_reits.csv', index=False)
+        df_merge.to_csv(data_path / 'bastter_reits.csv', index=False)
         print('')
         self.print_lines()
         print('-------------- Saved for latter study ------------------ ')
         self.print_lines()
-
-
-# =============================================================================
-#     Graph Plot 
-# =============================================================================
-
-    def income_graph(self):
-        x_cordinates = [self.df_list['Year'].iloc[0],
-                        self.df_list['Year'].iloc[-1]]
-        y_cordinates = [0, 0]
-
-        # Tamanho e proporção do gráfico
-        plt.figure(figsize=(12, 6))
-
-        # Define a função que vai plotar o gráfico e a que vai mostrar
-        plt.plot(self.df_list['Year'], self.df_list['Net Income'], label='lucro',
-                 color='green', marker='.', markersize=10, linestyle='-')
-
-        plt.plot(x_cordinates, y_cordinates, label='zero',
-                 color='red', marker='.', markersize=10, linestyle='--')
-
-        # Labels
-        plt.title(f'Net Profit: {self.ticker} {self.company_name}', fontdict={
-                  'fontsize': 18}, color='black')
-        plt.xlabel('Year', color='black')
-        plt.ylabel('Net Profit (mil)', color='black')
-
-        # Ticks
-        # Força o gráfico mostrar todos os anos
-        plt.xticks(self.df_list['Year'])
-
-        # plt.yticks(df['NET_INCOME'])
-        plt.tick_params(colors='black')
-
-        # Mostra a legenda com o significado dos gráficos
-        plt.legend()
-
-        # Faz o Grid
-        plt.grid()
-
-        # serve pra tirar a linha que aparece no programa
-        plt.show()
 
 # ======================================================================================
 # Função que avalia o percentual de queda ou aumento de um ano pro outro de uma empresa
 # ======================================================================================
 
     def income_percentual(self):
+
+        """
+        Function that evaluates drops in revenue year from year
+        """
 
         lista_percentual_lucros = []
 
@@ -303,12 +273,12 @@ class BastterStocks:
 
         self.df_list['%'] = lista_percentual_lucros
 
-        # Printa o dataframe se estiver aqui e manda display se estiver no jupiter
+        # Prints DF
         print(tabulate(self.df_list, headers='keys', tablefmt='psql'))
         print('')
 
 # =====================================================================================
-# Cria um Dataframe com os dados e a avaliação se uma empresa pode ser estudável ou não.
+# Appends a line to a DF with the company data and drops
 # =====================================================================================
 
     def avalicao_stock(self):
@@ -336,13 +306,12 @@ class BastterStocks:
         print(tabulate(self.df_individual_stock, headers='keys', tablefmt='psql'))
 
 
-# =============================================================================
-# Salva o CSV em um arquivo de itens únicos (se repetir a stock ele faz o merge)
-# =============================================================================
-
     def csv_storage(self):
 
-        # Cria um dataframe com as ações já analisadas
+        """
+        Creates a datafram with the analised stocks
+
+        """
 
         stocks_analisados = pd.read_csv(
             'data/bastter_analysis/bastter_stocks_analised.csv')
@@ -368,7 +337,7 @@ class BastterStocks:
 
 
 # =============================================================================
-# Funções do Selenium
+# Selenium
 # =============================================================================
 
     def scroll_page_to_table(self):
@@ -380,4 +349,12 @@ class BastterStocks:
         self.driver.quit()
 
     def print_lines(self):
-        print('---------------------------------------------------------------------------------------')
+        print('--------------------------------------------------------------')
+
+
+if __name__ == '__main__':
+    a = BastterStocks('bby')
+    a.autenticate()
+    a.company_data_extract()
+    a.table_extract()
+    income_graph(a.df_list, a.ticker, a.company_name)
