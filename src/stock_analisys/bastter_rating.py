@@ -10,7 +10,7 @@ import pandas as pd
 import stock_analisys.packages.plots as plots
 
 # =============================================================================
-# Directories Setup
+# Directories Stp
 # =============================================================================
 
 cwd_path = Path.cwd()
