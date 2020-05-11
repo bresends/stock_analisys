@@ -12,7 +12,7 @@ def data_graph(df, ticker, company_name):
     """
 
     plt.style.use("default")
-    fig, a = plt.subplots(1, 3, figsize=(13, 4))
+    fig, a = plt.subplots(1, 3, figsize=(13, 5))
 
     """
     Income
@@ -99,7 +99,7 @@ def data_graph(df, ticker, company_name):
 
     # Plots Zero line for Net Income
     x_cordinates = [df["Year"].iloc[0], df["Year"].iloc[-1]]
-    y_cordinates = [0, 3]
+    y_cordinates = [0, 0]
 
     a[2].plot(
         x_cordinates,

@@ -22,7 +22,6 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from tabulate import tabulate
-from stock_analisys.packages.plots import income_graph
 
 # =============================================================================
 # Directories Setup
@@ -41,7 +40,7 @@ class BastterStocks:
 
     def __init__(self, ticker):
 
-        self.ticker = ticker.upper()
+        self.ticker = ticker.upper().strip()
         self.url = f'https://bastter.com/mercado/stock/{ticker}'
 
     def open_page(self):
@@ -357,4 +356,3 @@ if __name__ == '__main__':
     a.autenticate()
     a.company_data_extract()
     a.table_extract()
-    income_graph(a.df_list, a.ticker, a.company_name)

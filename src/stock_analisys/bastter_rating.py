@@ -8,74 +8,155 @@ from pathlib import Path
 import pandas as pd
 
 import stock_analisys.packages.plots as plots
-
-# =============================================================================
-# Directories Stp
-# =============================================================================
-
-cwd_path = Path.cwd()
-data_path = cwd_path / 'data'
-bin_path = cwd_path / 'bin'
+import stock_analisys.packages.bastter_class as bastter_class
 
 
 def ticker_selection():
-    selected = input('Pick the analised company: ')
+    selected = input("Pick the analised company: ")
     return selected
 
 
-class Company:
+def setor_extract(ticker):
+    """
+    Pulls the company Sector if it was not found in stocks_analised
+    """
 
+    company_object = bastter_class.BastterStocks(ticker)
+    company_object.autenticate()
+    company_object.company_data_extract()
+
+    sector = company_object.sector
+    company_country = company_object.company_country
+    industry_group = company_object.industry_group
+    industry_category = company_object.industry_category
+
+    company_object.quit_driver()
+
+    return (company_country, sector ,industry_group, industry_category)
+
+
+class Company:
     def __init__(self, ticker):
-        self.ticker = ticker.upper()
+        self.ticker = ticker.upper().strip()
 
     def __repr__(self):
 
-        return f'Company Instaciated: {self.ticker}'
+        return f"Company Instaciated: {self.ticker}"
 
     def data_retrieve(self):
+
         """
         Function from the object that finds the file with the company data
         It open the folder and try to find the file
         If not found it grabs the data from Bastter
         """
 
-        simplified_balances_path = data_path / 'simplified_balances'
+        simplified_balances_path = data_path / "simplified_balances"
 
         # Read all the files in the Simplified Balances folder
-        files = [item for item in simplified_balances_path.iterdir()
-                 if item.is_file()]
+        files = [item for item in simplified_balances_path.iterdir() if item.is_file()]
 
         for item in files:
             item = str(item)
-            item = item.split('\\')[-1]
+            item = item.split("\\")[-1]
 
             if self.ticker in item:
 
                 self.simple_balance = pd.read_csv(
-                    data_path / 'simplified_balances' / item)
+                    data_path / "simplified_balances" / item
+                )
 
                 # Extracts the name of the company
-                self.company_name = item.split('-')[1]
-                print(self.company_name)
+                self.company_name = item.split("-")[1]
+                print(f"Found: {self.company_name}")
                 break
         else:
-            print('Stock not downloaded yet')
+            print("Stock not downloaded yet")
             self.simple_balance = pd.DataFrame()
+
+    def data_info_to_clipboard(self):
+
+        """
+        Funtion that finds the Company data for a given Ticker
+        It picks the retrieved data from stocks_analised and gives back to the user
+        """
+
+        bastter_stocks_analised = pd.read_csv(
+            data_path / "bastter_analysis" / "bastter_stocks_analised.csv"
+        )
+
+        data_info = bastter_stocks_analised[
+            bastter_stocks_analised["Ticker"] == self.ticker
+        ]
+
+        # If the dataframe is not empty
+        if not data_info.empty:
+            print("############# Info in clipboard #############")
+            data_info.to_clipboard(excel=True, index=False, header=False)
+
+        else:
+
+            print(" ----- Grabing Data ------ ")
+
+            # Uses function to grab the data
+            company_info = setor_extract(self.ticker)
+
+            # Contagem dos anos de prejuízo
+            loss = [
+                item for item in self.simple_balance["Net Income"] if item <= 0
+            ]
+
+            drop = [item for item in self.simple_balance["%"] if item < 0]
+
+            stock_info_dict = {
+                "Ticker": self.ticker,
+                "Origin": company_info[0],
+                "Company": self.company_name,
+                "Sector": company_info[1],
+                "Group": company_info[2],
+                "Category": company_info[3],
+                "Loss": len(loss),
+                "Income Drop": len(drop),
+            }
+
+            df_individual_stock = pd.DataFrame.from_dict(
+            stock_info_dict, orient='index')
+            df_individual_stock = df_individual_stock.transpose()
+
+            print(df_individual_stock)
+
+            print("############# Info in clipboard #############")
+            df_individual_stock.to_clipboard(excel=True, index=False, header=False)
 
     def plot_income(self):
 
         if not self.simple_balance.empty:
 
-            plots.data_graph(
-                self.simple_balance,
-                self.ticker,
-                self.company_name)
+            plots.data_graph(self.simple_balance, self.ticker, self.company_name)
         else:
-            print('Not possible to print. File with the data does not exist')
+            print("Not possible to print. File with the data does not exist")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+
+    # Path Setup
+
+    cwd_path = Path.cwd()
+    data_path = cwd_path / "data"
+    bin_path = cwd_path / "bin"
+
+    # Methods
     stock_picked = ticker_selection()
     stock_object = Company(stock_picked)
     stock_object.data_retrieve()
+    stock_object.data_info_to_clipboard()
     stock_object.plot_income()
+
+else:
+    """
+    If running from notebooks
+    """
+    cwd_path = Path.cwd().parent
+    data_path = cwd_path / "data"
+    bin_path = cwd_path / "bin"
+
