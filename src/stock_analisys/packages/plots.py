@@ -5,18 +5,13 @@ Plot generating Module
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# =============================================================================
-#     Graph Plot
-# =============================================================================
-
-
-def income_graph(df, ticker, company_name):
+def data_graph(df, ticker, company_name):
 
     """
     Graph ploting function
     """
-    
-    plt.style.use('seaborn')
+
+    plt.style.use("default")
     fig, a = plt.subplots(1, 3, figsize=(13, 4))
 
     """
@@ -56,7 +51,7 @@ def income_graph(df, ticker, company_name):
     a[0].set_xlabel("Year", color="black")
     a[0].set_ylabel("Net Profit (mil)", color="black")
     a[0].grid()
-    
+
     """
     Debt Plot Axis
     """
@@ -90,18 +85,16 @@ def income_graph(df, ticker, company_name):
         fontdict={"fontsize": 12},
         color="black",
     )
+
     a[1].set_xlabel("Year", color="black")
     a[1].set_ylabel("Net Profit (mil)", color="black")
     a[1].grid()
-    
+
     """
     Variation in Income
     """
     a[2].bar(
-        df["Year"],
-        df["Net Income"],
-        color="green",
-        label="lucro",
+        df["Year"], df["%"], color="green", label="lucro",
     )
 
     # Plots Zero line for Net Income
@@ -120,17 +113,17 @@ def income_graph(df, ticker, company_name):
 
     # Plot Config
     a[2].set_title(
-        f"EPS: {ticker} - {company_name}",
+        f"Net Income %: {ticker} - {company_name}",
         fontdict={"fontsize": 12},
         color="black",
     )
+
     a[2].set_xlabel("Year", color="black")
     a[2].set_ylabel("Net Profit (mil)", color="black")
     a[2].grid()
-    
+
     plt.tight_layout()
     plt.show()
-
 
 
 if __name__ == "__main__":
@@ -141,4 +134,4 @@ if __name__ == "__main__":
         "data/simplified_balances/A - Agilent Technologies Inc - Simple Balance.csv"
     )
 
-    income_graph(df, ticker, company_name)
+    data_graph(df, ticker, company_name)

@@ -3,7 +3,6 @@ Program that  Analise the Top Rated Bastter Stocks
 
 """
 
-import re
 from pathlib import Path
 
 import pandas as pd
@@ -67,7 +66,7 @@ class Company:
 
         if not self.simple_balance.empty:
 
-            plots.income_graph(
+            plots.data_graph(
                 self.simple_balance,
                 self.ticker,
                 self.company_name)
