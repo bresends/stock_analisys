@@ -12,7 +12,7 @@ def data_graph(df, ticker, company_name):
     """
 
     plt.style.use("default")
-    fig, a = plt.subplots(1, 3, figsize=(13, 5))
+    fig, a = plt.subplots(1, 3, figsize=(14, 5))
 
     """
     Income

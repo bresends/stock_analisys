@@ -10,6 +10,14 @@ import pandas as pd
 import stock_analisys.packages.plots as plots
 import stock_analisys.packages.bastter_class as bastter_class
 
+# =============================================================================
+# Directories Setup
+# =============================================================================
+
+cwd_path = Path.cwd()
+data_path = cwd_path / "data"
+bin_path = cwd_path / "bin"
+
 
 def ticker_selection():
     selected = input("Pick the analised company: ")
@@ -32,7 +40,7 @@ def setor_extract(ticker):
 
     company_object.quit_driver()
 
-    return (company_country, sector ,industry_group, industry_category)
+    return (company_country, sector, industry_group, industry_category)
 
 
 class Company:
@@ -57,13 +65,15 @@ class Company:
         files = [item for item in simplified_balances_path.iterdir() if item.is_file()]
 
         for item in files:
-            item = str(item)
-            item = item.split("\\")[-1]
 
-            if self.ticker in item:
+            item = str(item)
+            full_name = item.split("\\")[-1]
+            ticker_control = full_name.split("-")[0].strip()
+
+            if self.ticker == ticker_control:
 
                 self.simple_balance = pd.read_csv(
-                    data_path / "simplified_balances" / item
+                    data_path / "simplified_balances" / full_name
                 )
 
                 # Extracts the name of the company
@@ -102,11 +112,32 @@ class Company:
             company_info = setor_extract(self.ticker)
 
             # Contagem dos anos de prejuízo
-            loss = [
-                item for item in self.simple_balance["Net Income"] if item <= 0
-            ]
+            loss = [item for item in self.simple_balance["Net Income"] if item <= 0]
 
             drop = [item for item in self.simple_balance["%"] if item < 0]
+
+            "Flags Foreign Companies"
+            if company_info[0] != "USA":
+                flag = "foreign company"
+
+            "Flags Companies with a drop in last year Profits"
+            if (
+                self.simple_balance["Net Income"].iloc[-1]
+                < self.simple_balance["Net Income"].iloc[-2]
+            ):
+                flag = "last year drop"
+            else:
+                flag = ""
+
+            "Flags Companies with High Debt"
+            for item in self.simple_balance["ND/EBITDA"]:
+                if item > 3:
+                    flag = "high debt"
+
+            "Flags Companies with Losses"
+            for item in self.simple_balance["Net Income"]:
+                if item < 0:
+                    flag = "loss"
 
             stock_info_dict = {
                 "Ticker": self.ticker,
@@ -117,16 +148,26 @@ class Company:
                 "Category": company_info[3],
                 "Loss": len(loss),
                 "Income Drop": len(drop),
+                "Flag": flag,
             }
 
             df_individual_stock = pd.DataFrame.from_dict(
-            stock_info_dict, orient='index')
+                stock_info_dict, orient="index"
+            )
             df_individual_stock = df_individual_stock.transpose()
 
-            print(df_individual_stock)
+            # display(df_individual_stock)
 
             print("############# Info in clipboard #############")
             df_individual_stock.to_clipboard(excel=True, index=False, header=False)
+
+            "Apends to the Bastter_stocks_Analised"
+            df_individual_stock.to_csv(
+                data_path / "bastter_analysis" / "bastter_stocks_analised.csv",
+                index=False,
+                header=False,
+                mode="a",
+            )
 
     def plot_income(self):
 
@@ -139,24 +180,9 @@ class Company:
 
 if __name__ == "__main__":
 
-    # Path Setup
-
-    cwd_path = Path.cwd()
-    data_path = cwd_path / "data"
-    bin_path = cwd_path / "bin"
-
     # Methods
     stock_picked = ticker_selection()
     stock_object = Company(stock_picked)
     stock_object.data_retrieve()
     stock_object.data_info_to_clipboard()
     stock_object.plot_income()
-
-else:
-    """
-    If running from notebooks
-    """
-    cwd_path = Path.cwd().parent
-    data_path = cwd_path / "data"
-    bin_path = cwd_path / "bin"
-

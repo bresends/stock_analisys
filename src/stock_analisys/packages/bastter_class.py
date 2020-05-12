@@ -31,6 +31,7 @@ cwd_path = Path.cwd()
 data_path = cwd_path / 'data'
 bin_path = cwd_path / 'bin'
 
+
 # =============================================================================
 # Class Creation
 # =============================================================================
@@ -77,7 +78,6 @@ class BastterStocks:
         """
 
         self.driver.get(self.url)
-        self.driver.implicitly_wait(1)
 
         # Clicando no item (com teste se ele existe)
         teste_company_info = self.driver.find_element_by_xpath(
@@ -135,8 +135,6 @@ class BastterStocks:
 # =============================================================================
 
     def table_extract(self):
-
-        time.sleep(random.uniform(2, 4))
 
         # Clicando no item (com teste se ele existe)
         teste_selected_data = self.driver.find_element_by_xpath(
