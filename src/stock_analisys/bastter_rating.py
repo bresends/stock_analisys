@@ -140,7 +140,7 @@ class Company:
                     < self.simple_balance["Net Income"].iloc[-2]
                 ):
                     flag = "last year drop"
-                    motive = "Lucros Inconsistentes"
+                    motive = "Bomba"
                 else:
                     flag = ""
 
