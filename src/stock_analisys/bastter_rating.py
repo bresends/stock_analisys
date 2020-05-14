@@ -110,10 +110,11 @@ class Company:
         # If the dataframe is not empty
         if not data_info.empty:
             print("############# Info in clipboard #############")
+            data_info.insert(9, "Motive", "Lucros Inconsistentes", True) 
             data_info.to_clipboard(excel=True, index=False, header=False)
 
         else:
-            
+
             print(" ----- Grabing Data ------ ")
 
             # Uses function to grab the data
@@ -188,8 +189,8 @@ class Company:
             df_individual_stock.to_clipboard(excel=True, index=False, header=False)
 
             "Apends to the Bastter_stocks_Analised"
-            df_individual_stock = df_individual_stock.drop(columns=['Motive'], axis=1)
-            
+            df_individual_stock = df_individual_stock.drop(columns=["Motive"], axis=1)
+
             df_individual_stock.to_csv(
                 data_path / "bastter_analysis" / "bastter_stocks_analised.csv",
                 index=False,
