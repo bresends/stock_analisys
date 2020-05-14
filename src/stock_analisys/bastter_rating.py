@@ -110,7 +110,7 @@ class Company:
         # If the dataframe is not empty
         if not data_info.empty:
             print("############# Info in clipboard #############")
-            data_info.insert(9, "Motive", "Lucros Inconsistentes", True) 
+            data_info.insert(9, "Motive", "Lucros Inconsistentes", True)
             data_info.to_clipboard(excel=True, index=False, header=False)
 
         else:
@@ -197,6 +197,30 @@ class Company:
                 header=False,
                 mode="a",
             )
+
+    def yellow_to_clipboard(self):
+
+        """
+        This Function Filters Only Problematic Companies 
+        Pastes Result to clipboard
+        """
+
+        bastter_stocks_analised = pd.read_csv(
+            data_path / "bastter_analysis" / "bastter_stocks_analised.csv"
+        )
+
+        data_info = bastter_stocks_analised[
+            bastter_stocks_analised["Ticker"] == self.ticker
+        ]
+
+        # If the dataframe is not empty
+        if not data_info.empty:
+            print("############# Info in clipboard #############")
+            data_info.insert(9, "Motive", "Lucros Inconsistentes", True)
+            data_info.to_clipboard(excel=True, index=False, header=False)
+
+        else:
+            print('HTML')
 
     def plot_income(self):
 
