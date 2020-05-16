@@ -25,9 +25,5 @@ import stock_analisys.packages.paths as paths
 # =============================================================================
 
 cwd_path, data_path, bin_path, bastter_path, fundamentei_path = paths.set_path()
-
-if __name__ == "__main__":
-    
-    cwd_path, data_path, bin_path, bastter_path, fundamentei_path = set_path()
     
     
