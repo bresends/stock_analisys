@@ -23,13 +23,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from tabulate import tabulate
 
-# =============================================================================
-# Directories Setup
-# =============================================================================
-
-cwd_path = Path.cwd()
-data_path = cwd_path / 'data'
-bin_path = cwd_path / 'bin'
+import stock_analisys.packages.paths as paths
 
 
 # =============================================================================

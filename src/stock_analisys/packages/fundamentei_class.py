@@ -1,16 +1,18 @@
-from pathlib import Path
-from selenium import webdriver
+"""
+Classe que lida com os objetos gerados pelo site Fundamentei
+Entra autentica e salva páginas a partir de um ticker
+"""
+
 import pickle
+
 from bs4 import BeautifulSoup
+from selenium import webdriver
+
+import stock_analisys.packages.paths as paths
 
 # =============================================================================
-# Directories Setup
+# Class
 # =============================================================================
-
-cwd_path = Path.cwd()
-data_path = cwd_path / "data"
-bin_path = cwd_path / "bin"
-
 
 class Fundamentei:
     def __init__(self, ticker):
@@ -22,13 +24,13 @@ class Fundamentei:
 
     def autenticate(self):
 
-        self.driver = webdriver.Chrome(bin_path / "chromedriver.exe")
+        self.driver = webdriver.Chrome(paths.bin_path / "chromedriver.exe")
 
         # Puxa os Cookies
         self.driver.get("https://varvy.com/pagespeed/wicked-fast.html")
         self.driver.implicitly_wait(0.5)
 
-        for cookie in pickle.load(open(bin_path / "cookies_fundamentei.pkl", "rb")):
+        for cookie in pickle.load(open(paths.bin_path / "cookies_fundamentei.pkl", "rb")):
             if "expiry" in cookie:
                 del cookie["expiry"]
             self.driver.add_cookie(cookie)
@@ -39,7 +41,7 @@ class Fundamentei:
         print("Captured")
 
         with open(
-            data_path / "fundamentei" / "full_balances" / f"{self.ticker}.html",
+            paths.data_path / "fundamentei" / "full_balances" / f"{self.ticker}.html",
             "w",
             encoding="utf-8",
         ) as file:
