@@ -54,82 +54,46 @@ class FundamenteiExtract:
 
 
 class FundamenteiEvaluate(FundamenteiExtract):
+    """
+    Class related to extrating the important data from the HTML in the list I downloaded
+    """
 
     # Retrieves the Table with data from the Ticker File
     def table_extract(self):
+
         bs4_object = html_handling.html_file_to_bs4(
             paths.fundamentei_path / "full_balances" / f"{self.ticker}.html"
         )
 
-        # Extração da Tabela Menor
+        # Full Balance Extract
         html_balance = bs4_object.find("table", {"class": "css-xu6ppq"})
+        self.company_full_data = html_handling.table_to_pandas(html_balance)
 
-        output_rows = []
+        # Values to strings (to treat)
+        self.company_full_data = self.company_full_data.applymap(str)
 
-        for table_row in html_balance.findAll("tr"):
-            columns = table_row.findAll("td")
-            output_row = []
-            for column in columns:
-                output_row.append(column.get_text())
-            output_rows.append(output_row)
-
-        # Df creation from BeautifulSoup Html table
-        self.company_data_df = pd.DataFrame(output_rows)
-
-        # Empty line Removal
-        self.company_data_df = self.company_data_df.drop([0], axis=0)
-
-        # Changing Header Names
-        self.company_data_df = self.company_data_df.rename(
-            columns={
-                0: "Year",
-                1: "Equity",
-                2: "Revenue",
-                3: "EBITDA",
-                4: "D&A",
-                5: "EBIT",
-                6: "Financial Results",
-                7: "Taxes",
-                8: "Net Income",
-                9: "Net Margin",
-                10: "ROE",
-                11: "Cash",
-                12: "Debt",
-                13: "ND/EBITDA",
-                14: "Operations Cash Flow",
-                15: "CAPEX",
-                16: "Financing Cash Flow",
-                17: "Free Cash Flow",
-                18: "Taxes",
-                19: "Dividends",
-                20: "Payout",
-            }
+        # Fixing years (removing month)
+        self.company_full_data["Year"] = self.company_full_data.apply(
+            lambda row: row["Year"].split("/")[1], axis=1
         )
 
-        # # Header Rename
-        # df_cols = [
-        #     "Year",
-        #     "Equity",
-        #     "Revenue",
-        #     "EBITDA",
-        #     "D&A",
-        #     "EBIT",
-        #     "Financial Result",
-        #     "Taxes",
-        #     "Net Income",
-        #     "Net Margin",
-        #     "ROE",
-        #     "Cash",
-        #     "Debt",
-        #     "ND/EBITDA",
-        #     "Cash Flow from Opeartions",
-        #     "Capex",
-        #     "Cash Flow from Financing",
-        #     "Free Cash Flow",
-        #     "Dividends",
-        # ]
+        # Treating Data (remove points and strings)
+        self.company_full_data = self.company_full_data.applymap(
+            lambda x: x.replace(".", "")
+            .replace(",", ".")
+            .replace("L", "0")
+            .replace("-", "-0")
+            .replace("%", "")
+        )
 
-        # self.company_data_df.columns = df_cols
+        # Returning data to float
+        self.company_full_data = self.company_full_data.applymap(float)
+
+        # Year to int (to remove the zero in the end)
+        self.company_full_data["Year"] = self.company_full_data["Year"].apply(int)
+    
+    def plots(self):
+        
 
 
 def main_extract():
@@ -148,7 +112,7 @@ def main_evaluate():
     Serves as plataform to test my script
     """
     evaluate_test = FundamenteiEvaluate("amzn")
-    evaluate_test.table_extract()
+    table = evaluate_test.table_extract()
 
 
 if __name__ == "__main__":
