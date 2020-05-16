@@ -22,7 +22,6 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from tabulate import tabulate
-from stock_analisys.packages.plots import income_graph
 
 # =============================================================================
 # Directories Setup
@@ -31,6 +30,7 @@ from stock_analisys.packages.plots import income_graph
 cwd_path = Path.cwd()
 data_path = cwd_path / 'data'
 bin_path = cwd_path / 'bin'
+
 
 # =============================================================================
 # Class Creation
@@ -41,7 +41,7 @@ class BastterStocks:
 
     def __init__(self, ticker):
 
-        self.ticker = ticker.upper()
+        self.ticker = ticker.upper().strip()
         self.url = f'https://bastter.com/mercado/stock/{ticker}'
 
     def open_page(self):
@@ -58,7 +58,7 @@ class BastterStocks:
         self.driver.get('https://varvy.com/pagespeed/wicked-fast.html')
         self.driver.implicitly_wait(1)
 
-        for cookie in pickle.load(open(bin_path / 'cookies.pkl', "rb")):
+        for cookie in pickle.load(open(bin_path / 'cookies_bastter.pkl', "rb")):
             if 'expiry' in cookie:
                 del cookie['expiry']
             self.driver.add_cookie(cookie)
@@ -78,7 +78,6 @@ class BastterStocks:
         """
 
         self.driver.get(self.url)
-        self.driver.implicitly_wait(1)
 
         # Clicando no item (com teste se ele existe)
         teste_company_info = self.driver.find_element_by_xpath(
@@ -136,8 +135,6 @@ class BastterStocks:
 # =============================================================================
 
     def table_extract(self):
-
-        time.sleep(random.uniform(2, 4))
 
         # Clicando no item (com teste se ele existe)
         teste_selected_data = self.driver.find_element_by_xpath(
@@ -357,4 +354,3 @@ if __name__ == '__main__':
     a.autenticate()
     a.company_data_extract()
     a.table_extract()
-    income_graph(a.df_list, a.ticker, a.company_name)
