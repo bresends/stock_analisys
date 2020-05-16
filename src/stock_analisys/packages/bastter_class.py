@@ -58,7 +58,7 @@ class BastterStocks:
         self.driver.get('https://varvy.com/pagespeed/wicked-fast.html')
         self.driver.implicitly_wait(1)
 
-        for cookie in pickle.load(open(bin_path / 'cookies.pkl', "rb")):
+        for cookie in pickle.load(open(bin_path / 'cookies_bastter.pkl', "rb")):
             if 'expiry' in cookie:
                 del cookie['expiry']
             self.driver.add_cookie(cookie)
