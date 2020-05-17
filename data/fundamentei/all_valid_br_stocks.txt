@@ -1,3 +1,4 @@
+Ticker
 AALR 
 ABCP 
 ABEV 

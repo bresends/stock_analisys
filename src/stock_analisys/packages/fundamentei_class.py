@@ -12,6 +12,7 @@ from selenium import webdriver
 
 import stock_analisys.packages.html_handling as html_handling
 import stock_analisys.packages.paths as paths
+import stock_analisys.packages.time_and_dates as td
 
 # =============================================================================
 # Class
@@ -21,10 +22,13 @@ import stock_analisys.packages.paths as paths
 class FundamenteiExtract:
     def __init__(self, ticker):
         self.ticker = ticker.upper().strip()
-        self.url = f"https://fundamentei.com/br/{ticker}"
+        self.url = f"https://fundamentei.com/us/{ticker}"
 
     def open_page(self):
         self.driver.get(self.url)
+        
+    def scroll_page_to_botton(self):
+        self.driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
 
     def autenticate(self):
         self.driver = webdriver.Chrome(paths.bin_path / "chromedriver.exe")
@@ -45,8 +49,10 @@ class FundamenteiExtract:
         """
         Saves the actual page as HTML in the Full Balances Folder
         """
+
         page_html = self.driver.page_source
-        print("Captured")
+        td.print_lines()
+        print(f"HTML for {self.ticker} captured successifuly")
 
         with open(
             paths.data_path / "fundamentei" / "full_balances" / f"{self.ticker}.html",
