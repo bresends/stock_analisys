@@ -34,6 +34,7 @@ def html_grabber(ticker):
     stock_obj.open_page()
     stock_obj.scroll_page_to_botton()
     stock_obj.html_save()
+    stock_obj.driver.quit()
 
 
 def main():
@@ -47,9 +48,9 @@ def main():
 
     start = time.time()
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
         # Start the load operations and mark each future with its URL
-        results = executor.map(html_grabber, tickers_list[:2])
+        results = executor.map(html_grabber, tickers_list)
 
     end = time.time()
 
