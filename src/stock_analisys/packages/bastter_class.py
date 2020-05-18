@@ -338,7 +338,7 @@ class BastterStocks:
 
         # Salva os dados da empresa
         self.df_list.to_csv(
-            paths.data / f'simplified_balances/{self.ticker} - {self.company_name} - Simple Balance.csv',
+            paths.data_path / f'simplified_balances/{self.ticker} - {self.company_name} - Simple Balance.csv',
             index=False,
         )
         

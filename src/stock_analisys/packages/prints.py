@@ -5,7 +5,7 @@ Module related to dealing with times and dates conversions
 import time
 
 
-def print_lines():
+def print_line():
     print("----------------------------------------------------")
 
 
@@ -23,7 +23,7 @@ def time_it_secs_conversion(start_time: float, end_time: float):
     elapsed_time = end_time - start_time
 
     if elapsed_time < 60:
-        print_lines()
+        print_line()
         print(f"Time in execution = {elapsed_time:.2f} seconds")
         print_txt_inside_lines("Done")
 
@@ -33,7 +33,7 @@ def time_it_secs_conversion(start_time: float, end_time: float):
         print_txt_inside_lines("Done")
     else:
         time_minutes = elapsed_time / 60
-        print_lines()
+        print_line()
         print(f"Tempo gasto na execução = {time_minutes:.2f} minutos")
         print_txt_inside_lines("Done")
 

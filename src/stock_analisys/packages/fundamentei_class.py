@@ -12,23 +12,25 @@ from selenium import webdriver
 
 import stock_analisys.packages.html_handling as html_handling
 import stock_analisys.packages.paths as paths
-import stock_analisys.packages.time_and_dates as td
+import stock_analisys.packages.prints as prints
 
 # =============================================================================
 # Class
 # =============================================================================
 
-
-class FundamenteiExtract:
+class Fundamentei:
+    """Super Class for all related tasks for Fundamentei
+    """
     def __init__(self, ticker):
         self.ticker = ticker.upper().strip()
         self.url = f"https://fundamentei.com/us/{ticker}"
 
-    def open_page(self):
-        self.driver.get(self.url)
-        
-    def scroll_page_to_botton(self):
-        self.driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
+
+class FundamenteiExtract(Fundamentei):
+    """
+    Class related to Selenium Tasks for the Fundamentei Site
+    It's a subclass of Fundamentei
+    """
 
     def autenticate(self):
         self.driver = webdriver.Chrome(paths.bin_path / "chromedriver.exe")
@@ -51,7 +53,7 @@ class FundamenteiExtract:
         """
 
         page_html = self.driver.page_source
-        td.print_lines()
+        prints.print_line()
         print(f"HTML for {self.ticker} captured successifuly")
 
         with open(
@@ -60,59 +62,70 @@ class FundamenteiExtract:
             encoding="utf-8",
         ) as file:
             file.write(str(page_html))
-    
+
     def evaluate_existence(self):
         """
         Opens a Ticker and Verify if the company existis in the Fundamentei Site
         """
-        header = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36",
-            "X-Requested-With": "XMLHttpRequest"}
-        
+        header = {
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36",
+            "X-Requested-With": "XMLHttpRequest",
+        }
+
         # Testing URL
         try:
-            print(f'Analising: {self.url}')
-            page = requests.get(self.url, headers = header, timeout=5)
-            
-           # Sucessifuly Loaded 
+            print(f"Analising: {self.url}")
+            page = requests.get(self.url, headers=header, timeout=5)
+
+            # Sucessifuly Loaded
             if page.status_code == 200:
-                with open(paths.fundamentei_path / 'all_valid_br_stocks.txt', 'a') as f:
-                    f.write(f'{self.ticker} \n')
-                print('Stock Appended to Valid Stocks')
-            
+                with open(paths.fundamentei_path / "all_valid_br_stocks.txt", "a") as f:
+                    f.write(f"{self.ticker} \n")
+                print("Stock Appended to Valid Stocks")
+
             # Server Blocking Access
             elif page.status_code == 503:
-                raise Exception('ServerBlock')
-                
+                raise Exception("ServerBlock")
+
         except Exception as error:
-            print(f'Error type [{error}] while trying to grab stock')
+            print(f"Error type [{error}] while trying to grab stock")
+     
+    def open_page(self):
+        self.driver.get(self.url)
+
+    def scroll_page_to_botton(self):
+        self.driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
 
 
-class FundamenteiEvaluate(FundamenteiExtract):
+class FundamenteiEvaluate(Fundamentei):
     """
     Class related to extrating the important data from the HTML in the list I downloaded
+    It is a subclass of Fundamentei (used to treat Tickers)
     """
+
+    def __init__(self, ticker):
+        super().__init__(ticker)
+        self.html_page_bs4 = html_handling.html_file_to_bs4(
+            paths.fundamentei_path / "full_balances" / f"{self.ticker}.html"
+        )
 
     # Retrieves the Table with data from the Ticker File
     def table_extract(self):
 
-        bs4_object = html_handling.html_file_to_bs4(
-            paths.fundamentei_path / "full_balances" / f"{self.ticker}.html"
-        )
-
         # Full Balance Extract
-        html_balance = bs4_object.find("table", {"class": "css-xu6ppq"})
-        self.company_full_data = html_handling.table_to_pandas(html_balance)
+        html_balance = self.html_page_bs4.find("table", {"class": "css-xu6ppq"})
+        company_full_data = html_handling.table_to_pandas(html_balance)
 
         # Values to strings (to treat)
-        self.company_full_data = self.company_full_data.applymap(str)
+        company_full_data = company_full_data.applymap(str)
 
         # Fixing years (removing month)
-        self.company_full_data["Year"] = self.company_full_data.apply(
+        company_full_data["Year"] = company_full_data.apply(
             lambda row: row["Year"].split("/")[1], axis=1
         )
 
         # Treating Data (remove points and strings)
-        self.company_full_data = self.company_full_data.applymap(
+        company_full_data = company_full_data.applymap(
             lambda x: x.replace(".", "")
             .replace(",", ".")
             .replace("L", "0")
@@ -121,18 +134,23 @@ class FundamenteiEvaluate(FundamenteiExtract):
         )
 
         # Returning data to float
-        self.company_full_data = self.company_full_data.applymap(float)
+        company_full_data = company_full_data.applymap(float)
 
         # Year to int (to remove the zero in the end)
-        self.company_full_data["Year"] = self.company_full_data["Year"].apply(int)
-        
+        company_full_data["Year"] = company_full_data["Year"].apply(int)
+
+        return company_full_data
+
+    def company_informations(self):
+        pass
+
 
 def main_extract():
     """
     Serves as plataform to test my script
     """
 
-    extract_test = FundamenteiExtract("amzn")
+    extract_test = FundamenteiExtract("aabl")
     extract_test.autenticate()
     extract_test.open_page()
     extract_test.html_save()
@@ -142,8 +160,9 @@ def main_evaluate():
     """
     Serves as plataform to test my script
     """
-    evaluate_test = FundamenteiEvaluate("amzn")
-    evaluate_test.table_extract()
+    evaluate_test = FundamenteiEvaluate("mmm")
+    table = evaluate_test.table_extract()
+    print(table)
 
 
 if __name__ == "__main__":

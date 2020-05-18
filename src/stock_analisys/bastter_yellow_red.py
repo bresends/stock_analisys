@@ -1,5 +1,5 @@
 """ 
-    Programa to generate the data for the yellow and red stocks for bastter (also the new companies)
+    Program that generates the data for the yellow and red stocks for bastter (also the new companies)
 
 """
 

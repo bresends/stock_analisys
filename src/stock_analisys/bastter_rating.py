@@ -226,7 +226,7 @@ class Company:
 
         if not self.simple_balance.empty:
 
-            plots.data_graph(self.simple_balance, self.ticker, self.company_name)
+            plots.bastter_data_graph(self.simple_balance, self.ticker, self.company_name)
 
 
 if __name__ == "__main__":

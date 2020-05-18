@@ -74,13 +74,6 @@ def table_to_pandas(bs4):
         if len(columns) > 0:
             row_marker += 1
 
-    # Convert to float if possible
-    for col in df:
-        try:
-            df[col] = df[col].astype(float)
-        except ValueError:
-            pass
-
     return df
 
 
