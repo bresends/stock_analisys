@@ -18,9 +18,11 @@ import stock_analisys.packages.prints as prints
 # Class
 # =============================================================================
 
+
 class Fundamentei:
     """Super Class for all related tasks for Fundamentei
     """
+
     def __init__(self, ticker):
         self.ticker = ticker.upper().strip()
         self.url = f"https://fundamentei.com/us/{ticker}"
@@ -89,7 +91,7 @@ class FundamenteiExtract(Fundamentei):
 
         except Exception as error:
             print(f"Error type [{error}] while trying to grab stock")
-     
+
     def open_page(self):
         self.driver.get(self.url)
 
@@ -142,7 +144,15 @@ class FundamenteiEvaluate(Fundamentei):
         return company_full_data
 
     def company_informations(self):
-        pass
+        """
+        Grabs the Company basic info
+        """
+        self.name = self.html_page_bs4.h1.get_text()
+        self.fundation = self.html_page_bs4.find_all("div", "css-1bcdh3w")[0].get_text()
+        self.ipo = self.html_page_bs4.find_all("div", "css-1bcdh3w")[1].get_text()
+        self.market_cap = self.html_page_bs4.find("div", "css-1izgaab").get_text()
+        self.industry = self.html_page_bs4.find("a", class_="css-e08q0q").get_text()
+        self.description = self.html_page_bs4.find("div", "css-amw407").get_text()
 
 
 def main_extract():
@@ -160,9 +170,9 @@ def main_evaluate():
     """
     Serves as plataform to test my script
     """
-    evaluate_test = FundamenteiEvaluate("mmm")
+    evaluate_test = FundamenteiEvaluate("amzn")
     table = evaluate_test.table_extract()
-    print(table)
+    evaluate_test.company_informations()
 
 
 if __name__ == "__main__":
