@@ -24,10 +24,11 @@ def fundamentei_plot(dataframe):
     # ==========================================================
     # Infos plot
     # ==========================================================
+    
     company_info.set_axis_off()
     company_info.set_aspect('auto', anchor='W')
 
-    def write_text(text="Teste", x=0, y=0, size_font=10, alignment='left'):
+    def write_text(text="Teste", x=0, y=0, size_font=12, alignment='left'):
 
         company_info.text(
             x,
@@ -37,11 +38,15 @@ def fundamentei_plot(dataframe):
             bbox=dict(facecolor="gray", alpha=0.05, pad=1, edgecolor="none"),
             transform=company_info.transAxes,
             fontsize=size_font,
+            wrap=True,
         )
 
-    write_text(f'Company: {company_obj.name}', 0.25, 1, 16, 'center')
+    write_text(f'Company: {company_obj.name}', 0.5, 1, 18, 'center')
+
     write_text(f'Fundation: {company_obj.fundation}', 0, 0.9)
     write_text(f'IPO: {company_obj.ipo}', 0, 0.85)
+    write_text(f'Industry: {company_obj.industry}', 0, 0.80)
+    write_text(f'Market Cap: {company_obj.market_cap}', 0, 0.75)
 
     # ==========================================================
     # Profits plot
@@ -153,7 +158,7 @@ def fundamentei_plot(dataframe):
 if __name__ == "__main__":
 
     # Instanciate Objetct
-    company_obj = fc.FundamenteiEvaluate("mmm")
+    company_obj = fc.FundamenteiEvaluate("aapl")
 
     # Grabs Stock Financial Data
     df = company_obj.table_extract()
