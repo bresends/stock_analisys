@@ -24,33 +24,34 @@ def fundamentei_plot(dataframe):
     # ==========================================================
     # Infos plot
     # ==========================================================
-    
-    company_info.set_axis_off()
-    company_info.set_aspect('auto', anchor='W')
 
-    def write_text(text="Teste", x=0, y=0, size_font=12, alignment='left'):
+    company_info.set_axis_off()
+    company_info.set_aspect("auto", anchor="W")
+
+    def write_text(text="Teste", x=0, y=0, size_font=12, alignment="left"):
 
         company_info.text(
             x,
             y,
             text,
-            horizontalalignment = alignment,
+            horizontalalignment=alignment,
             bbox=dict(facecolor="gray", alpha=0.05, pad=1, edgecolor="none"),
             transform=company_info.transAxes,
             fontsize=size_font,
             wrap=True,
         )
 
-    write_text(f'Company: {company_obj.name}', 0.5, 1, 18, 'center')
+    write_text(f"Company: {company_obj.name}", 0.5, 1, 18, "center")
 
-    write_text(f'Fundation: {company_obj.fundation}', 0, 0.9)
-    write_text(f'IPO: {company_obj.ipo}', 0, 0.85)
-    write_text(f'Industry: {company_obj.industry}', 0, 0.80)
-    write_text(f'Market Cap: {company_obj.market_cap}', 0, 0.75)
+    write_text(f"Fundation: {company_obj.fundation}", 0, 0.9)
+    write_text(f"IPO: {company_obj.ipo}", 0, 0.85)
+    write_text(f"Industry: {company_obj.industry}", 0, 0.80)
+    write_text(f"Market Cap: {company_obj.market_cap}", 0, 0.75)
 
     # ==========================================================
-    # Profits plot
+    # Income & EBIT plot
     # ==========================================================
+    profits_graph.bar(df["Year"], df["EBIT"], color="orange", alpha=0.8, label="EBIT")
 
     profits_graph.plot(
         df["Year"],
@@ -70,7 +71,7 @@ def fundamentei_plot(dataframe):
         df["Net Inc."],
         where=(df["Net Inc."] > 0),
         color="g",
-        alpha=0.75,
+        alpha=1,
         interpolate=True,
         label="Profit",
     )
@@ -81,14 +82,14 @@ def fundamentei_plot(dataframe):
         df["Net Inc."],
         where=(df["Net Inc."] < 0),
         color="r",
-        alpha=0.75,
+        alpha=0.95,
         interpolate=True,
         label="Loss",
     )
 
-    # profits_graph.set_title(
-    #     "[Net Income]", fontsize=12, color="black",
-    # )
+    profits_graph.set_title(
+        "[Net Income]", fontsize=12, color="black",
+    )
 
     profits_graph.set_xlabel("Year", color="black")
     profits_graph.set_ylabel("Net Income (mil)", color="black")
@@ -135,30 +136,26 @@ def fundamentei_plot(dataframe):
     )
 
     nd_ebitda.set_title(
-        "Debt/EBITDA", fontdict={"fontsize": 12}, color="black",
+        "[Debt/EBITDA]", fontdict={"fontsize": 12}, color="black",
     )
 
     nd_ebitda.set_xlabel("Year", color="black")
     nd_ebitda.set_ylabel("ND / EBITDA (mil)", color="black")
     nd_ebitda.grid()
     nd_ebitda.legend()
-    
-    
+
     # plt.subplot_tool()
-    
-    plt.subplots_adjust(left=0.02,
-                    bottom=0.2, 
-                    right=0.98, 
-                    top=0.87, 
-                    wspace=0.16, 
-                    hspace=0.2)
+
+    plt.subplots_adjust(
+        left=0.02, bottom=0.2, right=0.98, top=0.87, wspace=0.16, hspace=0.2
+    )
     plt.show()
 
 
 if __name__ == "__main__":
 
     # Instanciate Objetct
-    company_obj = fc.FundamenteiEvaluate("aapl")
+    company_obj = fc.FundamenteiEvaluate("unh")
 
     # Grabs Stock Financial Data
     df = company_obj.table_extract()

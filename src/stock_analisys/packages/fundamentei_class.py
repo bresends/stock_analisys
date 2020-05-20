@@ -133,6 +133,7 @@ class FundamenteiEvaluate(Fundamentei):
             .replace("L", "0")
             .replace("-", "-0")
             .replace("%", "")
+            .replace('20 TTM', '2020')
         )
 
         # Returning data to float
@@ -170,7 +171,7 @@ def main_evaluate():
     """
     Serves as plataform to test my script
     """
-    evaluate_test = FundamenteiEvaluate("amzn")
+    evaluate_test = FundamenteiEvaluate("txn")
     table = evaluate_test.table_extract()
     evaluate_test.company_informations()
 
