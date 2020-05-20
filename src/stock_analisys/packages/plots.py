@@ -180,8 +180,12 @@ def fundamentei_data_graph(df):
 # ===========================================================================
 # First Row - First Plot
 # ===========================================================================
+    a[0][0].plot
+# ===========================================================================
+# First Row - Second Plot
+# ===========================================================================
 
-    a[0][0].plot(
+    a[0][1].plot(
         df["Year"],
         df["Net Inc."],
         color="green",
@@ -192,7 +196,7 @@ def fundamentei_data_graph(df):
     )
 
     # Zero line
-    a[0][0].axhline(
+    a[0][1].axhline(
         color="red",
         linestyle="--",
         marker=".",
@@ -200,7 +204,7 @@ def fundamentei_data_graph(df):
     )
 
     # Fill[1] - Net Income
-    a[0][0].fill_between(
+    a[0][1].fill_between(
         df["Year"],
         df["Net Inc."],
         where=(df["Net Inc."] > 0),
@@ -211,7 +215,7 @@ def fundamentei_data_graph(df):
     )
 
     # Fill[2] - Net Income
-    a[0][0].fill_between(
+    a[0][1].fill_between(
         df["Year"],
         df["Net Inc."],
         where=(df["Net Inc."] < 0),
@@ -221,16 +225,16 @@ def fundamentei_data_graph(df):
         label="Loss",
     )
 
-    a[0][0].set_xlabel("Year", color="black")
-    a[0][0].set_ylabel("Net Profit (mil)", color="black")
-    a[0][0].grid()
-    a[0][0].legend()
+    a[0][1].set_xlabel("Year", color="black")
+    a[0][1].set_ylabel("Net Profit (mil)", color="black")
+    a[0][1].grid()
+    a[0][1].legend()
 
 # ===========================================================================
-# First Row - Second Plot
+# Second Row - Second Plot
 # ===========================================================================
     
-    a[0][1].plot(
+    a[1][1].plot(
         df["Year"],
         df["N.D. / EBITDA"],
         color="blue",
@@ -241,12 +245,12 @@ def fundamentei_data_graph(df):
     )
 
     # Control line for debt
-    a[0][1].axhline(
+    a[1][1].axhline(
         y=3, color="red", linestyle="--", marker=".", markersize=10,  # label="zero",
     )
 
     # Plot Config
-    a[0][1].fill_between(
+    a[1][1].fill_between(
         df["Year"],
         df["N.D. / EBITDA"],
         y2=3,
@@ -257,7 +261,7 @@ def fundamentei_data_graph(df):
         label="Debt Free",
     )
 
-    a[0][1].fill_between(
+    a[1][1].fill_between(
         df["Year"],
         df["N.D. / EBITDA"],
         y2=3,
@@ -268,11 +272,11 @@ def fundamentei_data_graph(df):
         label="Debt",
     )
 
-    a[0][1].set_xlabel("Year", color="black")
-    a[0][1].set_ylabel("Net Profit (mil)", color="black")
-    a[0][1].tick_params(axis="x", rotation=70)
-    a[0][1].grid()
-    a[0][1].legend()
+    a[1][1].set_xlabel("Year", color="black")
+    a[1][1].set_ylabel("Net Profit (mil)", color="black")
+    a[1][1].tick_params(axis="x", rotation=70)
+    a[1][1].grid()
+    a[1][1].legend()
 
 # ===========================================================================
 # First Row - Third Plot
