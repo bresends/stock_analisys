@@ -6,7 +6,7 @@ import pandas as pd
 
 import stock_analisys.packages.fundamentei_class as fc
 import stock_analisys.packages.paths as paths
-import stock_analisys.packages.time_and_dates as td
+import stock_analisys.packages.prints as td
 
 
 def txt_to_list():
@@ -16,7 +16,7 @@ def txt_to_list():
         [list] -- [list with all lines from the txt]
     """
 
-    df = pd.read_fwf(paths.fundamentei_path / "all_valid_us_stocks.txt")
+    df = pd.read_fwf(paths.fundamentei_path / "all_valid_br_stocks.txt")
     c_to_list = [x for x in df["Ticker"]]
     return c_to_list
 

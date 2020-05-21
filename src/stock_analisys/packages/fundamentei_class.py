@@ -25,7 +25,7 @@ class Fundamentei:
 
     def __init__(self, ticker):
         self.ticker = ticker.upper().strip()
-        self.url = f"https://fundamentei.com/us/{ticker}"
+        self.url = f"https://fundamentei.com/br/{ticker}"
 
 
 class FundamenteiExtract(Fundamentei):
@@ -59,7 +59,7 @@ class FundamenteiExtract(Fundamentei):
         print(f"HTML for {self.ticker} captured successifuly")
 
         with open(
-            paths.data_path / "fundamentei" / "full_balances" / f"{self.ticker}.html",
+            paths.data_path / "fundamentei" / "full_balances_br" / f"{self.ticker}.html",
             "w",
             encoding="utf-8",
         ) as file:
