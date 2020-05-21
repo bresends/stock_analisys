@@ -161,7 +161,7 @@ def main_extract():
     Serves as plataform to test my script
     """
 
-    extract_test = FundamenteiExtract("aabl")
+    extract_test = FundamenteiExtract("CMCSA")
     extract_test.autenticate()
     extract_test.open_page()
     extract_test.html_save()
@@ -171,11 +171,11 @@ def main_evaluate():
     """
     Serves as plataform to test my script
     """
-    evaluate_test = FundamenteiEvaluate("txn")
+    evaluate_test = FundamenteiEvaluate("no")
     table = evaluate_test.table_extract()
     evaluate_test.company_informations()
 
 
 if __name__ == "__main__":
-    # main_extract()
-    main_evaluate()
+    main_extract()
+    # main_evaluate()

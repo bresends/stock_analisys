@@ -21,348 +21,434 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from tabulate import tabulate
+from requests_html import HTML, HTMLSession
 
 import stock_analisys.packages.paths as paths
-
+import stock_analisys.packages.prints as prints
 
 # =============================================================================
 # Class Creation
 # =============================================================================
 
 
-class BastterStocks:
-    def __init__(self, ticker):
+class Bastter:
+    """Super Class for all related tasks for Fundamentei
+    """
 
+    def __init__(self, ticker):
         self.ticker = ticker.upper().strip()
         self.url = f"https://bastter.com/mercado/stock/{ticker}"
 
-    def open_page(self):
-        self.driver.get(self.url)
 
-    # =============================================================================
-    # Pega e carrega cookie
-    # =============================================================================
+class BastterExtract(Bastter):
+
+    """
+    Class related to Selenium Tasks for the Bastter Site
+    It's a subclass of Bastter
+    """
+
     def autenticate(self):
-
         self.driver = webdriver.Chrome(paths.bin_path / "chromedriver.exe")
 
         # Puxa os Cookies
         self.driver.get("https://varvy.com/pagespeed/wicked-fast.html")
-        self.driver.implicitly_wait(1)
+        self.driver.implicitly_wait(0.2)
 
         for cookie in pickle.load(open(paths.bin_path / "cookies_bastter.pkl", "rb")):
             if "expiry" in cookie:
                 del cookie["expiry"]
             self.driver.add_cookie(cookie)
-        self.print_lines
         print("Cookies Sucessifuly Loaded")
 
-    # =============================================================================
-    # Método de Extração do Company Info
-    # =============================================================================
-
-    def company_data_extract(self):
-
+    def html_save(self):
         """
-        Grabs de Company Name, Ticker, Sector and Group from a given company
-        Also tells if a given ticker is a REIT or not
+        Saves the actual page as HTML in the Full Balances Folder
         """
 
+        page_html = self.driver.page_source
+        prints.print_line()
+        print(f"HTML for {self.ticker} captured successifuly")
+
+        with open(
+            paths.data_path / "bastter" / "full_balances" / f"{self.ticker}.html",
+            "w",
+            encoding="utf-8",
+        ) as file:
+            file.write(str(page_html))
+
+    def evaluate_existence(self):
+        """
+        Opens a Ticker and Verify if the company existis in the Fundamentei Site
+        """
+
+        # Testing URL
+        try:
+            print(f"Analising: {self.url}")
+
+            session = HTMLSession()
+            page = session.get(self.url)
+            
+            # Sucessifuly Loaded
+            if page.status_code == 200:
+                page = page.html.render()
+                print(page)
+
+                # with open(paths.bastter_path / "all_valid_br_stocks.txt", "a") as f:
+                #     f.write(f"{self.ticker} \n")
+
+            # Server Blocking Access
+            elif page.status_code == 503:
+                raise Exception("ServerBlock")
+
+        except Exception as error:
+            raise error
+
+    def open_page(self):
         self.driver.get(self.url)
 
-        # Clicando no item (com teste se ele existe)
-        teste_company_info = self.driver.find_element_by_xpath(
-            '//*[@id="dados-empresa"]'
-        )
+    def scroll_page_to_botton(self):
+        self.driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
 
-        # Se está carregado, passa pra frente, senão para.
-        if teste_company_info.is_displayed():
 
-            self.driver.find_element_by_xpath(
-                '//*[@id="dados-empresa"]/span[2]'
-            ).click()
+# class BastterStocks:
+#     def __init__(self, ticker):
 
-        else:
+#         self.ticker = ticker.upper().strip()
+#         self.url = f"https://bastter.com/mercado/stock/{ticker}"
 
-            print("Button not found in page")
+#     def open_page(self):
+#         self.driver.get(self.url)
 
-        # Extraindo o HTML e gerando o BS4
-        page_html = self.driver.page_source
-        soup = BeautifulSoup(page_html, "lxml")
+#     # =============================================================================
+#     # Pega e carrega cookie
+#     # =============================================================================
+#     def autenticate(self):
 
-        # Dados de STOCKS e REITS JUNTOS
+#         self.driver = webdriver.Chrome(paths.bin_path / "chromedriver.exe")
 
-        self.company_name = soup.find("span", class_="ativo-nome").get_text()
-        self.sector = soup.find("span", class_="ativo-sector").get_text()
+#         # Puxa os Cookies
+#         self.driver.get("https://varvy.com/pagespeed/wicked-fast.html")
+#         self.driver.implicitly_wait(1)
 
-        # Changing United States to USA
-        self.company_country = soup.find("span", class_="ativo-inc-country").get_text()
+#         for cookie in pickle.load(open(paths.bin_path / "cookies_bastter.pkl", "rb")):
+#             if "expiry" in cookie:
+#                 del cookie["expiry"]
+#             self.driver.add_cookie(cookie)
+#         self.print_lines
+#         print("Cookies Sucessifuly Loaded")
 
-        if self.company_country == " United States of America":
-            self.company_country = "USA"
-
-        # Condicional de avaliação de REIT
+#     # =============================================================================
+#     # Método de Extração do Company Info
+#     # =============================================================================
 
-        teste_reit = self.driver.find_element_by_xpath('//*[@id="sidebar-left"]')
+#     def company_data_extract(self):
 
-        test_bs4 = soup.body.findAll(text="REIT")
+#         """
+#         Grabs de Company Name, Ticker, Sector and Group from a given company
+#         Also tells if a given ticker is a REIT or not
+#         """
 
-        # Se for um REIT:
-        if teste_reit.is_displayed() and len(test_bs4) > 0:
-            self.sou_um_reit = True
-            self.reit_handling()
+#         self.driver.get(self.url)
 
-        # Se for uma STOCK
-        else:
+#         # Clicando no item (com teste se ele existe)
+#         teste_company_info = self.driver.find_element_by_xpath(
+#             '//*[@id="dados-empresa"]'
+#         )
 
-            self.sou_um_reit = False
-            self.industry_group = soup.find(
-                "span", class_="ativo-industry-group"
-            ).get_text()
-            self.industry_category = soup.find(
-                "span", class_="ativo-industry-category"
-            ).get_text()
+#         # Se está carregado, passa pra frente, senão para.
+#         if teste_company_info.is_displayed():
 
-    # =============================================================================
-    #   Extração da Tabela do HTML
-    # =============================================================================
+#             self.driver.find_element_by_xpath(
+#                 '//*[@id="dados-empresa"]/span[2]'
+#             ).click()
 
-    def table_extract(self):
+#         else:
 
-        # Clicando no item (com teste se ele existe)
-        teste_selected_data = self.driver.find_element_by_xpath(
-            '//*[@id="quadro-simples-menu"]/span[2]'
-        )
+#             print("Button not found in page")
 
-        # Se está carregado, passa pra frente, senão para.
-        if teste_selected_data.is_displayed() == True:
+#         # Extraindo o HTML e gerando o BS4
+#         page_html = self.driver.page_source
+#         soup = BeautifulSoup(page_html, "lxml")
 
-            self.driver.find_element_by_xpath(
-                '//*[@id="quadro-simples-menu"]/span[2]'
-            ).click()
-            time.sleep(random.uniform(6, 10))
+#         # Dados de STOCKS e REITS JUNTOS
 
-        else:
+#         self.company_name = soup.find("span", class_="ativo-nome").get_text()
+#         self.sector = soup.find("span", class_="ativo-sector").get_text()
 
-            print("Button not found in page")
+#         # Changing United States to USA
+#         self.company_country = soup.find("span", class_="ativo-inc-country").get_text()
 
-        # Extraindo o HTML e gerando o BS4
-        page_html = self.driver.page_source
-        soup = BeautifulSoup(page_html, "lxml")
+#         if self.company_country == " United States of America":
+#             self.company_country = "USA"
 
-        # Extração da Tabela Menor
-        simple_balance = soup.find(
-            "table",
-            {"class": "evanual quadro table table-striped table-hover marcadagua"},
-        )
+#         # Condicional de avaliação de REIT
 
-        # Removendo os valores com percentual
-        for span_tag in simple_balance.findAll("span", {"class": "varperc"}):
-            span_tag.replace_with("")
+#         teste_reit = self.driver.find_element_by_xpath('//*[@id="sidebar-left"]')
 
-        output_rows = []
+#         test_bs4 = soup.body.findAll(text="REIT")
 
-        for table_row in simple_balance.findAll("tr"):
-            columns = table_row.findAll("td")
-            output_row = []
-            for column in columns:
-                output_row.append(column.get_text())
-            output_rows.append(output_row)
+#         # Se for um REIT:
+#         if teste_reit.is_displayed() and len(test_bs4) > 0:
+#             self.sou_um_reit = True
+#             self.reit_handling()
 
-        # Criação do dataframe a partir da tabela
-        self.df_list = pd.DataFrame(output_rows)
-
-        # Transformação dos valore pra string
-        self.df_list = self.df_list.applymap(str)
+#         # Se for uma STOCK
+#         else:
 
-        # Retirada dos pontos e troca das vírgulas pra ponto (pra reconhecimento de decimais)
-        self.df_list = self.df_list.applymap(
-            lambda x: x.replace(".", "")
-            .replace(",", ".")
-            .replace("L", "0")
-            .replace("-", "-0")
-        )
+#             self.sou_um_reit = False
+#             self.industry_group = soup.find(
+#                 "span", class_="ativo-industry-group"
+#             ).get_text()
+#             self.industry_category = soup.find(
+#                 "span", class_="ativo-industry-category"
+#             ).get_text()
 
-        # Retirada de 2 linhas zeradas e uma coluna
-        self.df_list = self.df_list.drop([0, 1], axis=0)
-        self.df_list = self.df_list.drop([1], axis=1)
+#     # =============================================================================
+#     #   Extração da Tabela do HTML
+#     # =============================================================================
 
-        # Nomeação do Header
-        df_cols = [
-            "Year",
-            "Net Revenue",
-            "Net Income",
-            "EPS",
-            "EBITDA",
-            "Net Debt",
-            "ND/EBITDA",
-            "FCF",
-            "FCF/Share",
-        ]
-        self.df_list.columns = df_cols
+#     def table_extract(self):
+
+#         # Clicando no item (com teste se ele existe)
+#         teste_selected_data = self.driver.find_element_by_xpath(
+#             '//*[@id="quadro-simples-menu"]/span[2]'
+#         )
+
+#         # Se está carregado, passa pra frente, senão para.
+#         if teste_selected_data.is_displayed() == True:
+
+#             self.driver.find_element_by_xpath(
+#                 '//*[@id="quadro-simples-menu"]/span[2]'
+#             ).click()
+#             time.sleep(random.uniform(6, 10))
 
-        # Retorno pra float (pra cálculos)
-        self.df_list = self.df_list.applymap(float)
-
-        # Ano pra Int
-        self.df_list["Year"] = self.df_list["Year"].apply(int)
+#         else:
 
-        # Põe em Ordem (independente da entrada)
-        self.df_list.sort_values(by=["Year"], inplace=True)
-
-    # =============================================================================
-    #  REIT Handling
-    # =============================================================================
+#             print("Button not found in page")
 
-    def reit_handling(self):
+#         # Extraindo o HTML e gerando o BS4
+#         page_html = self.driver.page_source
+#         soup = BeautifulSoup(page_html, "lxml")
+
+#         # Extração da Tabela Menor
+#         simple_balance = soup.find(
+#             "table",
+#             {"class": "evanual quadro table table-striped table-hover marcadagua"},
+#         )
+
+#         # Removendo os valores com percentual
+#         for span_tag in simple_balance.findAll("span", {"class": "varperc"}):
+#             span_tag.replace_with("")
+
+#         output_rows = []
 
-        print("")
-        self.print_lines()
-        print(f"-------------- {self.ticker} é um ticker de REIT -------------")
-        self.print_lines()
-        print("")
+#         for table_row in simple_balance.findAll("tr"):
+#             columns = table_row.findAll("td")
+#             output_row = []
+#             for column in columns:
+#                 output_row.append(column.get_text())
+#             output_rows.append(output_row)
 
-        reit_dict = {
-            "Ticker": self.ticker,
-            "Origin": self.company_country,
-            "Company": self.company_name,
-        }
+#         # Criação do dataframe a partir da tabela
+#         self.df_list = pd.DataFrame(output_rows)
 
-        # Dataframe de linha única com o Reit
+#         # Transformação dos valore pra string
+#         self.df_list = self.df_list.applymap(str)
 
-        reit_df = pd.DataFrame.from_dict(reit_dict, orient="index")
-        reit_df = reit_df.transpose()
+#         # Retirada dos pontos e troca das vírgulas pra ponto (pra reconhecimento de decimais)
+#         self.df_list = self.df_list.applymap(
+#             lambda x: x.replace(".", "")
+#             .replace(",", ".")
+#             .replace("L", "0")
+#             .replace("-", "-0")
+#         )
 
-        # Cria um dataframe com as ações já analisadas
+#         # Retirada de 2 linhas zeradas e uma coluna
+#         self.df_list = self.df_list.drop([0, 1], axis=0)
+#         self.df_list = self.df_list.drop([1], axis=1)
 
-        reits_analised = pd.read_csv(paths.bastter_path / "bastter_reits.csv")
+#         # Nomeação do Header
+#         df_cols = [
+#             "Year",
+#             "Net Revenue",
+#             "Net Income",
+#             "EPS",
+#             "EBITDA",
+#             "Net Debt",
+#             "ND/EBITDA",
+#             "FCF",
+#             "FCF/Share",
+#         ]
+#         self.df_list.columns = df_cols
 
-        df_merge = pd.merge(reit_df, reits_analised, how="outer")
+#         # Retorno pra float (pra cálculos)
+#         self.df_list = self.df_list.applymap(float)
 
-        # Mostra o DF
-        print(df_merge.head(1))
-        print(df_merge.tail(1))
+#         # Ano pra Int
+#         self.df_list["Year"] = self.df_list["Year"].apply(int)
 
-        # Salva o DF
-        df_merge.to_csv(paths.bastter_path / "bastter_reits.csv", index=False)
-        print("")
-        self.print_lines()
-        print("-------------- Saved for latter study ------------------ ")
-        self.print_lines()
+#         # Põe em Ordem (independente da entrada)
+#         self.df_list.sort_values(by=["Year"], inplace=True)
 
-    # ======================================================================================
-    # Função que avalia o percentual de queda ou aumento de um ano pro outro de uma empresa
-    # ======================================================================================
+#     # =============================================================================
+#     #  REIT Handling
+#     # =============================================================================
 
-    def income_percentual(self):
+#     def reit_handling(self):
 
-        """
-        Function that evaluates drops in revenue year from year
-        """
+#         print("")
+#         self.print_lines()
+#         print(f"-------------- {self.ticker} é um ticker de REIT -------------")
+#         self.print_lines()
+#         print("")
 
-        lista_percentual_lucros = []
+#         reit_dict = {
+#             "Ticker": self.ticker,
+#             "Origin": self.company_country,
+#             "Company": self.company_name,
+#         }
 
-        # Pega no DF criado pra cada lista qual o primeiro lucro
-        lucro_ano_anterior = self.df_list.iloc[0, 2]
+#         # Dataframe de linha única com o Reit
 
-        for lucro_ano in self.df_list["Net Income"]:
+#         reit_df = pd.DataFrame.from_dict(reit_dict, orient="index")
+#         reit_df = reit_df.transpose()
 
-            # Divide o lucro do ano pelo lucro do ano anterior
-            percentual_mudanca = int(
-                (lucro_ano - lucro_ano_anterior) / (abs(lucro_ano_anterior + 1)) * 100
-            )
+#         # Cria um dataframe com as ações já analisadas
 
-            # Adiciona na lista
-            lista_percentual_lucros.append(percentual_mudanca)
+#         reits_analised = pd.read_csv(paths.bastter_path / "bastter_reits.csv")
 
-            # Faz com que o valor do ano anterior pego o do ano analisado
-            lucro_ano_anterior = lucro_ano + 0.01
+#         df_merge = pd.merge(reit_df, reits_analised, how="outer")
 
-        self.df_list["%"] = lista_percentual_lucros
+#         # Mostra o DF
+#         print(df_merge.head(1))
+#         print(df_merge.tail(1))
 
-        # Prints DF
-        print(tabulate(self.df_list, headers="keys", tablefmt="psql"))
-        print("")
+#         # Salva o DF
+#         df_merge.to_csv(paths.bastter_path / "bastter_reits.csv", index=False)
+#         print("")
+#         self.print_lines()
+#         print("-------------- Saved for latter study ------------------ ")
+#         self.print_lines()
 
-    # =====================================================================================
-    # Appends a line to a DF with the company data and drops
-    # =====================================================================================
+#     # ======================================================================================
+#     # Função que avalia o percentual de queda ou aumento de um ano pro outro de uma empresa
+#     # ======================================================================================
 
-    def avalicao_stock(self):
+#     def income_percentual(self):
 
-        # Contagem dos anos de prejuízo
-        anos_prejuizo = [item for item in self.df_list["Net Income"] if item <= 0]
-        anos_queda_lucro = [item for item in self.df_list["%"] if item < 0]
+#         """
+#         Function that evaluates drops in revenue year from year
+#         """
 
-        stock_info_dict = {
-            "Ticker": self.ticker,
-            "Origin": self.company_country,
-            "Company": self.company_name,
-            "Sector": self.sector,
-            "Group": self.industry_group,
-            "Category": self.industry_category,
-            "Loss": len(anos_prejuizo),
-            "Income Drop": len(anos_queda_lucro),
-        }
+#         lista_percentual_lucros = []
 
-        self.df_individual_stock = pd.DataFrame.from_dict(
-            stock_info_dict, orient="index"
-        )
-        self.df_individual_stock = self.df_individual_stock.transpose()
+#         # Pega no DF criado pra cada lista qual o primeiro lucro
+#         lucro_ano_anterior = self.df_list.iloc[0, 2]
 
-        print(tabulate(self.df_individual_stock, headers="keys", tablefmt="psql"))
+#         for lucro_ano in self.df_list["Net Income"]:
 
-    def csv_storage(self):
+#             # Divide o lucro do ano pelo lucro do ano anterior
+#             percentual_mudanca = int(
+#                 (lucro_ano - lucro_ano_anterior) / (abs(lucro_ano_anterior + 1)) * 100
+#             )
 
-        """
-        Creates a datafram with the analised stocks
+#             # Adiciona na lista
+#             lista_percentual_lucros.append(percentual_mudanca)
 
-        """
+#             # Faz com que o valor do ano anterior pego o do ano analisado
+#             lucro_ano_anterior = lucro_ano + 0.01
 
-        stocks_analisados = pd.read_csv(
-            paths.bastter_path / "bastter_stocks_analised.csv"
-        )
+#         self.df_list["%"] = lista_percentual_lucros
 
-        # Faz um merge com o dataframe criado por mim ao analisar a ação
-        # Isso tem o intuito de remover duplicatas (o merge junta os iguais)
+#         # Prints DF
+#         print(tabulate(self.df_list, headers="keys", tablefmt="psql"))
+#         print("")
 
-        df_merge = pd.merge(self.df_individual_stock, stocks_analisados, how="outer")
+#     # =====================================================================================
+#     # Appends a line to a DF with the company data and drops
+#     # =====================================================================================
 
-        print(f"Total of analised companies: [{df_merge.shape[0]}]")
-        self.print_lines()
+#     def avalicao_stock(self):
 
-        # Salva o DF com a empresa
-        df_merge.to_csv(
-            paths.bastter_path / "bastter_stocks_analised.csv", index=False
-        )
+#         # Contagem dos anos de prejuízo
+#         anos_prejuizo = [item for item in self.df_list["Net Income"] if item <= 0]
+#         anos_queda_lucro = [item for item in self.df_list["%"] if item < 0]
 
-        # Salva os dados da empresa
-        self.df_list.to_csv(
-            paths.data_path / f'simplified_balances/{self.ticker} - {self.company_name} - Simple Balance.csv',
-            index=False,
-        )
-        
-        self.print_lines
-        print("Company data sucessefuly stored")
+#         stock_info_dict = {
+#             "Ticker": self.ticker,
+#             "Origin": self.company_country,
+#             "Company": self.company_name,
+#             "Sector": self.sector,
+#             "Group": self.industry_group,
+#             "Category": self.industry_category,
+#             "Loss": len(anos_prejuizo),
+#             "Income Drop": len(anos_queda_lucro),
+#         }
 
-    # =============================================================================
-    # Selenium
-    # =============================================================================
+#         self.df_individual_stock = pd.DataFrame.from_dict(
+#             stock_info_dict, orient="index"
+#         )
+#         self.df_individual_stock = self.df_individual_stock.transpose()
 
-    def scroll_page_to_table(self):
+#         print(tabulate(self.df_individual_stock, headers="keys", tablefmt="psql"))
 
-        table = self.driver.find_element_by_xpath('//*[@id="quadro-simples"]')
-        self.driver.execute_script("arguments[0].scrollIntoView();", table)
+#     def csv_storage(self):
 
-    def quit_driver(self):
-        self.driver.quit()
+#         """
+#         Creates a datafram with the analised stocks
 
-    def print_lines(self):
-        print("--------------------------------------------------------------")
+#         """
+
+#         stocks_analisados = pd.read_csv(
+#             paths.bastter_path / "bastter_stocks_analised.csv"
+#         )
+
+#         # Faz um merge com o dataframe criado por mim ao analisar a ação
+#         # Isso tem o intuito de remover duplicatas (o merge junta os iguais)
+
+#         df_merge = pd.merge(self.df_individual_stock, stocks_analisados, how="outer")
+
+#         print(f"Total of analised companies: [{df_merge.shape[0]}]")
+#         self.print_lines()
+
+#         # Salva o DF com a empresa
+#         df_merge.to_csv(
+#             paths.bastter_path / "bastter_stocks_analised.csv", index=False
+#         )
+
+#         # Salva os dados da empresa
+#         self.df_list.to_csv(
+#             paths.data_path / f'simplified_balances/{self.ticker} - {self.company_name} - Simple Balance.csv',
+#             index=False,
+#         )
+
+#         self.print_lines
+#         print("Company data sucessefuly stored")
+
+#     # =============================================================================
+#     # Selenium
+#     # =============================================================================
+
+#     def scroll_page_to_table(self):
+
+#         table = self.driver.find_element_by_xpath('//*[@id="quadro-simples"]')
+#         self.driver.execute_script("arguments[0].scrollIntoView();", table)
+
+#     def quit_driver(self):
+#         self.driver.quit()
+
+#     def print_lines(self):
+#         print("--------------------------------------------------------------")
+
+
+def main_extract():
+    """
+    Serves as plataform to test my script
+    """
+
+    extract_test = BastterExtract("xupingas")
+    extract_test.evaluate_existence()
 
 
 if __name__ == "__main__":
-    a = BastterStocks("bby")
-    a.autenticate()
-    a.company_data_extract()
-    a.table_extract()
+    main_extract()

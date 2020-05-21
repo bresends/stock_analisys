@@ -9,10 +9,10 @@ import pandas as pd
 import stock_analisys.packages.fundamentei_class as fc
 
 
-def fundamentei_plot(dataframe):
+def fundamentei_plot(df, company_obj):
 
     fig = plt.figure()
-    fig.set_size_inches(13, 7)
+    fig.set_size_inches(30, 12)
     fig.suptitle(
         f"{company_obj.ticker} - {company_obj.name}", fontsize=14, fontweight="bold"
     )
@@ -151,17 +151,26 @@ def fundamentei_plot(dataframe):
     )
     plt.show()
 
+def main():
 
-if __name__ == "__main__":
+    print('Company: ')
+    ticker = input()
 
     # Instanciate Objetct
-    company_obj = fc.FundamenteiEvaluate("unh")
+    company = fc.FundamenteiEvaluate(ticker)
 
     # Grabs Stock Financial Data
-    df = company_obj.table_extract()
+    dataframe = company.table_extract()
 
     # Grabs Stock General Info
-    company_obj.company_informations()
+    company.company_informations()
 
     # Plots
-    fundamentei_plot(df)
+    fundamentei_plot(dataframe, company)
+
+    # Print Description
+    print(company.description)
+
+if __name__ == "__main__":
+    main()
+    

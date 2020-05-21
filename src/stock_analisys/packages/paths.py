@@ -13,7 +13,7 @@ def set_path():
     cwd = Path.cwd()
     data = cwd / "data"
     bin_files = cwd / "bin"
-    bastter = data / 'bastter_analysis'
+    bastter = data / 'bastter'
     fundamentei = data / 'fundamentei'
 
     return (cwd, data, bin_files, bastter, fundamentei)
