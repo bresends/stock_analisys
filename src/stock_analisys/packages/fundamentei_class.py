@@ -25,7 +25,7 @@ class Fundamentei:
 
     def __init__(self, ticker):
         self.ticker = ticker.upper().strip()
-        self.url = f"https://fundamentei.com/br/{ticker}"
+        self.url = f"https://fundamentei.com/us/{ticker}"
 
 
 class FundamenteiExtract(Fundamentei):
@@ -59,7 +59,7 @@ class FundamenteiExtract(Fundamentei):
         print(f"HTML for {self.ticker} captured successifuly")
 
         with open(
-            paths.data_path / "fundamentei" / "full_balances_br" / f"{self.ticker}.html",
+            paths.data_path / "fundamentei" / "full_balances_us" / f"{self.ticker}.html",
             "w",
             encoding="utf-8",
         ) as file:
@@ -108,7 +108,7 @@ class FundamenteiEvaluate(Fundamentei):
     def __init__(self, ticker):
         super().__init__(ticker)
         self.html_page_bs4 = html_handling.html_file_to_bs4(
-            paths.fundamentei_path / "full_balances" / f"{self.ticker}.html"
+            paths.fundamentei_path / "full_balances_us" / f"{self.ticker}.html"
         )
 
     # Retrieves the Table with data from the Ticker File
@@ -161,7 +161,7 @@ def main_extract():
     Serves as plataform to test my script
     """
 
-    extract_test = FundamenteiExtract("CMCSA")
+    extract_test = FundamenteiExtract("DISCA")
     extract_test.autenticate()
     extract_test.open_page()
     extract_test.html_save()

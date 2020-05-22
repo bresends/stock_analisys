@@ -11,7 +11,7 @@ import pandas as pd
 
 import stock_analisys.packages.fundamentei_class as fc
 import stock_analisys.packages.paths as paths
-import stock_analisys.packages.time_and_dates as td
+import stock_analisys.packages.prints as prints
 
 
 def df_to_list():
@@ -44,7 +44,7 @@ def main():
     
     end = time.time()
 
-    td.time_it_secs_conversion(start, end)
+    prints.time_it_secs_conversion(start, end)
 
 
 

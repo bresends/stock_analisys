@@ -1,5 +1,5 @@
 """
-File with Bastter Class
+Bastter Class
 
 It extracts HTML
 Sort between REITS and STOCKs
@@ -19,9 +19,10 @@ import webbrowser
 
 import pandas as pd
 from bs4 import BeautifulSoup
-from selenium import webdriver
-from tabulate import tabulate
 from requests_html import HTML, HTMLSession
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from tabulate import tabulate
 
 import stock_analisys.packages.paths as paths
 import stock_analisys.packages.prints as prints
@@ -48,7 +49,16 @@ class BastterExtract(Bastter):
     """
 
     def autenticate(self):
-        self.driver = webdriver.Chrome(paths.bin_path / "chromedriver.exe")
+
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+
+        self.driver = webdriver.Chrome(
+            chrome_options=chrome_options,
+            executable_path=paths.bin_path / "chromedriver.exe",
+        )
 
         # Puxa os Cookies
         self.driver.get("https://varvy.com/pagespeed/wicked-fast.html")
@@ -76,38 +86,30 @@ class BastterExtract(Bastter):
         ) as file:
             file.write(str(page_html))
 
-    def evaluate_existence(self):
-        """
-        Opens a Ticker and Verify if the company existis in the Fundamentei Site
-        """
-
-        # Testing URL
-        try:
-            print(f"Analising: {self.url}")
-
-            session = HTMLSession()
-            page = session.get(self.url)
-            
-            # Sucessifuly Loaded
-            if page.status_code == 200:
-                page = page.html.render()
-                print(page)
-
-                # with open(paths.bastter_path / "all_valid_br_stocks.txt", "a") as f:
-                #     f.write(f"{self.ticker} \n")
-
-            # Server Blocking Access
-            elif page.status_code == 503:
-                raise Exception("ServerBlock")
-
-        except Exception as error:
-            raise error
-
     def open_page(self):
         self.driver.get(self.url)
 
     def scroll_page_to_botton(self):
         self.driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
+
+    def evaluate_existence(self):
+
+        """
+        Opens a Ticker and Verify if the company existis in the Fundamentei Site
+        """
+
+        page_html = self.driver.page_source
+
+        bs4 = BeautifulSoup(page_html, "lxml")
+
+        stock_not_found = bs4.find(text="Stock not found.")
+
+        if not stock_not_found:
+            with open(paths.bastter_path / "all_valid_us_stocks.txt", "a") as f:
+                f.write(f"{self.ticker} \n")
+            print(f"Stock {self.ticker} Found")
+        
+        self.driver.quit()
 
 
 # class BastterStocks:
@@ -441,14 +443,17 @@ class BastterExtract(Bastter):
 #         print("--------------------------------------------------------------")
 
 
-def main_extract():
+def main_extract(ticker):
     """
     Serves as plataform to test my script
     """
-
-    extract_test = BastterExtract("xupingas")
+    time.sleep(random.uniform(0.01, 0.02))
+    extract_test = BastterExtract(ticker)
+    extract_test.autenticate()
+    extract_test.open_page()
     extract_test.evaluate_existence()
 
 
 if __name__ == "__main__":
-    main_extract()
+    main_extract("mmm")
+
