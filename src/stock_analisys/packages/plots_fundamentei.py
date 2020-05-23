@@ -160,12 +160,14 @@ def main():
     company = fc.FundamenteiEvaluate(ticker)
 
     # Grabs Stock Financial Data
-    dataframe = company.table_extract()
+    company.table_extract()
+    company.income_percentual()
 
     # Grabs Stock General Info
     company.company_informations()
 
     # Plots
+    dataframe = company.company_full_data
     fundamentei_plot(dataframe, company)
 
     # Print Description

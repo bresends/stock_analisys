@@ -19,7 +19,6 @@ import webbrowser
 
 import pandas as pd
 from bs4 import BeautifulSoup
-from requests_html import HTML, HTMLSession
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from tabulate import tabulate
@@ -40,6 +39,9 @@ class Bastter:
         self.ticker = ticker.upper().strip()
         self.url = f"https://bastter.com/mercado/stock/{ticker}"
 
+# =============================================================================
+# Class Creation
+# =============================================================================
 
 class BastterExtract(Bastter):
 
@@ -56,7 +58,7 @@ class BastterExtract(Bastter):
         chrome_options.add_argument("--disable-dev-shm-usage")
 
         self.driver = webdriver.Chrome(
-            chrome_options=chrome_options,
+            #chrome_options=chrome_options,
             executable_path=paths.bin_path / "chromedriver.exe",
         )
 
@@ -69,6 +71,28 @@ class BastterExtract(Bastter):
                 del cookie["expiry"]
             self.driver.add_cookie(cookie)
         print("Cookies Sucessifuly Loaded")
+
+    def consolidated_data_click(self):
+        
+        """
+        Clicks to the consolidated button (testing if it exists)
+        """
+        
+        consolidated_button = self.driver.find_element_by_xpath(
+            '//*[@id="quadro-completo-menu"]'
+        )
+
+        # Se está carregado, passa pra frente, senão para.
+        if consolidated_button.is_displayed():
+
+            self.driver.find_element_by_xpath(
+                '//*[@id="quadro-completo-menu"]'
+            ).click()
+
+        else:
+
+            print("Button not found in page")
+
 
     def html_save(self):
         """
@@ -85,13 +109,13 @@ class BastterExtract(Bastter):
             encoding="utf-8",
         ) as file:
             file.write(str(page_html))
-
+    
     def open_page(self):
         self.driver.get(self.url)
 
     def scroll_page_to_botton(self):
         self.driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
-
+    
     def evaluate_existence(self):
 
         """
@@ -110,100 +134,78 @@ class BastterExtract(Bastter):
             print(f"Stock {self.ticker} Found")
         
         self.driver.quit()
+    
+# =============================================================================
+# HTML Extract
+# =============================================================================
+    
 
 
-# class BastterStocks:
-#     def __init__(self, ticker):
+    # # =============================================================================
+    # # Método de Extração do Company Info
+    # # =============================================================================
 
-#         self.ticker = ticker.upper().strip()
-#         self.url = f"https://bastter.com/mercado/stock/{ticker}"
+    # def company_data_extract(self):
 
-#     def open_page(self):
-#         self.driver.get(self.url)
+    #     """
+    #     Grabs de Company Name, Ticker, Sector and Group from a given company
+    #     Also tells if a given ticker is a REIT or not
+    #     """
 
-#     # =============================================================================
-#     # Pega e carrega cookie
-#     # =============================================================================
-#     def autenticate(self):
+    #     self.driver.get(self.url)
 
-#         self.driver = webdriver.Chrome(paths.bin_path / "chromedriver.exe")
+    #     # Clicando no item (com teste se ele existe)
+    #     consolidated_button = self.driver.find_element_by_xpath(
+    #         '//*[@id="dados-empresa"]'
+    #     )
 
-#         # Puxa os Cookies
-#         self.driver.get("https://varvy.com/pagespeed/wicked-fast.html")
-#         self.driver.implicitly_wait(1)
+    #     # Se está carregado, passa pra frente, senão para.
+    #     if consolidated_button.is_displayed():
 
-#         for cookie in pickle.load(open(paths.bin_path / "cookies_bastter.pkl", "rb")):
-#             if "expiry" in cookie:
-#                 del cookie["expiry"]
-#             self.driver.add_cookie(cookie)
-#         self.print_lines
-#         print("Cookies Sucessifuly Loaded")
+    #         self.driver.find_element_by_xpath(
+    #             '//*[@id="dados-empresa"]/span[2]'
+    #         ).click()
 
-#     # =============================================================================
-#     # Método de Extração do Company Info
-#     # =============================================================================
+    #     else:
 
-#     def company_data_extract(self):
+    #         print("Button not found in page")
 
-#         """
-#         Grabs de Company Name, Ticker, Sector and Group from a given company
-#         Also tells if a given ticker is a REIT or not
-#         """
+    #     # Extraindo o HTML e gerando o BS4
+    #     page_html = self.driver.page_source
+    #     soup = BeautifulSoup(page_html, "lxml")
 
-#         self.driver.get(self.url)
+    #     # Dados de STOCKS e REITS JUNTOS
 
-#         # Clicando no item (com teste se ele existe)
-#         teste_company_info = self.driver.find_element_by_xpath(
-#             '//*[@id="dados-empresa"]'
-#         )
+    #     self.company_name = soup.find("span", class_="ativo-nome").get_text()
+    #     self.sector = soup.find("span", class_="ativo-sector").get_text()
 
-#         # Se está carregado, passa pra frente, senão para.
-#         if teste_company_info.is_displayed():
+    #     # Changing United States to USA
+    #     self.company_country = soup.find("span", class_="ativo-inc-country").get_text()
 
-#             self.driver.find_element_by_xpath(
-#                 '//*[@id="dados-empresa"]/span[2]'
-#             ).click()
+    #     if self.company_country == " United States of America":
+    #         self.company_country = "USA"
 
-#         else:
+    #     # Condicional de avaliação de REIT
 
-#             print("Button not found in page")
+    #     teste_reit = self.driver.find_element_by_xpath('//*[@id="sidebar-left"]')
 
-#         # Extraindo o HTML e gerando o BS4
-#         page_html = self.driver.page_source
-#         soup = BeautifulSoup(page_html, "lxml")
+    #     test_bs4 = soup.body.findAll(text="REIT")
 
-#         # Dados de STOCKS e REITS JUNTOS
+    #     # Se for um REIT:
+    #     if teste_reit.is_displayed() and len(test_bs4) > 0:
+    #         self.sou_um_reit = True
+    #         self.reit_handling()
 
-#         self.company_name = soup.find("span", class_="ativo-nome").get_text()
-#         self.sector = soup.find("span", class_="ativo-sector").get_text()
+    #     # Se for uma STOCK
+    #     else:
 
-#         # Changing United States to USA
-#         self.company_country = soup.find("span", class_="ativo-inc-country").get_text()
-
-#         if self.company_country == " United States of America":
-#             self.company_country = "USA"
-
-#         # Condicional de avaliação de REIT
-
-#         teste_reit = self.driver.find_element_by_xpath('//*[@id="sidebar-left"]')
-
-#         test_bs4 = soup.body.findAll(text="REIT")
-
-#         # Se for um REIT:
-#         if teste_reit.is_displayed() and len(test_bs4) > 0:
-#             self.sou_um_reit = True
-#             self.reit_handling()
-
-#         # Se for uma STOCK
-#         else:
-
-#             self.sou_um_reit = False
-#             self.industry_group = soup.find(
-#                 "span", class_="ativo-industry-group"
-#             ).get_text()
-#             self.industry_category = soup.find(
-#                 "span", class_="ativo-industry-category"
-#             ).get_text()
+    #         self.sou_um_reit = False
+    #         self.industry_group = soup.find(
+    #             "span", class_="ativo-industry-group"
+    #         ).get_text()
+    #         self.industry_category = soup.find(
+    #             "span", class_="ativo-industry-category"
+    #         ).get_text()
 
 #     # =============================================================================
 #     #   Extração da Tabela do HTML
@@ -447,11 +449,11 @@ def main_extract(ticker):
     """
     Serves as plataform to test my script
     """
-    time.sleep(random.uniform(0.01, 0.02))
     extract_test = BastterExtract(ticker)
     extract_test.autenticate()
     extract_test.open_page()
-    extract_test.evaluate_existence()
+    extract_test.consolidated_data_click()
+    extract_test.html_save()
 
 
 if __name__ == "__main__":

@@ -59,7 +59,10 @@ class FundamenteiExtract(Fundamentei):
         print(f"HTML for {self.ticker} captured successifuly")
 
         with open(
-            paths.data_path / "fundamentei" / "full_balances_us" / f"{self.ticker}.html",
+            paths.data_path
+            / "fundamentei"
+            / "full_balances_us"
+            / f"{self.ticker}.html",
             "w",
             encoding="utf-8",
         ) as file:
@@ -100,6 +103,7 @@ class FundamenteiExtract(Fundamentei):
 
 
 class FundamenteiEvaluate(Fundamentei):
+
     """
     Class related to extrating the important data from the HTML in the list I downloaded
     It is a subclass of Fundamentei (used to treat Tickers)
@@ -111,38 +115,66 @@ class FundamenteiEvaluate(Fundamentei):
             paths.fundamentei_path / "full_balances_us" / f"{self.ticker}.html"
         )
 
-    # Retrieves the Table with data from the Ticker File
     def table_extract(self):
 
+        """
+        Retrieves the Table with data from the Ticker File
+        """
         # Full Balance Extract
         html_balance = self.html_page_bs4.find("table", {"class": "css-xu6ppq"})
-        company_full_data = html_handling.table_to_pandas(html_balance)
+        self.company_full_data = html_handling.table_to_pandas(html_balance)
 
         # Values to strings (to treat)
-        company_full_data = company_full_data.applymap(str)
+        self.company_full_data = self.company_full_data.applymap(str)
 
         # Fixing years (removing month)
-        company_full_data["Year"] = company_full_data.apply(
+        self.company_full_data["Year"] = self.company_full_data.apply(
             lambda row: row["Year"].split("/")[1], axis=1
         )
 
         # Treating Data (remove points and strings)
-        company_full_data = company_full_data.applymap(
+        self.company_full_data = self.company_full_data.applymap(
             lambda x: x.replace(".", "")
             .replace(",", ".")
             .replace("L", "0")
             .replace("-", "-0")
             .replace("%", "")
-            .replace('20 TTM', '2020')
+            .replace("20 TTM", "2020")
         )
 
         # Returning data to float
-        company_full_data = company_full_data.applymap(float)
+        self.company_full_data = self.company_full_data.applymap(float)
 
         # Year to int (to remove the zero in the end)
-        company_full_data["Year"] = company_full_data["Year"].apply(int)
+        self.company_full_data["Year"] = self.company_full_data["Year"].apply(int)
 
-        return company_full_data
+    def income_percentual(self):
+
+        """
+        Evaluates drops in revenue year from year
+        """
+
+        income_list = []
+
+        # Grabs the first Net income in the original table
+        income_last_year = self.company_full_data.loc[0, "Net Inc."]
+
+        for income_current_year in self.company_full_data["Net Inc."]:
+
+            # Divide o lucro do ano pelo lucro do ano anterior
+            percentual_change = int(
+                (income_current_year - income_last_year)
+                / (abs(income_last_year + 1))
+                * 100
+            )
+
+            # Adiciona na lista
+            income_list.append(percentual_change)
+
+            # Faz com que o valor do ano anterior pego o do ano analisado
+            income_last_year = income_current_year + 0.01
+
+        self.company_full_data["%"] = income_list
 
     def company_informations(self):
         """
@@ -171,11 +203,13 @@ def main_evaluate():
     """
     Serves as plataform to test my script
     """
-    evaluate_test = FundamenteiEvaluate("no")
-    table = evaluate_test.table_extract()
+
+    evaluate_test = FundamenteiEvaluate("aapl")
+    evaluate_test.table_extract()
+    evaluate_test.income_percentual()
     evaluate_test.company_informations()
 
 
 if __name__ == "__main__":
-    main_extract()
-    # main_evaluate()
+    # main_extract()
+    main_evaluate()
