@@ -23,6 +23,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from tabulate import tabulate
 
+import stock_analisys.packages.html_handling as html_handling
 import stock_analisys.packages.paths as paths
 import stock_analisys.packages.prints as prints
 
@@ -39,9 +40,11 @@ class Bastter:
         self.ticker = ticker.upper().strip()
         self.url = f"https://bastter.com/mercado/stock/{ticker}"
 
+
 # =============================================================================
 # Class Creation
 # =============================================================================
+
 
 class BastterExtract(Bastter):
 
@@ -58,8 +61,9 @@ class BastterExtract(Bastter):
         chrome_options.add_argument("--disable-dev-shm-usage")
 
         self.driver = webdriver.Chrome(
-            #chrome_options=chrome_options,
-            executable_path=paths.bin_path / "chromedriver.exe",
+            # chrome_options=chrome_options,
+            executable_path=paths.bin_path
+            / "chromedriver.exe",
         )
 
         # Puxa os Cookies
@@ -73,11 +77,11 @@ class BastterExtract(Bastter):
         print("Cookies Sucessifuly Loaded")
 
     def consolidated_data_click(self):
-        
+
         """
         Clicks to the consolidated button (testing if it exists)
         """
-        
+
         consolidated_button = self.driver.find_element_by_xpath(
             '//*[@id="quadro-completo-menu"]'
         )
@@ -85,14 +89,11 @@ class BastterExtract(Bastter):
         # Se está carregado, passa pra frente, senão para.
         if consolidated_button.is_displayed():
 
-            self.driver.find_element_by_xpath(
-                '//*[@id="quadro-completo-menu"]'
-            ).click()
+            self.driver.find_element_by_xpath('//*[@id="quadro-completo-menu"]').click()
 
         else:
 
             print("Button not found in page")
-
 
     def html_save(self):
         """
@@ -104,18 +105,18 @@ class BastterExtract(Bastter):
         print(f"HTML for {self.ticker} captured successifuly")
 
         with open(
-            paths.data_path / "bastter" / "full_balances" / f"{self.ticker}.html",
+            paths.data_path / "bastter" / "full_balances_us" / f"{self.ticker}.html",
             "w",
             encoding="utf-8",
         ) as file:
             file.write(str(page_html))
-    
+
     def open_page(self):
         self.driver.get(self.url)
 
     def scroll_page_to_botton(self):
         self.driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
-    
+
     def evaluate_existence(self):
 
         """
@@ -132,14 +133,86 @@ class BastterExtract(Bastter):
             with open(paths.bastter_path / "all_valid_us_stocks.txt", "a") as f:
                 f.write(f"{self.ticker} \n")
             print(f"Stock {self.ticker} Found")
-        
+
         self.driver.quit()
-    
+
+
 # =============================================================================
 # HTML Extract
 # =============================================================================
-    
 
+
+class BastterEvaluate(Bastter):
+
+    """
+    Class related to extrating the important data from the HTML in the list I downloaded
+    It is a subclass of Fundamentei (used to treat Tickers)
+    """
+
+    def __init__(self, ticker):
+        super().__init__(ticker)
+        self.html_page_bs4 = html_handling.html_file_to_bs4(
+            paths.bastter_path / "full_balances_us" / f"{self.ticker}.html"
+        )
+
+    def tables_extract(self):
+
+        """
+        Retrieves the Table with data from the Ticker File
+        """
+
+        # Removing percentual values
+        for span_tag in self.html_page_bs4.findAll("span", {"class": "varperc"}):
+            span_tag.replace_with("")
+
+        # Filtering Tables
+        all_tables = self.html_page_bs4.find_all(
+            "table",
+            {"class": "evanual quadro table table-striped table-hover marcadagua"},
+        )
+
+        dre = html_handling.table_to_pandas(all_tables[1])
+        cf = html_handling.table_to_pandas(all_tables[2])
+        mult = html_handling.table_to_pandas(all_tables[3])
+
+        def treat_tables(table):
+
+            # Values to strings (to treat)
+            table = table.applymap(str)
+
+            # Treating Data (remove points and strings)
+            table = table.applymap(
+                lambda x: x.replace(".", "")
+                .replace(",", ".")
+                .replace("L", "0")
+                .replace("-", "-0")
+                .replace("%", "")
+                .replace("20 TTM", "2020")
+            )
+            
+            table = table.transpose()
+            table = table.reset_index()
+            table = table.drop(1, axis=0)
+            table = table.reset_index(drop=True)
+
+            # Fixing Header
+            new_header = table.iloc[0] #grab the first row for the header
+            table = table[1:] #take the data less the header row
+            table.columns = new_header #set the header row as the df header
+            table.columns.values[0] = 'Year'
+
+            # Returning data to float
+            table = table.applymap(float)
+
+            # Year to int (to remove the zero in the end)
+            table["Year"] = table["Year"].apply(int)
+
+            table.sort_values(by=['Year'], inplace=True, ascending=True)
+            
+            return table
+        
+        self.dre = treat_tables(dre)
+        
 
     # # =============================================================================
     # # Método de Extração do Company Info
@@ -206,6 +279,7 @@ class BastterExtract(Bastter):
     #         self.industry_category = soup.find(
     #             "span", class_="ativo-industry-category"
     #         ).get_text()
+
 
 #     # =============================================================================
 #     #   Extração da Tabela do HTML
@@ -447,7 +521,7 @@ class BastterExtract(Bastter):
 
 def main_extract(ticker):
     """
-    Serves as plataform to test my script
+    Makes requests and pulls the data from the site
     """
     extract_test = BastterExtract(ticker)
     extract_test.autenticate()
@@ -456,6 +530,18 @@ def main_extract(ticker):
     extract_test.html_save()
 
 
-if __name__ == "__main__":
-    main_extract("mmm")
+def main_evaluate(ticker):
+    """
+    Works with the download files
+    """
 
+    evaluate_test = BastterEvaluate(ticker)
+    evaluate_test.tables_extract()
+    display(evaluate_test.dre)
+    # evaluate_test.income_percentual()
+    # evaluate_test.company_informations()
+
+
+if __name__ == "__main__":
+    # main_extract("mmm")
+    main_evaluate("mmm")

@@ -1,3 +1,9 @@
+"""
+Contains the functions related to Transforming HTML content 
+For example, converts tables to dataframes
+Open HTML files,etc...
+"""
+
 from pathlib import Path
 
 import pandas as pd
