@@ -208,10 +208,13 @@ class BastterEvaluate(Bastter):
             table["Year"] = table["Year"].apply(int)
 
             table.sort_values(by=['Year'], inplace=True, ascending=True)
+            table = table.reset_index(drop=True)
             
             return table
         
         self.dre = treat_tables(dre)
+        self.cash_flow = treat_tables(cf)
+        self.muliples = treat_tables(mult)
         
 
     # # =============================================================================
@@ -279,94 +282,6 @@ class BastterEvaluate(Bastter):
     #         self.industry_category = soup.find(
     #             "span", class_="ativo-industry-category"
     #         ).get_text()
-
-
-#     # =============================================================================
-#     #   Extração da Tabela do HTML
-#     # =============================================================================
-
-#     def table_extract(self):
-
-#         # Clicando no item (com teste se ele existe)
-#         teste_selected_data = self.driver.find_element_by_xpath(
-#             '//*[@id="quadro-simples-menu"]/span[2]'
-#         )
-
-#         # Se está carregado, passa pra frente, senão para.
-#         if teste_selected_data.is_displayed() == True:
-
-#             self.driver.find_element_by_xpath(
-#                 '//*[@id="quadro-simples-menu"]/span[2]'
-#             ).click()
-#             time.sleep(random.uniform(6, 10))
-
-#         else:
-
-#             print("Button not found in page")
-
-#         # Extraindo o HTML e gerando o BS4
-#         page_html = self.driver.page_source
-#         soup = BeautifulSoup(page_html, "lxml")
-
-#         # Extração da Tabela Menor
-#         simple_balance = soup.find(
-#             "table",
-#             {"class": "evanual quadro table table-striped table-hover marcadagua"},
-#         )
-
-#         # Removendo os valores com percentual
-#         for span_tag in simple_balance.findAll("span", {"class": "varperc"}):
-#             span_tag.replace_with("")
-
-#         output_rows = []
-
-#         for table_row in simple_balance.findAll("tr"):
-#             columns = table_row.findAll("td")
-#             output_row = []
-#             for column in columns:
-#                 output_row.append(column.get_text())
-#             output_rows.append(output_row)
-
-#         # Criação do dataframe a partir da tabela
-#         self.df_list = pd.DataFrame(output_rows)
-
-#         # Transformação dos valore pra string
-#         self.df_list = self.df_list.applymap(str)
-
-#         # Retirada dos pontos e troca das vírgulas pra ponto (pra reconhecimento de decimais)
-#         self.df_list = self.df_list.applymap(
-#             lambda x: x.replace(".", "")
-#             .replace(",", ".")
-#             .replace("L", "0")
-#             .replace("-", "-0")
-#         )
-
-#         # Retirada de 2 linhas zeradas e uma coluna
-#         self.df_list = self.df_list.drop([0, 1], axis=0)
-#         self.df_list = self.df_list.drop([1], axis=1)
-
-#         # Nomeação do Header
-#         df_cols = [
-#             "Year",
-#             "Net Revenue",
-#             "Net Income",
-#             "EPS",
-#             "EBITDA",
-#             "Net Debt",
-#             "ND/EBITDA",
-#             "FCF",
-#             "FCF/Share",
-#         ]
-#         self.df_list.columns = df_cols
-
-#         # Retorno pra float (pra cálculos)
-#         self.df_list = self.df_list.applymap(float)
-
-#         # Ano pra Int
-#         self.df_list["Year"] = self.df_list["Year"].apply(int)
-
-#         # Põe em Ordem (independente da entrada)
-#         self.df_list.sort_values(by=["Year"], inplace=True)
 
 #     # =============================================================================
 #     #  REIT Handling
@@ -538,6 +453,8 @@ def main_evaluate(ticker):
     evaluate_test = BastterEvaluate(ticker)
     evaluate_test.tables_extract()
     display(evaluate_test.dre)
+    display(evaluate_test.cash_flow)
+    display(evaluate_test.muliples)
     # evaluate_test.income_percentual()
     # evaluate_test.company_informations()
 
