@@ -151,10 +151,7 @@ def fundamentei_plot(df, company_obj):
     )
     plt.show()
 
-def main():
-
-    print('Company: ')
-    ticker = input()
+def main(ticker):
 
     # Instanciate Objetct
     company = fc.FundamenteiEvaluate(ticker)
@@ -174,5 +171,5 @@ def main():
     print(company.description)
 
 if __name__ == "__main__":
-    main()
+    main('aapl')
     

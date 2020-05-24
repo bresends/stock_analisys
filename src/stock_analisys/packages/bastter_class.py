@@ -189,17 +189,17 @@ class BastterEvaluate(Bastter):
                 .replace("%", "")
                 .replace("20 TTM", "2020")
             )
-            
+
             table = table.transpose()
             table = table.reset_index()
             table = table.drop(1, axis=0)
             table = table.reset_index(drop=True)
 
             # Fixing Header
-            new_header = table.iloc[0] #grab the first row for the header
-            table = table[1:] #take the data less the header row
-            table.columns = new_header #set the header row as the df header
-            table.columns.values[0] = 'Year'
+            new_header = table.iloc[0]  # grab the first row for the header
+            table = table[1:]  # take the data less the header row
+            table.columns = new_header  # set the header row as the df header
+            table.columns.values[0] = "Year"
 
             # Returning data to float
             table = table.applymap(float)
@@ -207,15 +207,55 @@ class BastterEvaluate(Bastter):
             # Year to int (to remove the zero in the end)
             table["Year"] = table["Year"].apply(int)
 
-            table.sort_values(by=['Year'], inplace=True, ascending=True)
+            table.sort_values(by=["Year"], inplace=True, ascending=True)
             table = table.reset_index(drop=True)
-            
+
             return table
-        
-        self.dre = treat_tables(dre)
-        self.cash_flow = treat_tables(cf)
-        self.muliples = treat_tables(mult)
-        
+
+        # Adding Important values to DRIE
+        dre = treat_tables(dre)
+        dre = percentual_variance(dataframe=dre, field='Net Income')
+
+        cash_flow = treat_tables(cf)
+        multiples = treat_tables(mult)
+
+        return (dre, cash_flow, multiples)
+
+
+# =============================================================================
+# Useful Functions
+# =============================================================================
+
+
+def percentual_variance(dataframe, field):
+
+    """Grabs dataframe and evaluates a percentual change in values in any seires
+
+    Returns:
+        dataframe -- the same dataframe with a new column with the percentual changes of the selected field
+    """
+
+    lists = []
+
+    # Grabs the first Net income in the original table
+    last_year_value = dataframe.loc[0, field]
+
+    for current_year_value in dataframe[field]:
+
+        # Divide o valor do ano pelo valor do ano anterior
+        percentual_change = int(
+            (current_year_value - last_year_value) / (abs(last_year_value + 1)) * 100
+        )
+
+        # Adiciona na lista
+        lists.append(percentual_change)
+
+        # Faz com que o valor do ano anterior pego o do ano analisado
+        last_year_value = current_year_value + 0.01
+
+    dataframe[f"%-{field}"] = lists
+
+    return dataframe
 
     # # =============================================================================
     # # Método de Extração do Company Info
@@ -282,6 +322,7 @@ class BastterEvaluate(Bastter):
     #         self.industry_category = soup.find(
     #             "span", class_="ativo-industry-category"
     #         ).get_text()
+
 
 #     # =============================================================================
 #     #  REIT Handling
@@ -447,16 +488,15 @@ def main_extract(ticker):
 
 def main_evaluate(ticker):
     """
-    Works with the download files
+    Show the Dataframes from the Downloaded HTML Bastter Files
     """
 
     evaluate_test = BastterEvaluate(ticker)
-    evaluate_test.tables_extract()
-    display(evaluate_test.dre)
-    display(evaluate_test.cash_flow)
-    display(evaluate_test.muliples)
-    # evaluate_test.income_percentual()
-    # evaluate_test.company_informations()
+    tables = evaluate_test.tables_extract()
+
+    display(tables[0])
+    display(tables[1])
+    display(tables[2])
 
 
 if __name__ == "__main__":
