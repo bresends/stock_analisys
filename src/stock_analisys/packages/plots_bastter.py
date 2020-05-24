@@ -12,7 +12,7 @@ import stock_analisys.packages.bastter_class as bc
 class BastterPlots:
 
     """
-    Makes the Bastter Plots 
+        Makes the Bastter Plots 
     """
 
     def __init__(self, tables):
@@ -29,13 +29,13 @@ class BastterPlots:
     ):
 
         """
-        Plots HTML field tables from Bastter
+            Plots HTML field tables from Bastter
         """
         df = self.tables[table_number]
 
         "Setting Fig"
         fig = plt.figure()
-        fig.set_size_inches(9, 5)
+        fig.set_size_inches(10, 6)
         plot = fig.add_subplot(111)
 
         plot.plot(
@@ -55,7 +55,7 @@ class BastterPlots:
         def fill():
 
             """
-            Fill function
+                Fill function
             """
 
             # Inverts the colors for the debt
@@ -102,11 +102,53 @@ class BastterPlots:
         plot.grid()
         plot.legend()
 
+        plt.tight_layout()
+        plt.show()
+
+    def bs_bar(
+        self, field, table_number=0, bar_collor="b", bar_threshold=0,
+    ):
+
+        """
+            Plots Bars for the HTML field tables from Bastter
+        """
+        df = self.tables[table_number]
+
+        """
+            Variation in Income
+        """
+
+        var_pos = df[df[field] >= 0]
+        var_neg = df[df[field] < 0]
+
+        "Setting Fig"
+        fig = plt.figure()
+        fig.set_size_inches(9, 5)
+        plot = fig.add_subplot(111)
+
+        plot.bar(var_pos["Year"], var_pos[field], color=bar_collor, label=f"+{field}")
+
+        plot.bar(var_neg["Year"], var_neg[field], color="red", label=f"-{field}")
+
+        # Zero mark
+        plot.axhline(
+            y=bar_threshold, color="red", linestyle="--", marker=".", markersize=10
+        )
+
+        plot.set_title(
+            field, fontsize=12, color="black",
+        )
+
+        plot.set_xlabel("Year", color="black")
+        plot.set_ylabel(field, color="black")
+        plot.grid()
+        plot.legend()
+
         plt.show()
 
 
 def main(ticker):
-    
+
     stock_obj = bc.BastterEvaluate(ticker)
     pandas_tables = stock_obj.tables_extract()
     plots = BastterPlots(pandas_tables)
@@ -119,10 +161,14 @@ def main(ticker):
         fill_threshold=0,
     )
 
+    plots.bs_bar(
+        field="%-Net Income", table_number=0, bar_collor="b", bar_threshold=0,
+    )
+
     plots.bs_plot(
         field="Earnings per Share",
         table_number=0,
-        line_color="g",
+        line_color="indigo",
         fill_between=True,
         fill_threshold=0,
     )
@@ -151,6 +197,16 @@ def main(ticker):
         fill_between=True,
         fill_threshold=0,
     )
+
+    plots.bs_plot(
+        field="Net Profit Margin",
+        table_number=0,
+        line_color="navy",
+        fill_between=True,
+        fill_threshold=20,
+    )
+
+
 
 
 if __name__ == "__main__":
