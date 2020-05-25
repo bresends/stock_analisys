@@ -161,9 +161,12 @@ def main(ticker):
         fill_threshold=0,
     )
 
-    plots.bs_bar(
-        field="%-Net Income", table_number=0, bar_collor="b", bar_threshold=0,
-    )
+    try:
+        plots.bs_bar(
+            field="%-Net Income", table_number=0, bar_collor="g", bar_threshold=0,
+        )
+    except:
+        print('Not possible to print Variance')
 
     plots.bs_plot(
         field="Earnings per Share",
@@ -172,6 +175,13 @@ def main(ticker):
         fill_between=True,
         fill_threshold=0,
     )
+
+    try:
+        plots.bs_bar(
+            field="%-Earnings per Share", table_number=0, bar_collor="indigo", bar_threshold=0,
+        )
+    except:
+        print('Not possible to print Variance')
 
     plots.bs_plot(
         field="Net Debt / EBITDA",
@@ -201,7 +211,7 @@ def main(ticker):
     plots.bs_plot(
         field="Net Profit Margin",
         table_number=0,
-        line_color="navy",
+        line_color="crimson",
         fill_between=True,
         fill_threshold=20,
     )

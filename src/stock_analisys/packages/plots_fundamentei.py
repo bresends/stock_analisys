@@ -9,44 +9,16 @@ import pandas as pd
 import stock_analisys.packages.fundamentei_class as fc
 
 
-def fundamentei_plot(df, company_obj):
+def fundamentei_profit_debt_plot(df, company_obj):
 
     fig = plt.figure()
-    fig.set_size_inches(30, 12)
+    fig.set_size_inches(12, 5)
     fig.suptitle(
         f"{company_obj.ticker} - {company_obj.name}", fontsize=14, fontweight="bold"
     )
 
-    company_info = fig.add_subplot(131)
-    profits_graph = fig.add_subplot(132)
-    nd_ebitda = fig.add_subplot(133)
-
-    # ==========================================================
-    # Infos plot
-    # ==========================================================
-
-    company_info.set_axis_off()
-    company_info.set_aspect("auto", anchor="W")
-
-    def write_text(text="Teste", x=0, y=0, size_font=12, alignment="left"):
-
-        company_info.text(
-            x,
-            y,
-            text,
-            horizontalalignment=alignment,
-            bbox=dict(facecolor="gray", alpha=0.05, pad=1, edgecolor="none"),
-            transform=company_info.transAxes,
-            fontsize=size_font,
-            wrap=True,
-        )
-
-    write_text(f"Company: {company_obj.name}", 0.5, 1, 18, "center")
-
-    write_text(f"Fundation: {company_obj.fundation}", 0, 0.9)
-    write_text(f"IPO: {company_obj.ipo}", 0, 0.85)
-    write_text(f"Industry: {company_obj.industry}", 0, 0.80)
-    write_text(f"Market Cap: {company_obj.market_cap}", 0, 0.75)
+    profits_graph = fig.add_subplot(121)
+    nd_ebitda = fig.add_subplot(122)
 
     # ==========================================================
     # Income & EBIT plot
@@ -146,10 +118,101 @@ def fundamentei_plot(df, company_obj):
 
     # plt.subplot_tool()
 
-    plt.subplots_adjust(
-        left=0.02, bottom=0.2, right=0.98, top=0.87, wspace=0.16, hspace=0.2
-    )
+    plt.tight_layout()
     plt.show()
+
+    # ===========================================================================
+    # Margin
+    # ===========================================================================
+
+    fig2 = plt.figure()
+    fig2.set_size_inches(12, 5)
+
+    net_margin = fig2.add_subplot(121)
+    payout = fig2.add_subplot(122)
+
+    net_margin.plot(
+        df["Year"],
+        df["Net Mar."],
+        color="red",
+        linestyle="-",
+        marker=".",
+        markersize=8,
+    )
+
+    # Zero mark
+    net_margin.axhline(y=20, color="red", linestyle="--", marker=".", markersize=10)
+
+    # Fill Between Loss
+    net_margin.fill_between(
+        df["Year"],
+        df["Net Mar."],
+        y2=20,
+        where=(df["Net Mar."] < 20),
+        color="r",
+        alpha=0.75,
+        interpolate=True,
+        label="Less than Ideal",
+    )
+
+    # Fill Between Loss
+    net_margin.fill_between(
+        df["Year"],
+        df["Net Inc."],
+        y2=20,
+        where=(df["Net Mar."] > 20),
+        color="b",
+        alpha=0.75,
+        interpolate=True,
+        label=" Ideal",
+    )
+
+    net_margin.set_title(
+        "[Net Mar.]", fontsize=12, color="black",
+    )
+
+    net_margin.set_xlabel("Year", color="black")
+    net_margin.set_ylabel("Net Mar. (%)", color="black")
+    net_margin.grid()
+    net_margin.legend()
+
+    # Payout 
+
+     # Zero mark
+    payout.axhline(y=10, color="green", linestyle="--", marker=".", markersize=10)
+    payout.axhline(y=25, color="darkorange", linestyle="--", marker=".", markersize=10)
+    payout.axhline(y=50, color="red", linestyle="--", marker=".", markersize=10)
+
+    payout.plot(
+        df["Year"],
+        df["Payout"],
+        color="magenta",
+        linestyle="-",
+        marker=".",
+        markersize=8,
+    )
+
+    payout.bar(
+        df["Year"],
+        df["Payout"],
+        color="pink",
+        label='Payout'
+    )
+
+    net_margin.set_title(
+        "[Payout]", fontsize=12, color="black",
+    )
+
+    payout.set_xlabel("Year", color="black")
+    payout.set_ylabel("Payout(%)", color="black")
+    payout.grid()
+    payout.legend()
+
+    plt.tight_layout()
+    plt.show()
+
+    
+
 
 def main(ticker):
 
@@ -165,11 +228,8 @@ def main(ticker):
 
     # Plots
     dataframe = company.company_full_data
-    fundamentei_plot(dataframe, company)
+    fundamentei_profit_debt_plot(dataframe, company)
 
-    # Print Description
-    print(company.description)
 
 if __name__ == "__main__":
-    main('aapl')
-    
+    main("aapl")

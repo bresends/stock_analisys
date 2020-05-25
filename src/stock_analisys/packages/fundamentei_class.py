@@ -148,7 +148,34 @@ class FundamenteiEvaluate(Fundamentei):
         # Year to int (to remove the zero in the end)
         self.company_full_data["Year"] = self.company_full_data["Year"].apply(int)
 
-    
+    def income_percentual(self):
+
+        """
+        Evaluates drops in revenue year from year
+        """
+
+        income_list = []
+
+        # Grabs the first Net income in the original table
+        income_last_year = self.company_full_data.loc[0, "Net Inc."]
+
+        for income_current_year in self.company_full_data["Net Inc."]:
+
+            # Divide o lucro do ano pelo lucro do ano anterior
+            percentual_change = int(
+                (income_current_year - income_last_year)
+                / (abs(income_last_year + 1))
+                * 100
+            )
+
+            # Adiciona na lista
+            income_list.append(percentual_change)
+
+            # Faz com que o valor do ano anterior pego o do ano analisado
+            income_last_year = income_current_year + 0.01
+
+        self.company_full_data["%"] = income_list
+        
     def company_informations(self):
         """
         Grabs the Company basic info

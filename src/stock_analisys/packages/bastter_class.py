@@ -216,6 +216,7 @@ class BastterEvaluate(Bastter):
         # Adding Important values to DRIE
         dre = treat_tables(dre)
         dre = percentual_variance(dataframe=dre, field="Net Income")
+        dre = percentual_variance(dataframe=dre, field="Earnings per Share")
 
         cash_flow = treat_tables(cf)
         multiples = treat_tables(mult)
@@ -277,10 +278,6 @@ def main_evaluate(ticker):
 
     evaluate_test = BastterEvaluate(ticker)
     tables = evaluate_test.tables_extract()
-
-    display(tables[0])
-    display(tables[1])
-    display(tables[2])
 
 
 if __name__ == "__main__":
