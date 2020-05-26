@@ -122,7 +122,7 @@ def fundamentei_profit_debt_plot(df, company_obj):
     plt.show()
 
     # ===========================================================================
-    # FIG 2 - Margin & Profit 
+    # FIG 2 - Margin & Profit
     # ===========================================================================
 
     fig2 = plt.figure()
@@ -176,42 +176,41 @@ def fundamentei_profit_debt_plot(df, company_obj):
     net_margin.grid()
     net_margin.legend()
 
-    # Payout 
+    # Payout
 
-     # Zero mark
-    payout.axhline(y=10, color="green", linestyle="--", marker=".", markersize=10)
-    payout.axhline(y=25, color="darkorange", linestyle="--", marker=".", markersize=10)
-    payout.axhline(y=50, color="red", linestyle="--", marker=".", markersize=10)
+    try:
 
-    payout.plot(
-        df["Year"],
-        df["Payout"],
-        color="magenta",
-        linestyle="-",
-        marker=".",
-        markersize=8,
-    )
+        # Zero mark
+        payout.axhline(y=10, color="green", linestyle="--", marker=".", markersize=10)
+        payout.axhline(
+            y=25, color="darkorange", linestyle="--", marker=".", markersize=10
+        )
+        payout.axhline(y=50, color="red", linestyle="--", marker=".", markersize=10)
 
-    payout.bar(
-        df["Year"],
-        df["Payout"],
-        color="pink",
-        label='Payout'
-    )
+        payout.plot(
+            df["Year"],
+            df["Payout"],
+            color="magenta",
+            linestyle="-",
+            marker=".",
+            markersize=8,
+        )
 
-    net_margin.set_title(
-        "[Payout]", fontsize=12, color="black",
-    )
+        payout.bar(df["Year"], df["Payout"], color="pink", label="Payout")
 
-    payout.set_xlabel("Year", color="black")
-    payout.set_ylabel("Payout(%)", color="black")
-    payout.grid()
-    payout.legend()
+        payout.set_title(
+            "[Payout]", fontsize=12, color="black",
+        )
 
-    plt.tight_layout()
-    plt.show()
+        payout.set_xlabel("Year", color="black")
+        payout.set_ylabel("Payout(%)", color="black")
+        payout.grid()
+        payout.legend()
 
-    
+        plt.tight_layout()
+        plt.show()
+    except:
+        print("No payout")
 
 
 def main(ticker):

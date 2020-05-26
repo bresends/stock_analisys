@@ -254,4 +254,4 @@ def main(ticker):
 
 
 if __name__ == "__main__":
-    main("mmm")
+    main("msft")
