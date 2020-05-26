@@ -216,6 +216,20 @@ def main(ticker):
         fill_threshold=20,
     )
 
+    plots.bs_plot(
+        field="Debt",
+        table_number=0,
+        line_color="red",
+        fill_between=False,
+    )
+
+    plots.bs_plot(
+        field="Net Debt",
+        table_number=0,
+        line_color="firebrick",
+        fill_between=False,
+    )
+
 
 
 

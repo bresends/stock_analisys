@@ -1,8 +1,10 @@
-from pathlib import  Path
-
 """
 Sets the Path Variables for all files
 """
+
+from pathlib import  Path
+
+
 
 def set_path():
 
@@ -18,12 +20,10 @@ def set_path():
 
     return (cwd, data, bin_files, bastter, fundamentei)
 
-import stock_analisys.packages.paths as paths
-
 # =============================================================================
 # Directories Setup
 # =============================================================================
 
-cwd_path, data_path, bin_path, bastter_path, fundamentei_path = paths.set_path()
+cwd_path, data_path, bin_path, bastter_path, fundamentei_path = set_path()
     
     
