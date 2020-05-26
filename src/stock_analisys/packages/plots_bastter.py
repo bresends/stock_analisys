@@ -166,7 +166,7 @@ def main(ticker):
             field="%-Net Income", table_number=0, bar_collor="g", bar_threshold=0,
         )
     except:
-        print('Not possible to print Variance')
+        print("Not possible to print Variance")
 
     plots.bs_plot(
         field="Earnings per Share",
@@ -178,10 +178,13 @@ def main(ticker):
 
     try:
         plots.bs_bar(
-            field="%-Earnings per Share", table_number=0, bar_collor="indigo", bar_threshold=0,
+            field="%-Earnings per Share",
+            table_number=0,
+            bar_collor="indigo",
+            bar_threshold=0,
         )
     except:
-        print('Not possible to print Variance')
+        print("Not possible to print Variance")
 
     plots.bs_plot(
         field="Net Debt / EBITDA",
@@ -195,7 +198,7 @@ def main(ticker):
     plots.bs_plot(
         field="EBITDA",
         table_number=0,
-        line_color="y",
+        line_color="gold",
         fill_between=True,
         fill_threshold=0,
     )
@@ -217,20 +220,37 @@ def main(ticker):
     )
 
     plots.bs_plot(
-        field="Debt",
-        table_number=0,
-        line_color="red",
-        fill_between=False,
+        field="Debt", table_number=0, line_color="red", fill_between=False,
     )
 
     plots.bs_plot(
-        field="Net Debt",
-        table_number=0,
-        line_color="firebrick",
-        fill_between=False,
+        field="Net Debt", table_number=0, line_color="firebrick", fill_between=False,
     )
 
+    plots.bs_plot(
+        field="Net Debt/Equity",
+        table_number=0,
+        line_color="darkcyan",
+        fill_between=True,
+        fill_threshold=1,
+        invert_fill=True,
+    )
 
+    plots.bs_plot(
+        field="Equity",
+        table_number=0,
+        line_color="rebeccapurple",
+        fill_between=True,
+        fill_threshold=0,
+    )
+
+    plots.bs_plot(
+        field="Cash",
+        table_number=0,
+        line_color="dodgerblue",
+        fill_between=True,
+        fill_threshold=0,
+    )
 
 
 if __name__ == "__main__":

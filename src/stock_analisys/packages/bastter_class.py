@@ -63,8 +63,8 @@ class BastterExtract(Bastter):
 
         self.driver = webdriver.Chrome(
             # chrome_options=chrome_options,
-            executable_path=paths.bin_path
-            / "chromedriver.exe",
+            executable_path=str(paths.bin_path
+            / "chromedriver.exe"),
         )
 
         # Puxa os Cookies
@@ -281,5 +281,5 @@ def main_evaluate(ticker):
 
 
 if __name__ == "__main__":
-    # main_extract("mmm")
-    main_evaluate("mmm")
+    main_extract("mmm")
+    # main_evaluate("mmm")
