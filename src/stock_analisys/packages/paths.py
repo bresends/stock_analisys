@@ -17,13 +17,14 @@ def set_path():
     bin_files = cwd / "bin"
     bastter = data / 'bastter'
     fundamentei = data / 'fundamentei'
+    morning_star = data / 'morning_star'
 
-    return (cwd, data, bin_files, bastter, fundamentei)
+    return (cwd, data, bin_files, bastter, fundamentei, morning_star)
 
 # =============================================================================
 # Directories Setup
 # =============================================================================
 
-cwd_path, data_path, bin_path, bastter_path, fundamentei_path = set_path()
+cwd_path, data_path, bin_path, bastter_path, fundamentei_path, morning_star = set_path()
     
     

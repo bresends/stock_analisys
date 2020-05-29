@@ -20,7 +20,8 @@ import stock_analisys.packages.prints as prints
 
 
 class Fundamentei:
-    """Super Class for all related tasks for Fundamentei
+    """
+    Super Class for all related tasks for Fundamentei
     """
 
     def __init__(self, ticker):
