@@ -15,7 +15,7 @@ class MorningStar:
 
     def __init__(self, ticker):
         self.ticker = ticker.upper().strip()
-        self.url = f"https://financials.morningstar.com/ratios/r.html?t={ticker}"
+        self.url = f"http://financials.morningstar.com/income-statement/is.html?t={ticker}"
 
     def open_browser(self):
         chrome_options = webdriver.ChromeOptions()
@@ -53,18 +53,32 @@ class MorningStarExtract(MorningStar):
     def scroll_page_to_botton(self):
         self.driver.implicitly_wait(2)
         self.driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
+    
+    def income_statement_export(self):
+        
+        export_buttom = self.driver.find_element_by_link_text("Export")
+
+        # Se está carregado, passa pra frente, senão para.
+        if export_buttom.is_displayed():
+
+            export_buttom.click()
+        else:
+
+            print("Button not found in page")
 
 
 def main(ticker):
     stock_obj = MorningStarExtract(ticker)
     stock_obj.open_browser()
     stock_obj.open_page()
-    stock_obj.key_ratios_export()
-    stock_obj.scroll_page_to_botton()
+    # stock_obj.key_ratios_export()
+    # stock_obj.scroll_page_to_botton()
 
 
 if __name__ == "__main__":
     
     df = pd.read_csv(paths.morning_star/ 'tickers.csv')
-    for item in df['Ticker']:
-        main(item.strip())
+    
+    main('aapl')
+    # for item in df['Ticker']:
+    #     main(item.strip())
