@@ -4,6 +4,8 @@ Morning Star Companies Info Extract
 
 import pandas as pd
 from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
+import time 
 
 import stock_analisys.packages.paths as paths
 
@@ -19,7 +21,7 @@ class MorningStar:
 
     def open_browser(self):
         chrome_options = webdriver.ChromeOptions()
-        prefs = {'download.default_directory' : str(paths.morning_star / 'key_ratios')}
+        prefs = {'download.default_directory' : str(paths.morning_star / 'income_statement')}
         chrome_options.add_experimental_option('prefs', prefs)
 
         self.driver = webdriver.Chrome(
@@ -56,12 +58,15 @@ class MorningStarExtract(MorningStar):
     
     def income_statement_export(self):
         
-        export_buttom = self.driver.find_element_by_link_text("Export")
+        action = ActionChains(self.driver)
+
+        export_buttom = self.driver.find_element_by_xpath('//*[@id="sfcontent"]/div[1]/div[2]/div[21]/span/a')
 
         # Se está carregado, passa pra frente, senão para.
         if export_buttom.is_displayed():
-
+            action.move_to_element(export_buttom).perform()
             export_buttom.click()
+            time.sleep(1)
         else:
 
             print("Button not found in page")
@@ -71,14 +76,14 @@ def main(ticker):
     stock_obj = MorningStarExtract(ticker)
     stock_obj.open_browser()
     stock_obj.open_page()
-    # stock_obj.key_ratios_export()
-    # stock_obj.scroll_page_to_botton()
+    stock_obj.income_statement_export()
+    stock_obj.scroll_page_to_botton()
 
 
 if __name__ == "__main__":
     
     df = pd.read_csv(paths.morning_star/ 'tickers.csv')
     
-    main('aapl')
-    # for item in df['Ticker']:
-    #     main(item.strip())
+    # main('aapl')
+    for item in df['Ticker']:
+        main(item.strip())
