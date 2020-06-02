@@ -36,7 +36,7 @@ class FundamenteiExtract(Fundamentei):
     """
 
     def autenticate(self):
-        self.driver = webdriver.Chrome(paths.bin_path / "chromedriver.exe")
+        self.driver = webdriver.Chrome(str(paths.bin_path / "chromedriver.exe"))
 
         # Puxa os Cookies
         self.driver.get("https://varvy.com/pagespeed/wicked-fast.html")
@@ -112,9 +112,9 @@ class FundamenteiEvaluate(Fundamentei):
 
     def __init__(self, ticker):
         super().__init__(ticker)
-        self.html_page_bs4 = html_handling.html_file_to_bs4(
+        self.html_page_bs4 = html_handling.html_file_to_bs4(str(
             paths.fundamentei_path / "full_balances_us" / f"{self.ticker}.html"
-        )
+        ))
 
     def table_extract(self):
 
@@ -194,7 +194,7 @@ def main_extract():
     Serves as plataform to test my script
     """
 
-    extract_test = FundamenteiExtract("DISCA")
+    extract_test = FundamenteiExtract("bf")
     extract_test.autenticate()
     extract_test.open_page()
     extract_test.html_save()
@@ -212,5 +212,5 @@ def main_evaluate():
 
 
 if __name__ == "__main__":
-    # main_extract()
-    main_evaluate()
+    main_extract()
+    # main_evaluate()

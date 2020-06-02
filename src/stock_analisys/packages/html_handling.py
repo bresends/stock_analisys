@@ -4,13 +4,13 @@ For example, converts tables to dataframes
 Open HTML files,etc...
 """
 
+from glob import glob
 from pathlib import Path
 
 import pandas as pd
 from bs4 import BeautifulSoup
 
 import stock_analisys.packages.paths as paths
-
 
 # =============================================================================
 # Functions
@@ -28,13 +28,28 @@ def html_file_to_bs4(chosen_file):
     return html_result
 
 
+def list_files(folder_path):
+    """Makes a list with the names of all files in a directory
+
+    Arguments:
+        folder_path {path} -- the desired folder 
+
+    Returns:
+        [all_files] -- list with the names
+    """
+
+    p = Path(rf"{folder_path}").glob("**/*")
+    all_files = [str(x.name) for x in p if x.is_file()]
+    return all_files
+
+
 def table_to_pandas(bs4):
 
     """
     Functions that receives the HTML string from a beautiful soup object
     Returns a Dadaframe with titles
     """
-    
+
     # Name Extract
     n_columns = 0
     n_rows = 0
@@ -84,10 +99,7 @@ def table_to_pandas(bs4):
 
 
 def main():
-    """
-    Tests 
-    """
-
+    # Tests
     stock = html_file_to_bs4(paths.fundamentei_path / "full_balances" / "AAPL.html")
     print(stock.prettify())
 
