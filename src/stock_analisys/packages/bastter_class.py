@@ -63,8 +63,7 @@ class BastterExtract(Bastter):
 
         self.driver = webdriver.Chrome(
             # chrome_options=chrome_options,
-            executable_path=str(paths.bin_path
-            / "chromedriver.exe"),
+            executable_path=str(paths.bin_path / "chromedriver.exe"),
         )
 
         # Puxa os Cookies
@@ -91,6 +90,7 @@ class BastterExtract(Bastter):
         if consolidated_button.is_displayed():
 
             self.driver.find_element_by_xpath('//*[@id="quadro-completo-menu"]').click()
+            time.sleep(10)
 
         else:
 
@@ -111,6 +111,8 @@ class BastterExtract(Bastter):
             encoding="utf-8",
         ) as file:
             file.write(str(page_html))
+        
+        time.sleep(1)
 
     def open_page(self):
         self.driver.get(self.url)
@@ -269,6 +271,7 @@ def main_extract(ticker):
     extract_test.open_page()
     extract_test.consolidated_data_click()
     extract_test.html_save()
+    extract_test.driver.quit()
 
 
 def main_evaluate(ticker):
@@ -281,5 +284,5 @@ def main_evaluate(ticker):
 
 
 if __name__ == "__main__":
-    main_extract("mmm")
+    main_extract("yyy")
     # main_evaluate("mmm")
