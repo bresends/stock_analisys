@@ -4,12 +4,14 @@ Scrapes the HTML and put information inside DB
 
 import re
 import time
+import pandas as pd
 
 from bs4 import BeautifulSoup
 
 import stock_analisys.packages.html_handling as html_handling
 import stock_analisys.packages.paths as paths
 from stock_analisys.packages.sql_connection import sql_engine
+import webbrowser
 
 
 class FundamenteiToSql:
@@ -31,16 +33,14 @@ class FundamenteiToSql:
         Takes the HTML BS4 object and grabs the important data 
         """
         self.company_name = self.parsed_html.h1.get_text().replace("'", "")
-        self.fundation_year = int(
+
+        self.ipo_year = int(
             self.parsed_html.find_all("div", class_="css-1bcdh3w")[0]
             .get_text()
             .split()[0]
         )
-        self.ipo_year = int(
-            self.parsed_html.find_all("div", class_="css-1bcdh3w")[1]
-            .get_text()
-            .split()[0]
-        )
+
+        self.fundation_year = int(self.ipo_year - 5)
 
         # CIK number retrieval
         _page_links = self.parsed_html.find_all("a", class_="css-e08q0q")
@@ -82,37 +82,47 @@ class FundamenteiToSql:
         return f"{self.ticker} - {self.company_name} - IPO: {self.ipo_year} - Fundation {self.fundation_year} - CIK {self.cik}"
 
 
+def dump_to_sql(ticker):
+    """
+    Receives Ticker
+    Grabs HTML file
+    """
+
+    stock = FundamenteiToSql(ticker)
+    stock.html_open()
+    stock.info_extract()
+    stock.to_sql()
+    print("Stock Succesifuly Stored")
+    print(stock)
+
+
+def problem_fundamentei(position):
+
+    try:
+        df = pd.read_sql("SELECT * FROM trash_stocks", con=sql_engine)
+
+        ticker = df["ticker"].iloc[position]
+
+        print(ticker)
+
+        dump_to_sql(ticker)
+
+        cursor = sql_engine.connect()
+
+        query = f"""DELETE FROM trash_stocks WHERE ticker = '{ticker}';"""
+
+        cursor.execute(query)
+
+    except IndexError:
+        
+        # webbrowser.open_new_tab(f"https://fundamentei.com/us/{ticker}")
+        pass
+
+
+
+
 if __name__ == "__main__":
 
-    files = html_handling.list_files(paths.fundamentei_path / "full_balances_us")
-    tickers = list(map(lambda x: x.split(".")[0], files))
-
-    for item in tickers:
-        print(item)
-
-        try:
-            stock = FundamenteiToSql(item)
-            stock.html_open()
-            stock.info_extract()
-            stock.to_sql()
-            print("Stock Succesifuly Stored")
-            print(stock)
-
-        except Exception as erro:
-            print("Error. Trowing Stock to not retrivable MySQL database")
-            print(type(erro))
-            print(erro.args)
-            print(erro)
-            cursor = sql_engine.connect()
-
-            query = f"""\
-            INSERT INTO not_retrivable(\
-                ticker,\
-                company_name\
-                )\
-            VALUES(\
-                '{stock.ticker}',\
-                '{stock.company_name}'\
-                );"""
-
-            cursor.execute(query)
+    for i in range(47,400):
+        print(i)
+        problem_fundamentei(i)
