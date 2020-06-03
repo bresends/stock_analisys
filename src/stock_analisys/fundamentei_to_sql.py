@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 
 import stock_analisys.packages.html_handling as html_handling
 import stock_analisys.packages.paths as paths
+from stock_analisys.packages.sql_class import MySQL
 
 
 class FundamenteiToSql:
@@ -22,9 +23,7 @@ class FundamenteiToSql:
         Uses Paths and HTML handling modulese to open the HTML page as a Bs4 Object
         """
         self.parsed_html = html_handling.html_file_to_bs4(
-            paths.fundamentei_path
-            / "full_balances_us"
-            / f"{self.ticker.strip().upper()}.html"
+            paths.fundamentei_path / "full_balances_us" / f"{self.ticker}.html"
         )
 
     def info_extract(self):
@@ -33,52 +32,23 @@ class FundamenteiToSql:
         """
         self.company_name = self.parsed_html.h1.get_text().replace("'", "")
 
-        self.ipo_year = int(
-            self.parsed_html.find_all("div", class_="css-1bcdh3w")[0]
-            .get_text()
-            .split()[0]
-        )
+        # Extracting Orign 
+        self.origin = self.parsed_html.find('img', class_='css-1phd9a0')['alt']
 
-        self.fundation_year = int(self.ipo_year - 5)
-
-        # CIK number retrieval
-        _page_links = self.parsed_html.find_all("a", class_="css-e08q0q")
-
-        for item in _page_links:
-            if "sec" in item["href"]:  # In all links search for the SEC word
-                self.cik = re.findall("\d+", item["href"])[0]
-
-        # IR url retrieval
-        self.ir_url = self.parsed_html.find_all("a", class_="css-e08q0q")[1]["href"]
 
     def to_sql(self):
-        """
-        Saves Extracted data to MySQL 
-        """
-        cursor = sql_engine.connect()
+        sql_handler = MySQL()
 
-        query = f"""\
-        INSERT INTO company_info(\
-            ticker,\
-            company_name,\
-            ipo_year, \
-            fundation_year,\
-            cik_number,\
-            ri_site\
-            )\
-        VALUES(\
-            '{self.ticker}',\
-            '{self.company_name}',\
-            '{self.ipo_year}',\
-            '{self.fundation_year}',\
-            '{self.cik}',\
-            '{self.ir_url}'\
-            );"""
-
-        cursor.execute(query)
+        sql_handler.update(
+            table="company_info",
+            changed_column="origin",
+            value=self.origin,
+            where_column="ticker",
+            where_equals=self.ticker,
+        )
 
     def __str__(self):
-        return f"{self.ticker} - {self.company_name} - IPO: {self.ipo_year} - Fundation {self.fundation_year} - CIK {self.cik}"
+        return f"{self.ticker} - Origin : {self.origin}"
 
 
 def dump_to_sql(ticker):
@@ -91,33 +61,26 @@ def dump_to_sql(ticker):
     stock.html_open()
     stock.info_extract()
     stock.to_sql()
-    print("Stock Succesifuly Stored")
+    print("Stock Succesifuly Updated")
     print(stock)
-
-
-def problem_fundamentei(position):
-
-    try:
-        df = pd.read_sql("SELECT * FROM trash_stocks", con=sql_engine)
-
-        ticker = df["ticker"].iloc[position]
-
-        print(ticker)
-
-        dump_to_sql(ticker)
-
-        cursor = sql_engine.connect()
-
-        query = f"""DELETE FROM trash_stocks WHERE ticker = '{ticker}';"""
-
-        cursor.execute(query)
-
-    except IndexError:
-
-        # webbrowser.open_new_tab(f"https://fundamentei.com/us/{ticker}")
-        pass
 
 
 if __name__ == "__main__":
 
-    dump_to_sql("appl")
+    """
+    Grabs of tickers of companies with no Origin  
+    """
+
+    sql_handler = MySQL()
+
+    result = sql_handler.select_unique_column(
+        table="company_info",
+        desired_column="ticker",
+        where_column="origin",
+        where_equals="{{inc-country}}",
+    )
+
+    # Uses this to extract Origins 
+
+    for i in range(100):
+        dump_to_sql(result[i])
