@@ -4,14 +4,13 @@ Scrapes the HTML and put information inside DB
 
 import re
 import time
-import pandas as pd
+import webbrowser
 
+import pandas as pd
 from bs4 import BeautifulSoup
 
 import stock_analisys.packages.html_handling as html_handling
 import stock_analisys.packages.paths as paths
-from stock_analisys.packages.sql_connection import sql_engine
-import webbrowser
 
 
 class FundamenteiToSql:
@@ -114,15 +113,11 @@ def problem_fundamentei(position):
         cursor.execute(query)
 
     except IndexError:
-        
+
         # webbrowser.open_new_tab(f"https://fundamentei.com/us/{ticker}")
         pass
 
 
-
-
 if __name__ == "__main__":
 
-    for i in range(47,400):
-        print(i)
-        problem_fundamentei(i)
+    dump_to_sql("appl")
