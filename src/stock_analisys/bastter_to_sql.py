@@ -24,47 +24,100 @@ class BastterHTML:
         )
 
     def data_extraction(self):
-        # self.sector = self.parsed_html.find("span", class_="ativo-sector").get_text()
-        # self.industry_group = self.parsed_html.find(
-        #     "span", class_="ativo-industry-group"
-        # ).get_text().strip()
-        # self.industry_category = self.parsed_html.find(
-        #     "span", class_="ativo-industry-category"
-        # ).get_text().strip()
-        # self.exchange = self.parsed_html.find(
-        #     "span", class_="ativo-exchange"
-        # ).get_text().strip()
-        # self.description = self.parsed_html.find(
-        #     "span", class_="ativo-description"
-        # ).get_text().strip()
-        self.origin = self.parsed_html.find(
-            "span", class_="ativo-inc-country"
-        ).get_text().strip()
-        # self.market_cap = (
-        #     self.parsed_html.find("span", class_="ativo-market-cap")
-        #     .get_text().strip()
-        #     .replace("$", "")
-        #     .split(".")[0]
-        #     .replace(",", "")
-        #     .strip()
-        # )
+        self.sector = (
+            self.parsed_html.find("span", class_="ativo-sector").get_text().strip()
+        )
+        self.industry_group = (
+            self.parsed_html.find("span", class_="ativo-industry-group")
+            .get_text()
+            .strip()
+        )
+        self.industry_category = (
+            self.parsed_html.find("span", class_="ativo-industry-category")
+            .get_text()
+            .strip()
+        )
+        self.exchange = (
+            self.parsed_html.find("span", class_="ativo-exchange").get_text().strip()
+        )
+
+        self.description = (
+            self.parsed_html.find("span", class_="ativo-description").get_text().strip()
+        )
+        self.origin = (
+            self.parsed_html.find("span", class_="ativo-inc-country").get_text().strip()
+        )
+
+        self.market_cap = (
+            self.parsed_html.find("span", class_="ativo-market-cap").get_text().strip()
+        )
 
     def to_sql(self):
         sql_handler = MySQL()
 
         sql_handler.update(
             table="company_info",
-            changed_column="origin",
-            value=self.origin,
+            changed_column="sector",
+            value=self.sector,
+            where_column="ticker",
+            where_equals=self.ticker,
+        )
+
+        sql_handler.update(
+            table="company_info",
+            changed_column="industry_group",
+            value=self.industry_group,
+            where_column="ticker",
+            where_equals=self.ticker,
+        )
+
+        sql_handler.update(
+            table="company_info",
+            changed_column="industry_category",
+            value=self.industry_category,
+            where_column="ticker",
+            where_equals=self.ticker,
+        )
+
+        sql_handler.update(
+            table="company_info",
+            changed_column="description",
+            value=self.description,
+            where_column="ticker",
+            where_equals=self.ticker,
+        )
+
+        sql_handler.update(
+            table="company_info",
+            changed_column="market_cap",
+            value=self.market_cap,
+            where_column="ticker",
+            where_equals=self.ticker,
+        )
+
+        sql_handler.update(
+            table="company_info",
+            changed_column="exchance",
+            value=self.exchange,
             where_column="ticker",
             where_equals=self.ticker,
         )
 
 
-def list_stock_names():
-    files = html_handling.list_files(paths.fundamentei_path / "full_balances_us")
-    tickers = list(map(lambda x: x.split(".")[0], files))
-    return tickers
+def all_stocks_tickers_sql():
+
+    """
+    Grabs of tickers of companies with no Origin  
+    """
+
+    sql_handler = MySQL()
+
+    query_response = sql_handler.stocks_db_engine.execute(
+        "SELECT ticker FROM company_info"
+    )
+    result = tuple(x[0] for x in query_response.fetchall())
+
+    return result
 
 
 def main(ticker):
@@ -79,7 +132,7 @@ def main(ticker):
 
 if __name__ == "__main__":
 
-    ticker_list = list_stock_names()
+    ticker_list = all_stocks_tickers_sql()
 
     start = time.time()
 

@@ -30,25 +30,36 @@ class FundamenteiToSql:
         """
         Takes the HTML BS4 object and grabs the important data 
         """
-        self.company_name = self.parsed_html.h1.get_text().replace("'", "")
+        # self.company_name = self.parsed_html.h1.get_text().replace("'", "")
 
-        # Extracting Orign 
-        self.origin = self.parsed_html.find('img', class_='css-1phd9a0')['alt']
+        # # Extracting Orign
+        # self.origin = self.parsed_html.find("img", class_="css-1phd9a0")["alt"]
 
+        # Extract Market Cap
+        mkt_cap_raw = self.parsed_html.find("div", class_="css-1izgaab").get_text()
+
+        if "Mi" or "mi" in mkt_cap_raw:
+            self.mkt_cap = int(mkt_cap_raw.split()[0]) * 1000000
+
+        elif "Bi" or "bi" in mkt_cap_raw:
+            self.mkt_cap = int(mkt_cap_raw.split()[0]) * 1000000000
+
+        elif "Tri" or "tri" in mkt_cap_raw:
+            self.mkt_cap = int(mkt_cap_raw.split()[0]) * 1000000000000
 
     def to_sql(self):
         sql_handler = MySQL()
 
         sql_handler.update(
             table="company_info",
-            changed_column="origin",
-            value=self.origin,
+            changed_column="market_cap",
+            value=self.mkt_cap,
             where_column="ticker",
             where_equals=self.ticker,
         )
 
     def __str__(self):
-        return f"{self.ticker} - Origin : {self.origin}"
+        return f"{self.ticker}"
 
 
 def dump_to_sql(ticker):
@@ -57,18 +68,22 @@ def dump_to_sql(ticker):
     Grabs HTML file
     """
 
-    stock = FundamenteiToSql(ticker)
-    stock.html_open()
-    stock.info_extract()
-    stock.to_sql()
-    print("Stock Succesifuly Updated")
-    print(stock)
+    try:
+        stock = FundamenteiToSql(ticker)
+        print(stock)
+        stock.html_open()
+        stock.info_extract()
+        stock.to_sql()
+        print("Stock Succesifuly Updated")
+    except :
+        pass
+    
 
 
-if __name__ == "__main__":
+def market_cap_no_info_list():
 
     """
-    Grabs of tickers of companies with no Origin  
+    Grabs of tickers of companies with no Market Cap
     """
 
     sql_handler = MySQL()
@@ -76,11 +91,16 @@ if __name__ == "__main__":
     result = sql_handler.select_unique_column(
         table="company_info",
         desired_column="ticker",
-        where_column="origin",
-        where_equals="{{inc-country}}",
+        where_column="market_cap",
+        where_equals="{{market-cap}}",
     )
 
-    # Uses this to extract Origins 
+    return result
 
-    for i in range(100):
-        dump_to_sql(result[i])
+
+if __name__ == "__main__":
+
+    mk = market_cap_no_info_list()
+    
+    for item in mk:
+        dump_to_sql(item)
