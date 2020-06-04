@@ -21,7 +21,7 @@ class MorningStar:
 
     def open_browser(self):
         chrome_options = webdriver.ChromeOptions()
-        prefs = {'download.default_directory' : str(paths.morning_star / 'income_statement')}
+        prefs = {'download.default_directory' : str(paths.morning_star_path / 'income_statement')}
         chrome_options.add_experimental_option('prefs', prefs)
 
         self.driver = webdriver.Chrome(
@@ -82,7 +82,7 @@ def main(ticker):
 
 if __name__ == "__main__":
     
-    df = pd.read_csv(paths.morning_star_path/ 'tickers.csv')
+    df = pd.read_csv(pathsprefs = {'download.default_directory' : str(paths.morning_star_path_path/ 'tickers.csv')
     
     # main('aapl')
     for item in df['Ticker']:
