@@ -82,7 +82,7 @@ def main(ticker):
 
 if __name__ == "__main__":
     
-    df = pd.read_csv(paths.morning_star/ 'tickers.csv')
+    df = pd.read_csv(paths.morning_star_path/ 'tickers.csv')
     
     # main('aapl')
     for item in df['Ticker']:

@@ -25,5 +25,5 @@ def set_path():
 # Directories Setup
 # =============================================================================
 
-cwd_path, data_path, bin_path, bastter_path, fundamentei_path, morning_star = set_path()  
+cwd_path, data_path, bin_path, bastter_path, fundamentei_path, morning_star_path = set_path()  
     

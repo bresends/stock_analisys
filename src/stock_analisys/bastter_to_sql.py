@@ -137,7 +137,6 @@ if __name__ == "__main__":
     start = time.time()
 
     with concurrent.futures.ProcessPoolExecutor() as executor:
-        # Start the load operations and mark each future with its URL
         results = executor.map(main, ticker_list)
 
     end = time.time()

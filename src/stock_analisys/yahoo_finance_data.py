@@ -1,10 +1,13 @@
+import concurrent.futures
 import time
+import random
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
 import stock_analisys.packages.paths as paths
 from stock_analisys.packages.sql_class import MySQL
+import stock_analisys.packages.prints as time_control
 
 
 class Yahoo:
@@ -33,31 +36,24 @@ class Yahoo:
 
         self.soup = BeautifulSoup(page_html, "lxml")
 
-    def mkt_cap_extract(self):
+        self.driver.quit()
 
-        data_table = self.soup.find("table", class_="W(100%) M(0) Bdcl(c)")
-
-        # Verify if data_table has anything. If not mkt Cap = 0
-        if data_table:
-            mkt_cap_raw = data_table.find("span", class_="Trsdu(0.3s)").get_text()
-
-            # Treat mkt_cap
-            if "M" in mkt_cap_raw:
-                mkt_cap_raw = mkt_cap_raw.replace("M", "")
-                self.mkt_cap = int(float(mkt_cap_raw.split()[0]) * 1000000)
-
-            elif "B" in mkt_cap_raw:
-                mkt_cap_raw = mkt_cap_raw.replace("B", "")
-                self.mkt_cap = int(float(mkt_cap_raw.split()[0]) * 1000000000)
-
-            elif "0" in mkt_cap_raw:
-                self.mkt_cap = 0
-
-        else:
-            self.mkt_cap = 0
-    
     def sector_extract(self):
-        pass 
+        try:
+            self.sector = (
+                self.soup.find_all("span", class_="Fw(600)")[0].get_text().strip()
+            )
+            self.industry_category = (
+                self.soup.find_all("span", class_="Fw(600)")[1].get_text().strip()
+            )
+            self.description = self.soup.find("p", class_="Mt(15px) Lh(1.6)").get_text()
+
+        except IndexError as err:
+
+            print(f"Error {err} - Setting All to Null")
+            self.sector = "{{sector}}"
+            self.industry_category = "{{industry_category}}"
+            self.sector = "{{description}}"
 
     def to_sql(self):
 
@@ -65,8 +61,8 @@ class Yahoo:
 
         sql_handler.update(
             table="company_info",
-            changed_column="sector",
-            value=self.mkt_cap,
+            changed_column="description",
+            value=self.description,
             where_column="ticker",
             where_equals=self.ticker,
         )
@@ -76,28 +72,37 @@ class Yahoo:
 Misc Functions 
 """
 
+
 def custom_ticker_search():
-    
+
     querry = MySQL()
-    query_response = querry.stocks_db_engine.execute("SELECT ticker FROM company_info WHERE sector IS NULL or sector = '{{setor}}' or sector = 'N/D' or sector = '-';")
+    query_response = querry.stocks_db_engine.execute(
+        "SELECT ticker FROM company_info WHERE `description` IS NULL or `description` = 'N/A' or `description` = '{{description}}';"
+    )
     result = tuple(x[0] for x in query_response.fetchall())
     return result
 
 
 def main(ticker):
 
+    time.sleep(random.uniform(0.1, 0.2))
     stock = Yahoo(ticker)
     print(stock)
     stock.get_html(stock.profile_url)
     stock.sector_extract()
     stock.to_sql()
-    stock.driver.quit()
     print("Stock Succesifuly Updated")
 
 
 if __name__ == "__main__":
 
     mk = custom_ticker_search()
-    
-    for i in mk:
-        main(i)
+
+    start = time.time()
+
+    with concurrent.futures.ProcessPoolExecutor(max_workers=5) as executor:
+        results = executor.map(main, mk)
+
+    end = time.time()
+
+    time_control.time_it_secs_conversion(start, end)
