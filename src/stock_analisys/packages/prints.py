@@ -3,6 +3,7 @@ Module related to dealing with times and dates conversions
 """
 
 import time
+import functools
 
 
 def print_line():
@@ -13,34 +14,42 @@ def print_txt_inside_lines(str_txt):
     print(f"########## {str_txt} ###########")
 
 
-def time_it_secs_conversion(start_time: float, end_time: float):
-    """Deal with the conversion of seconds to minutes of hour when dealing with timming
+def time_it(func):
 
-    Arguments:
-        start_time {float} -- [The Beggining of Execution]
-        end_time {float} -- [The end Of Exectuion]
-    """
-    elapsed_time = end_time - start_time
+    @functools.wraps(func)
+    def time_it_wrapper(*args, **kwargs):
 
-    if elapsed_time < 60:
-        print_line()
-        print(f"Time in execution = {elapsed_time:.2f} seconds")
-        print_txt_inside_lines("Done")
+        start_time = time.time()
 
-    elif elapsed_time > 3600:
-        time_hours = elapsed_time / 3600
-        print(f"Time in execution = {time_hours:.2f} Hours")
-        print_txt_inside_lines("Done")
-    else:
-        time_minutes = elapsed_time / 60
-        print_line()
-        print(f"Tempo gasto na execução = {time_minutes:.2f} minutos")
-        print_txt_inside_lines("Done")
+        func_return = func(*args, **kwargs)
 
+        end_time = time.time()
 
-def main():
-    time_it_secs_conversion(0, 200)
+        elapsed_time = end_time - start_time
 
+        if elapsed_time < 60:
+            print_line()
+            print(f"Function: {func.__name__!r} executed in {elapsed_time:.2f} seconds")
+            print_txt_inside_lines("Done")
+
+        elif elapsed_time > 3600:
+            time_hours = elapsed_time / 3600
+            print(f"Function: {func.__name__!r} executed in {time_hours:.2f} hours")
+            print_txt_inside_lines("Done")
+        else:
+            time_minutes = elapsed_time / 60
+            print_line()
+            print(f"Function: {func.__name__!r} executed {time_minutes:.2f} minutes")
+            print_txt_inside_lines("Done")
+        
+        return func_return
+
+    return time_it_wrapper
+
+@time_it
+def test(num_times):
+    for _ in range(num_times):
+        sum([i**2 for i in range(10000)])
 
 if __name__ == "__main__":
-    main()
+    test(10)

@@ -6,9 +6,9 @@ from sqlalchemy import create_engine
 
 
 class MySQL:
-    def __init__(self, database="stocks"):
+    def __init__(self, database="stocks_general_info"):
         self.database = database
-        self.stocks_db_engine = create_engine(
+        self.engine = create_engine(
             f"mysql+mysqlconnector://root:74Q50c$0rIZ&GDhp@localhost:3306/{database}",
             echo=False,
         )
@@ -18,7 +18,7 @@ class MySQL:
         """
         MySQL update
         """
-        self.stocks_db_engine.execute(
+        self.engine.execute(
             f"""UPDATE {self.database}.{table} SET {changed_column} = '{value}' WHERE ({where_column} = '{where_equals}') LIMIT 1;"""
         )
     
@@ -34,7 +34,7 @@ class MySQL:
         Returns:
             tuple -- returns the first element of the result tuple query 
         """
-        query_response = self.stocks_db_engine.execute(f"SELECT {desired_column} FROM {table} WHERE {where_column} = '{where_equals}' LIMIT 0, 5000;")
+        query_response = self.engine.execute(f"SELECT {desired_column} FROM {table} WHERE {where_column} = '{where_equals}' LIMIT 0, 5000;")
         result = tuple(x[0] for x in query_response.fetchall())
         return result
 

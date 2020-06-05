@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 import stock_analisys.packages.html_handling as html_handling
 import stock_analisys.packages.paths as paths
-import stock_analisys.packages.prints as time_control
+from stock_analisys.packages.prints import time_it
 from stock_analisys.packages.sql_class import MySQL
 
 
@@ -110,7 +110,7 @@ def all_stocks_tickers_sql():
     Grabs of tickers of companies with no Origin  
     """
 
-    sql_handler = MySQL()
+    sql_handler = MySQL("stocks_general_info")
 
     query_response = sql_handler.stocks_db_engine.execute(
         "SELECT ticker FROM company_info"
@@ -130,15 +130,12 @@ def main(ticker):
     stock_obj.to_sql()
 
 
-if __name__ == "__main__":
-
+@time_it
+def main_concurrent():
     ticker_list = all_stocks_tickers_sql()
+    with concurrent.futures.ProcessPoolExecutor(max_workers=5) as executor:
+        executor.map(main, ticker_list[:10])
 
-    start = time.time()
 
-    with concurrent.futures.ProcessPoolExecutor() as executor:
-        results = executor.map(main, ticker_list)
-
-    end = time.time()
-
-    time_control.time_it_secs_conversion(start, end)
+if __name__ == "__main__":
+    main_concurrent()
