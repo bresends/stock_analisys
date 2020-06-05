@@ -7,7 +7,7 @@ import functools
 
 
 def print_line():
-    print("----------------------------------------------------")
+    print(96 * "-")
 
 
 def print_txt_inside_lines(str_txt):
@@ -15,7 +15,6 @@ def print_txt_inside_lines(str_txt):
 
 
 def time_it(func):
-
     @functools.wraps(func)
     def time_it_wrapper(*args, **kwargs):
 
@@ -41,15 +40,17 @@ def time_it(func):
             print_line()
             print(f"Function: {func.__name__!r} executed {time_minutes:.2f} minutes")
             print_txt_inside_lines("Done")
-        
+
         return func_return
 
     return time_it_wrapper
 
+
 @time_it
 def test(num_times):
     for _ in range(num_times):
-        sum([i**2 for i in range(10000)])
+        sum([i ** 2 for i in range(10000)])
+
 
 if __name__ == "__main__":
     test(10)

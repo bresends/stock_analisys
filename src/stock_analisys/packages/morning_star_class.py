@@ -44,7 +44,7 @@ class MorningStarExtract(MorningStar):
 
         export_buttom = self.driver.find_element_by_link_text("Export")
 
-        # Se está carregado, passa pra frente, senão para.
+        # If button is loaded, continues
         if export_buttom.is_displayed():
 
             export_buttom.click()
@@ -81,9 +81,4 @@ def main(ticker):
 
 
 if __name__ == "__main__":
-    
-    df = pd.read_csv(pathsprefs = {'download.default_directory' : str(paths.morning_star_path_path/ 'tickers.csv')
-    
-    # main('aapl')
-    for item in df['Ticker']:
-        main(item.strip())
+
