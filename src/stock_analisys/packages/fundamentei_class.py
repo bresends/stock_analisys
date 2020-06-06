@@ -112,9 +112,9 @@ class FundamenteiEvaluate(Fundamentei):
 
     def __init__(self, ticker):
         super().__init__(ticker)
-        self.html_page_bs4 = html_handling.html_file_to_bs4(str(
-            paths.fundamentei_path / "full_balances_us" / f"{self.ticker}.html"
-        ))
+        self.html_page_bs4 = html_handling.html_file_to_bs4(
+            str(paths.fundamentei_path / "full_balances_us" / f"{self.ticker}.html")
+        )
 
     def table_extract(self):
 
@@ -140,6 +140,7 @@ class FundamenteiEvaluate(Fundamentei):
             .replace("L", "0")
             .replace("-", "-0")
             .replace("%", "")
+            .replace("19 TTM", "2019")
             .replace("20 TTM", "2020")
         )
 
@@ -157,16 +158,27 @@ class FundamenteiEvaluate(Fundamentei):
 
         income_list = []
 
-        # Grabs the first Net income in the original table
-        income_last_year = self.company_full_data.loc[0, "Net Inc."]
+        # Splits for Banks
+        try:
+            # Grabs the first Net income in the original table
+            income_last_year = float(self.company_full_data.loc[0, "Net Inc."])
+            if income_last_year == 0:
+                income_last_year = 1
+            column = "Net Inc."
+            
+        except KeyError:
+            # Grabs the first Net income in the original table
+            income_last_year = float(self.company_full_data.loc[0, "Net Income"] + 1)
+            if income_last_year == 0:
+                income_last_year = 1
 
-        for income_current_year in self.company_full_data["Net Inc."]:
+            column = "Net Income"
+
+        for income_current_year in self.company_full_data[column]:
 
             # Divide o lucro do ano pelo lucro do ano anterior
             percentual_change = int(
-                (income_current_year - income_last_year)
-                / (abs(income_last_year + 1))
-                * 100
+                (income_current_year - income_last_year) / (abs(income_last_year)) * 100
             )
 
             # Adiciona na lista
@@ -176,7 +188,7 @@ class FundamenteiEvaluate(Fundamentei):
             income_last_year = income_current_year + 0.01
 
         self.company_full_data["%"] = income_list
-        
+
     def company_informations(self):
         """
         Grabs the Company basic info
@@ -200,17 +212,19 @@ def main_extract():
     extract_test.html_save()
 
 
-def main_evaluate():
+def main_evaluate(ticker):
     """
     Serves as plataform to test my script
     """
 
-    evaluate_test = FundamenteiEvaluate("aapl")
+    evaluate_test = FundamenteiEvaluate(ticker)
     evaluate_test.table_extract()
     evaluate_test.income_percentual()
     evaluate_test.company_informations()
 
+    return evaluate_test.company_full_data
+
 
 if __name__ == "__main__":
-    main_extract()
-    # main_evaluate()
+    # main_extract()
+    main_evaluate("NEOG")

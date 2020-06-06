@@ -109,7 +109,7 @@ class BastterExtract(Bastter):
             encoding="utf-8",
         ) as file:
             file.write(str(page_html))
-        
+
         time.sleep(1)
 
     def open_page(self):
@@ -241,12 +241,17 @@ def percentual_variance(dataframe, field):
 
     # Grabs the first Net income in the original table
     last_year_value = dataframe.loc[0, field]
+    
+    # Fixing for Division by Zero 
+    if last_year_value == 0:
+            last_year_value = 1
 
     for current_year_value in dataframe[field]:
 
+
         # Divide o valor do ano pelo valor do ano anterior
         percentual_change = int(
-            (current_year_value - last_year_value) / (abs(last_year_value + 1)) * 100
+            (current_year_value - last_year_value) / (abs(last_year_value)) * 100
         )
 
         # Adiciona na lista
