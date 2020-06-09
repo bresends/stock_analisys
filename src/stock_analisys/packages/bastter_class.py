@@ -54,13 +54,7 @@ class BastterExtract(Bastter):
 
     def autenticate(self):
 
-        chrome_options = Options()
-        chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-
         self.driver = webdriver.Chrome(
-            # chrome_options=chrome_options,
             executable_path=str(paths.bin_path / "chromedriver.exe"),
         )
 
@@ -179,6 +173,10 @@ class BastterEvaluate(Bastter):
         def treat_tables(table):
 
             # Values to strings (to treat)
+            table = table.transpose()
+            table = table.reset_index()
+            table = table.drop(1, axis=0)
+            table = table.reset_index(drop=True)
             table = table.applymap(str)
 
             # Treating Data (remove points and strings)
@@ -188,13 +186,8 @@ class BastterEvaluate(Bastter):
                 .replace("L", "0")
                 .replace("-", "-0")
                 .replace("%", "")
-                .replace("20 TTM", "2020")
+                .replace("TTM", "2020")
             )
-
-            table = table.transpose()
-            table = table.reset_index()
-            table = table.drop(1, axis=0)
-            table = table.reset_index(drop=True)
 
             # Fixing Header
             new_header = table.iloc[0]  # grab the first row for the header
@@ -219,9 +212,13 @@ class BastterEvaluate(Bastter):
         dre = percentual_variance(dataframe=dre, field="Earnings per Share")
 
         cash_flow = treat_tables(cf)
+        cash_flow = cash_flow.drop("Year", axis=1)
         multiples = treat_tables(mult)
+        multiples = multiples.drop("Year", axis=1)
 
-        return (dre, cash_flow, multiples)
+        df = pd.concat([dre, cash_flow, multiples], axis=1)
+
+        return df
 
 
 # =============================================================================
@@ -241,13 +238,16 @@ def percentual_variance(dataframe, field):
 
     # Grabs the first Net income in the original table
     last_year_value = dataframe.loc[0, field]
-    
-    # Fixing for Division by Zero 
+
+    # Fixing for Division by Zero
     if last_year_value == 0:
-            last_year_value = 1
+        last_year_value = 1
 
     for current_year_value in dataframe[field]:
 
+        # Fixing for Division by Zero
+        if last_year_value == 0:
+            last_year_value = 1
 
         # Divide o valor do ano pelo valor do ano anterior
         percentual_change = int(
@@ -285,7 +285,10 @@ def main_evaluate(ticker):
     evaluate_test = BastterEvaluate(ticker)
     tables = evaluate_test.tables_extract()
 
+    return tables
+
 
 if __name__ == "__main__":
-    main_extract("yyy")
-    # main_evaluate("mmm")
+    # main_extract("tmo")
+    a = main_evaluate("tmo")
+    print(a.iloc[:, :25])
