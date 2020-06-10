@@ -50,7 +50,14 @@ def main(ticker):
     stock = Plots(ticker)
     info = stock.show_info()
 
-    print(f'{info.iloc[0, 2]} - ({info.iloc[0,1]})')
+    
+    company_to_clipboard = f'{info.iloc[0, 2]} - ({info.iloc[0,1]})'
+    
+    df=pd.DataFrame([company_to_clipboard])
+
+    df.to_clipboard(index=False,header=False)
+
+    print(company_to_clipboard)
 
     display(info.iloc[:, [3, 5, 6, 8, 9, 10]])
     print("")
