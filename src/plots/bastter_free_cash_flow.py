@@ -63,8 +63,8 @@ class Plots:
 
         plot.plot(
             self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            color="teal",
+            self.__bastter_full_balance["fcf"],
+            color="deeppink",
             linestyle="-",
             marker=".",
             markersize=8,
@@ -76,31 +76,31 @@ class Plots:
         # Fill Between Profit
         plot.fill_between(
             self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            where=(self.__bastter_full_balance["eps"] > 0),
-            color="darkturquoise",
+            self.__bastter_full_balance["fcf"],
+            where=(self.__bastter_full_balance["fcf"] > 0),
+            color="hotpink",
             alpha=1,
             interpolate=True,
-            label="Profit",
+            label="(+) Free Cash Flow",
         )
 
         # Fill Between Loss
         plot.fill_between(
             self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            where=(self.__bastter_full_balance["eps"] < 0),
+            self.__bastter_full_balance["fcf"],
+            where=(self.__bastter_full_balance["fcf"] < 0),
             color="r",
             alpha=0.95,
             interpolate=True,
-            label="Loss",
+            label="(-) Free Cash Flow",
         )
 
         plot.set_title(
-            "[EPS] - Bastter", fontsize=12, color="black",
+            "[Free Cash Flow] - Bastter", fontsize=12, color="black",
         )
 
         plot.set_xlabel("Year", color="black")
-        plot.set_ylabel("EPS", color="black")
+        plot.set_ylabel("FCF (mil)", color="black")
         plot.grid()
         plot.legend()
         plt.show()

@@ -63,44 +63,87 @@ class Plots:
 
         plot.plot(
             self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            color="teal",
+            self.__bastter_full_balance["debt_equity"],
+            color="purple",
             linestyle="-",
             marker=".",
             markersize=8,
+            label="Debt/Equity",
         )
 
-        # Zero mark
-        plot.axhline(y=0, color="red", linestyle="--", marker=".", markersize=10)
+        # Control line for debt
+        plot.axhline(y=2, color="navy", linestyle="--", marker=".", markersize=10)
 
-        # Fill Between Profit
+        # Fill Debt
         plot.fill_between(
             self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            where=(self.__bastter_full_balance["eps"] > 0),
-            color="darkturquoise",
-            alpha=1,
+            self.__bastter_full_balance["debt_equity"],
+            y2=3,
+            where=(self.__bastter_full_balance["debt_equity"] < 2),
+            color="darkorchid",
+            alpha=0.6,
             interpolate=True,
-            label="Profit",
         )
 
-        # Fill Between Loss
         plot.fill_between(
             self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            where=(self.__bastter_full_balance["eps"] < 0),
+            self.__bastter_full_balance["debt_equity"],
+            y2=2,
+            where=(self.__bastter_full_balance["debt_equity"] > 2),
             color="r",
-            alpha=0.95,
+            alpha=0.8,
             interpolate=True,
-            label="Loss",
         )
+
+        # ==========================================================
+        # ND/Ebitda Plot
+        # ==========================================================
+
+        plot.plot(
+            self.__bastter_full_balance["yr"],
+            self.__bastter_full_balance["nd_ebitda"],
+            color="navy",
+            linestyle="-",
+            marker=".",
+            markersize=8,
+            label="ND/EBITDA",
+        )
+
+        # Control line for debt
+        plot.axhline(y=2, color="navy", linestyle="--", marker=".", markersize=10)
+
+        # Fill Debt
+        plot.fill_between(
+            self.__bastter_full_balance["yr"],
+            self.__bastter_full_balance["nd_ebitda"],
+            y2=3,
+            where=(self.__bastter_full_balance["nd_ebitda"] < 2),
+            color="darkblue",
+            alpha=0.6,
+            interpolate=True,
+        )
+
+        plot.fill_between(
+            self.__bastter_full_balance["yr"],
+            self.__bastter_full_balance["nd_ebitda"],
+            y2=2,
+            where=(self.__bastter_full_balance["nd_ebitda"] > 2),
+            color="r",
+            alpha=0.8,
+            interpolate=True,
+        )
+
+        # Control line for debt
+        plot.axhline(y=0, color="red", linestyle="--", marker=".", markersize=10)
+        # Control line for debt
+        plot.axhline(y=1, color="indigo", linestyle="--", marker=".", markersize=10)
 
         plot.set_title(
-            "[EPS] - Bastter", fontsize=12, color="black",
+            "[ND/EBITDA - Debt/Equity] - Bastter", fontsize=12, color="black",
         )
 
         plot.set_xlabel("Year", color="black")
-        plot.set_ylabel("EPS", color="black")
+        plot.set_ylabel("ND/EBITDA - ND/Equity", color="black")
         plot.grid()
         plot.legend()
         plt.show()

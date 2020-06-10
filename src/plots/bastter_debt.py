@@ -60,47 +60,38 @@ class Plots:
         # ==========================================================
         # Income & EBIT plot
         # ==========================================================
-
-        plot.plot(
+        plot.bar(
             self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            color="teal",
-            linestyle="-",
-            marker=".",
-            markersize=8,
+            self.__bastter_full_balance["debt"],
+            color="darkorange",
+            alpha=0.9,
+            label="Debt",
+        )
+
+        var_pos = self.__bastter_full_balance[
+            self.__bastter_full_balance["net_debt"] >= 0
+        ]
+        var_neg = self.__bastter_full_balance[
+            self.__bastter_full_balance["net_debt"] <= 1
+        ]
+
+        plot.bar(
+            var_pos["yr"], var_pos["net_debt"], color="red", label="(+) Net Debt ",
+        )
+
+        plot.bar(
+            var_neg["yr"], var_neg["net_debt"], color="green", label="(-) Net Debt",
         )
 
         # Zero mark
         plot.axhline(y=0, color="red", linestyle="--", marker=".", markersize=10)
 
-        # Fill Between Profit
-        plot.fill_between(
-            self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            where=(self.__bastter_full_balance["eps"] > 0),
-            color="darkturquoise",
-            alpha=1,
-            interpolate=True,
-            label="Profit",
-        )
-
-        # Fill Between Loss
-        plot.fill_between(
-            self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            where=(self.__bastter_full_balance["eps"] < 0),
-            color="r",
-            alpha=0.95,
-            interpolate=True,
-            label="Loss",
-        )
-
         plot.set_title(
-            "[EPS] - Bastter", fontsize=12, color="black",
+            "[Debt/Net Debt] - Bastter", fontsize=12, color="black",
         )
 
         plot.set_xlabel("Year", color="black")
-        plot.set_ylabel("EPS", color="black")
+        plot.set_ylabel("Debt / Net Debt", color="black")
         plot.grid()
         plot.legend()
         plt.show()

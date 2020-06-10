@@ -20,8 +20,8 @@ class Plots:
         self.__morning_star_con = sql_class.MySQL("morning_star").engine
 
         # Tables
-        self.__bastter_full_balance = pd.read_sql_table(
-            f"{self.ticker}_full_balance", self.__bastter_conn
+        self.__full_balance = pd.read_sql_table(
+            f"{self.ticker}_financial", self.__morning_star_con
         )
 
     def pull_basic_info(self):
@@ -34,23 +34,28 @@ class Plots:
         FROM company_info \
         WHERE ticker = '{self.ticker.upper()}' \
         """
-        self.company_info___bastter_full_balance = pd.read_sql_query(
+        self.company_info___full_balance = pd.read_sql_query(
             query, self.__stocks_general_info
         )
 
-    def bastter_income(self):
+    def morning_star_s_g(self):
         """
-        Plots Income, EBit and Ebitda for Bastter
+        Plots Income, r_d and gross_profit for Bastter
         """
 
         self.pull_basic_info()
+
+        self.__full_balance["dol"] = (
+            self.__full_balance["operating_income"]
+            / self.__full_balance["gross_profit"]
+        ) * 100
 
         # Setting Fig
         fig = plt.figure()
         fig.set_size_inches(10, 6)
 
         fig.suptitle(
-            f"{self.ticker.upper()} - {self.company_info___bastter_full_balance['company_name'][0]}",
+            f"{self.ticker.upper()} - {self.company_info___full_balance['company_name'][0]}",
             fontsize=14,
             fontweight="bold",
         )
@@ -58,49 +63,27 @@ class Plots:
         plot = fig.add_subplot(111)
 
         # ==========================================================
-        # Income & EBIT plot
+        # Income & r_d plot
         # ==========================================================
 
-        plot.plot(
-            self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            color="teal",
-            linestyle="-",
-            marker=".",
-            markersize=8,
+        plot.bar(
+            self.__full_balance["yr"],
+            self.__full_balance["dol"],
+            color="brown",
+            label="DOL",
         )
 
         # Zero mark
         plot.axhline(y=0, color="red", linestyle="--", marker=".", markersize=10)
 
-        # Fill Between Profit
-        plot.fill_between(
-            self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            where=(self.__bastter_full_balance["eps"] > 0),
-            color="darkturquoise",
-            alpha=1,
-            interpolate=True,
-            label="Profit",
-        )
-
-        # Fill Between Loss
-        plot.fill_between(
-            self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            where=(self.__bastter_full_balance["eps"] < 0),
-            color="r",
-            alpha=0.95,
-            interpolate=True,
-            label="Loss",
-        )
-
         plot.set_title(
-            "[EPS] - Bastter", fontsize=12, color="black",
+            "DOL - Morning Star",
+            fontsize=12,
+            color="black",
         )
 
         plot.set_xlabel("Year", color="black")
-        plot.set_ylabel("EPS", color="black")
+        plot.set_ylabel("DOL % ", color="black")
         plot.grid()
         plot.legend()
         plt.show()
@@ -108,8 +91,8 @@ class Plots:
 
 def main(ticker):
     stock = Plots(ticker)
-    stock.bastter_income()
+    stock.morning_star_s_g()
 
 
 if __name__ == "__main__":
-    main("aapl")
+    main("bio")

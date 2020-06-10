@@ -61,46 +61,31 @@ class Plots:
         # Income & EBIT plot
         # ==========================================================
 
-        plot.plot(
+        plot.bar(
             self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            color="teal",
-            linestyle="-",
-            marker=".",
-            markersize=8,
+            self.__bastter_full_balance["revenue"],
+            color="black",
+            alpha=0.9,
+            label="Revenue",
+        )
+
+        plot.bar(
+            self.__bastter_full_balance["yr"],
+            self.__bastter_full_balance["equity"],
+            color="white",
+            alpha=0.9,
+            label="Equity",
         )
 
         # Zero mark
         plot.axhline(y=0, color="red", linestyle="--", marker=".", markersize=10)
 
-        # Fill Between Profit
-        plot.fill_between(
-            self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            where=(self.__bastter_full_balance["eps"] > 0),
-            color="darkturquoise",
-            alpha=1,
-            interpolate=True,
-            label="Profit",
-        )
-
-        # Fill Between Loss
-        plot.fill_between(
-            self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            where=(self.__bastter_full_balance["eps"] < 0),
-            color="r",
-            alpha=0.95,
-            interpolate=True,
-            label="Loss",
-        )
-
         plot.set_title(
-            "[EPS] - Bastter", fontsize=12, color="black",
+            "[Equity/Revenue] - Bastter", fontsize=12, color="black",
         )
 
         plot.set_xlabel("Year", color="black")
-        plot.set_ylabel("EPS", color="black")
+        plot.set_ylabel("Equity / Revenue (mil)", color="black")
         plot.grid()
         plot.legend()
         plt.show()

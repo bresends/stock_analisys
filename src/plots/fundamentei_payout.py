@@ -21,7 +21,7 @@ class Plots:
 
         # Tables
         self.__bastter_full_balance = pd.read_sql_table(
-            f"{self.ticker}_full_balance", self.__bastter_conn
+            f"{self.ticker}_full_balance", self.__fundamentei_conn
         )
 
     def pull_basic_info(self):
@@ -38,7 +38,7 @@ class Plots:
             query, self.__stocks_general_info
         )
 
-    def bastter_income(self):
+    def fundamentei_income(self):
         """
         Plots Income, EBit and Ebitda for Bastter
         """
@@ -60,47 +60,25 @@ class Plots:
         # ==========================================================
         # Income & EBIT plot
         # ==========================================================
-
-        plot.plot(
+        plot.bar(
             self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            color="teal",
-            linestyle="-",
-            marker=".",
-            markersize=8,
+            self.__bastter_full_balance["payout"],
+            color="firebrick",
+            alpha=0.9,
+            label="Payout",
         )
 
         # Zero mark
-        plot.axhline(y=0, color="red", linestyle="--", marker=".", markersize=10)
+        plot.axhline(y=50, color="darkred", linestyle="--", marker=".", markersize=10)
 
-        # Fill Between Profit
-        plot.fill_between(
-            self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            where=(self.__bastter_full_balance["eps"] > 0),
-            color="darkturquoise",
-            alpha=1,
-            interpolate=True,
-            label="Profit",
-        )
 
-        # Fill Between Loss
-        plot.fill_between(
-            self.__bastter_full_balance["yr"],
-            self.__bastter_full_balance["eps"],
-            where=(self.__bastter_full_balance["eps"] < 0),
-            color="r",
-            alpha=0.95,
-            interpolate=True,
-            label="Loss",
-        )
 
         plot.set_title(
-            "[EPS] - Bastter", fontsize=12, color="black",
+            "[Payout] - Fundamentei", fontsize=12, color="black",
         )
 
         plot.set_xlabel("Year", color="black")
-        plot.set_ylabel("EPS", color="black")
+        plot.set_ylabel("Payout %", color="black")
         plot.grid()
         plot.legend()
         plt.show()
@@ -108,7 +86,7 @@ class Plots:
 
 def main(ticker):
     stock = Plots(ticker)
-    stock.bastter_income()
+    stock.fundamentei_income()
 
 
 if __name__ == "__main__":
