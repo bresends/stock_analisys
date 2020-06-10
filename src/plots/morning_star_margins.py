@@ -85,6 +85,7 @@ class Plots:
         )
 
         # Zero mark
+        plot.axhline(y=5, color="navy", linestyle="--", marker=".", markersize=10)
         plot.axhline(y=20, color="navy", linestyle="--", marker=".", markersize=10)
         plot.axhline(y=50, color="navy", linestyle="--", marker=".", markersize=10)
 

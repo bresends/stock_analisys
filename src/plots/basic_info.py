@@ -50,7 +50,9 @@ def main(ticker):
     stock = Plots(ticker)
     info = stock.show_info()
 
-    display(info.iloc[:, [1, 2, 3, 5, 6, 8, 9, 10]])
+    print(f'{info.iloc[0, 2]} - ({info.iloc[0,1]})')
+
+    display(info.iloc[:, [3, 5, 6, 8, 9, 10]])
     print("")
 
     try:

@@ -34,13 +34,13 @@ class Plots:
         FROM company_info \
         WHERE ticker = '{self.ticker.upper()}' \
         """
-        self.company_info___full_balance = pd.read_sql_query(
+        self.company_info = pd.read_sql_query(
             query, self.__stocks_general_info
         )
 
-    def morning_star_s_g(self):
+    def fundamentei_income(self):
         """
-        Plots Income, r_d and gross_profit for Bastter
+        Plots Income, EBit and Ebitda for Bastter
         """
 
         self.pull_basic_info()
@@ -50,7 +50,7 @@ class Plots:
         fig.set_size_inches(10, 6)
 
         fig.suptitle(
-            f"{self.ticker.upper()} - {self.company_info___full_balance['company_name'][0]}",
+            f"{self.ticker.upper()} - {self.company_info['company_name'][0]}",
             fontsize=14,
             fontweight="bold",
         )
@@ -58,48 +58,27 @@ class Plots:
         plot = fig.add_subplot(111)
 
         # ==========================================================
-        # Income & r_d plot
+        # Income & EBIT plot
         # ==========================================================
-
         plot.bar(
             self.__full_balance["yr"],
-            self.__full_balance["payables_period"],
-            color="steelblue",
-            alpha=1,
-        )
-
-        plot.plot(
-            self.__full_balance["yr"],
-            self.__full_balance["payables_period"],
-            color="navy",
-            alpha=1,
-            marker=".",
-            label="Payables Period",
-        )
-
-        plot.plot(
-            self.__full_balance["yr"],
-            self.__full_balance["days_inventory"],
-            color="deepskyblue",
-            marker=".",
-            label="Days Inventory",
-        )
-
-        plot.plot(
-            self.__full_balance["yr"],
-            self.__full_balance["day_sales_outstand"],
-            color="lightskyblue",
-            marker=".",
+            self.__full_balance["payout"],
+            color="firebrick",
             alpha=0.9,
-            label="DSO - Day Sales Outstanding",
+            label="Payout",
         )
+
+        # Zero mark
+        plot.axhline(y=50, color="darkred", linestyle="--", marker=".", markersize=10)
+
+
 
         plot.set_title(
-            "Eficiency Days - Morning Star", fontsize=12, color="black",
+            "[Payout] - Morning Star", fontsize=12, color="black",
         )
 
         plot.set_xlabel("Year", color="black")
-        plot.set_ylabel("Eficiency Days", color="black")
+        plot.set_ylabel("Payout %", color="black")
         plot.grid()
         plot.legend()
         plt.show()
@@ -107,7 +86,7 @@ class Plots:
 
 def main(ticker):
     stock = Plots(ticker)
-    stock.morning_star_s_g()
+    stock.fundamentei_income()
 
 
 if __name__ == "__main__":

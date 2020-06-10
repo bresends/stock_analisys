@@ -17,11 +17,24 @@ class MorningStar:
 
     def __init__(self, ticker):
         self.ticker = ticker.upper().strip()
-        self.url = f"http://financials.morningstar.com/income-statement/is.html?t={ticker}"
+        self.url_income = f"http://financials.morningstar.com/income-statement/is.html?t={ticker}"
+        self.url_keys = f"http://financials.morningstar.com/ratios/r.html?t={ticker}"
 
-    def open_browser(self):
+    def set_browser_to_financials(self):
+        self.url = self.url_income
         chrome_options = webdriver.ChromeOptions()
         prefs = {'download.default_directory' : str(paths.morning_star_path / 'income_statement')}
+        chrome_options.add_experimental_option('prefs', prefs)
+
+        self.driver = webdriver.Chrome(
+            chrome_options=chrome_options,
+            executable_path=str(paths.bin_path / "chromedriver.exe"),
+        )
+    
+    def set_browser_to_key_ratios(self):
+        self.url = self.url_keys
+        chrome_options = webdriver.ChromeOptions()
+        prefs = {'download.default_directory' : str(paths.morning_star_path / 'key_ratios')}
         chrome_options.add_experimental_option('prefs', prefs)
 
         self.driver = webdriver.Chrome(
@@ -48,6 +61,8 @@ class MorningStarExtract(MorningStar):
         if export_buttom.is_displayed():
 
             export_buttom.click()
+
+            time.sleep(2)
         else:
 
             print("Button not found in page")
@@ -72,13 +87,24 @@ class MorningStarExtract(MorningStar):
             print("Button not found in page")
 
 
-def main(ticker):
+def key_ratios_extract(ticker):
     stock_obj = MorningStarExtract(ticker)
-    stock_obj.open_browser()
+    stock_obj.set_browser_to_key_ratios()
+    stock_obj.open_page()
+    stock_obj.key_ratios_export()
+    stock_obj.scroll_page_to_botton()
+
+def income_extract(ticker):
+    stock_obj = MorningStarExtract(ticker)
+    stock_obj.set_browser_to_financials()
     stock_obj.open_page()
     stock_obj.income_statement_export()
     stock_obj.scroll_page_to_botton()
 
+def main(ticker):
+    key_ratios_extract(ticker)
+    income_extract(ticker)
+
 
 if __name__ == "__main__":
-
+    main('rost')

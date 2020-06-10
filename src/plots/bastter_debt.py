@@ -75,9 +75,10 @@ class Plots:
             self.__bastter_full_balance["net_debt"] <= 1
         ]
 
-        plot.bar(
-            var_pos["yr"], var_pos["net_debt"], color="red", label="(+) Net Debt ",
-        )
+        if not var_pos.empty:
+            plot.bar(
+                var_pos["yr"], var_pos["net_debt"], color="red", label="(+) Net Debt ",
+            )
 
         plot.bar(
             var_neg["yr"], var_neg["net_debt"], color="green", label="(-) Net Debt",
