@@ -88,7 +88,7 @@ class Plots:
         plot.plot(
             self.__full_balance["yr"],
             self.__full_balance["day_sales_outstand"],
-            color="lightskyblue",
+            color="darkorange",
             marker=".",
             alpha=0.9,
             label="DSO - Day Sales Outstanding",

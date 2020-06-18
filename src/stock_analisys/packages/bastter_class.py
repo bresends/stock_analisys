@@ -289,6 +289,6 @@ def main_evaluate(ticker):
 
 
 if __name__ == "__main__":
-    # main_extract("tmo")
-    a = main_evaluate("tmo")
+    main_extract("tmo")
+    # a = main_evaluate("aapl")
     print(a.iloc[:, :25])
